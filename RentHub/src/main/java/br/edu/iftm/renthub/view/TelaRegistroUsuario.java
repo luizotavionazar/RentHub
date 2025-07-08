@@ -5,8 +5,12 @@
 package br.edu.iftm.renthub.view;
 
 import br.edu.iftm.renthub.model.Usuario;
+import java.awt.Color;
 import java.util.Arrays;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
+
 
 /**
  *
@@ -14,12 +18,14 @@ import javax.swing.JOptionPane;
  */
 public class TelaRegistroUsuario extends javax.swing.JDialog {
     private static Usuario user;
+    private UtilsComponent estilo;
     /**
      * Creates new form TelaRegistroUsuario
      */
     public TelaRegistroUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        estilo = new UtilsComponent();
     }
 
     /**
@@ -39,8 +45,8 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
         pfSenha = new javax.swing.JPasswordField();
         pfConfSenha = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        btRegistrar = new javax.swing.JButton();
-        btCancelar = new javax.swing.JButton();
+        btRegistrar = new RoundedButton("");
+        btCancelar = new RoundedButton("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Usuario");
@@ -64,19 +70,44 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
         pfSenha.setBackground(new java.awt.Color(255, 255, 255));
 
         pfConfSenha.setBackground(new java.awt.Color(255, 255, 255));
+        pfConfSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pfConfSenhaKeyReleased(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Confirme a Senha");
 
+        btRegistrar.setBackground(new java.awt.Color(240, 240, 240));
+        btRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         btRegistrar.setText("Registrar");
+        btRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btRegistrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btRegistrarMouseExited(evt);
+            }
+        });
         btRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btRegistrarActionPerformed(evt);
             }
         });
 
+        btCancelar.setBackground(new java.awt.Color(240, 240, 240));
+        btCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btCancelar.setText("Cancelar");
+        btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btCancelarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btCancelarMouseExited(evt);
+            }
+        });
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCancelarActionPerformed(evt);
@@ -148,16 +179,22 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarActionPerformed
+        estilo.restauraCor(btRegistrar);
         String nomeUsuario = tfUsuario.getText();
         char[] senha = pfSenha.getPassword();
         char[] confSenha = pfConfSenha.getPassword();
-        boolean valida = Arrays.equals(senha, confSenha);
-        if(valida){
-            user = new Usuario(nomeUsuario, senha);
-            JOptionPane.showMessageDialog(rootPane, "Usuário Cadastrado com Sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
+        if(!nomeUsuario.isEmpty() && senha.length !=0 && confSenha.length !=0){
+            boolean valida = Arrays.equals(senha, confSenha);
+            if(valida){
+                user = new Usuario(nomeUsuario, senha);
+                JOptionPane.showMessageDialog(rootPane, "Usuário cadastrado com sucesso!", "Registro Sucedido", JOptionPane.INFORMATION_MESSAGE);
+                limpaCampos();
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "As senhas não coincidem!", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }else{
-            JOptionPane.showMessageDialog(rootPane, "Usuário Não Cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Necessário preencher todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btRegistrarActionPerformed
     
@@ -165,9 +202,43 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
         return user;
     }
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        estilo.restauraCor(btCancelar);
+        limpaCampos();
         dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
+    private void pfConfSenhaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfConfSenhaKeyReleased
+        char[] senha = pfSenha.getPassword();
+        char[] confSenha = pfConfSenha.getPassword();
+        if(Arrays.equals(senha, confSenha)){
+            pfConfSenha.setBorder(new LineBorder(Color.blue, 2));
+        }else{
+            pfConfSenha.setBorder(new LineBorder(Color.red, 2));
+        }
+    }//GEN-LAST:event_pfConfSenhaKeyReleased
+
+    private void btCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCancelarMouseExited
+        estilo.aplicaHoverExited(btCancelar);
+    }//GEN-LAST:event_btCancelarMouseExited
+
+    private void btCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCancelarMouseEntered
+        estilo.aplicaHoverEntered(btCancelar);
+    }//GEN-LAST:event_btCancelarMouseEntered
+
+    private void btRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistrarMouseEntered
+        estilo.aplicaHoverEntered(btRegistrar);
+    }//GEN-LAST:event_btRegistrarMouseEntered
+
+    private void btRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistrarMouseExited
+        estilo.aplicaHoverExited(btRegistrar);
+    }//GEN-LAST:event_btRegistrarMouseExited
+    
+    public void limpaCampos(){
+        tfUsuario.setText("");
+        pfSenha.setText("");
+        pfConfSenha.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
