@@ -6,14 +6,10 @@ package br.edu.iftm.renthub.view;
 
 import javax.swing.*;
 import java.awt.*;
-
-/**
- *
- * @author jhonn
- */
+// Criado por Jhonnie em 08/07/2023
 public class RoundedButton extends JButton{
     private int radius = 20;
-    private int borderThickness = 1;
+    private int borderThickness = 2;
     public RoundedButton(String texto){
         super(texto);
         setContentAreaFilled(false);
@@ -35,8 +31,8 @@ public class RoundedButton extends JButton{
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(Color.BLACK);
-        g2.setStroke(new BasicStroke(1.5f));
-        g2.drawRoundRect(0,0, getWidth() - borderThickness, getHeight() - borderThickness, radius, radius);
+        g2.setStroke(new BasicStroke(borderThickness));
+        g2.drawRoundRect(borderThickness / 2, borderThickness / 2, getWidth() - borderThickness, getHeight() - borderThickness, radius, radius);
         g2.dispose();
     }
 }

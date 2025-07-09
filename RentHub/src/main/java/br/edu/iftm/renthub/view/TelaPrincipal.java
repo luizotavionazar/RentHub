@@ -6,10 +6,7 @@ import java.awt.Point;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author jhonn
- */
+// Criado por Jhonnie em 08/07/2023
 public class TelaPrincipal extends javax.swing.JFrame {
     private static TelaRegistroUsuario telaUsuario;
     private CardLayout cdl;

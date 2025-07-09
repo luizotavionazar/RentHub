@@ -9,13 +9,11 @@ import java.awt.Color;
 import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 
-/**
- *
- * @author jhonn
- */
+// Criado por Jhonnie em 08/07/2023
 public class TelaRegistroUsuario extends javax.swing.JDialog {
     private static Usuario user;
     private UtilsComponent estilo;
@@ -188,6 +186,7 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
             if(valida){
                 user = new Usuario(nomeUsuario, senha);
                 JOptionPane.showMessageDialog(rootPane, "Usuário cadastrado com sucesso!", "Registro Sucedido", JOptionPane.INFORMATION_MESSAGE);
+                pfConfSenha.setBorder(UIManager.getBorder("TextField.border"));
                 limpaCampos();
                 dispose();
             }else{
