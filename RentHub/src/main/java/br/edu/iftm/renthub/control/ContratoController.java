@@ -1,10 +1,10 @@
-package control;
+package br.edu.iftm.renthub.control;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import dao.ContratoDAO;
-import model.Contrato;
+import br.edu.iftm.renthub.dao.ContratoDAO;
+import br.edu.iftm.renthub.model.Contrato;
 
 public class ContratoController {
     private ContratoDAO contratoDAO = new ContratoDAO();

@@ -1,9 +1,9 @@
-package control;
+package br.edu.iftm.renthub.control;
 
 import java.util.ArrayList;
 
-import dao.ClienteDAO;
-import model.Cliente;
+import br.edu.iftm.renthub.dao.ClienteDAO;
+import br.edu.iftm.renthub.model.Cliente;
 
 public class ClienteController {
     private ClienteDAO clienteDAO = new ClienteDAO();
