@@ -12,18 +12,22 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 public class VerificaBanco {
+    private static String URL;
+    private static String USER;
+    private static String PASSWORD;
+
     public static void criarBanco() {
         RegistrosLog log = new RegistrosLog();
         try (InputStream dados = VerificaBanco.class.getClassLoader().getResourceAsStream("config.properties")) {
             log.registrarLog(1, "VerificaBanco", "criarBanco", "", "Iniciando verificação/criação do banco de dados");
             Properties login = new Properties();
             login.load(dados);
-            String urlSemBanco = login.getProperty("db.url").replaceAll("/[a-zA-Z0-9_]+(\\?.*)?$", "/");
-            String user = login.getProperty("db.user");
-            String senha = login.getProperty("db.password");
-            try (Connection conexao = DriverManager.getConnection(urlSemBanco, user, senha);
+            URL = login.getProperty("db.url").replaceAll("/[a-zA-Z0-9_]+(\\?.*)?$", "/");
+            USER = login.getProperty("db.user");
+            PASSWORD = login.getProperty("db.password");
+            try (Connection conexao = DriverManager.getConnection(URL, USER, PASSWORD);
                  Statement stmt = conexao.createStatement()) {
-                    stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS aluguel CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci");
+                    stmt.executeUpdate("CREATE SCHEMA IF NOT EXISTS `aluguel` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci");
                     log.registrarLog(2, "VerificaBanco", "criarBanco", "", "Banco de dados verificado/criado com sucesso");
             } catch (SQLException e) {
                 log.registrarLog(4, "VerificaBanco", "criarBanco", "", "Erro ao criar/verificar banco de dados: " + e.getMessage());

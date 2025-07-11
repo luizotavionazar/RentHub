@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.flywaydb.core.Flyway;
 
+
 import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class FlywayBd {
@@ -16,7 +17,7 @@ public class FlywayBd {
             login.load(dados);
             Flyway flyway = Flyway.configure()
                                   .dataSource(login.getProperty("db.url"),
-                                              login.getProperty("db.username"),
+                                              login.getProperty("db.user"),
                                               login.getProperty("db.password"))
                                   .locations("classpath:db/migration")
                                   .load();

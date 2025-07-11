@@ -4,15 +4,24 @@
 
 package br.edu.iftm.renthub;
 
+import java.sql.SQLException;
+
+import br.edu.iftm.renthub.dao.ConexaoDAO;
 import br.edu.iftm.renthub.view.TelaPrincipal;
-/**
- *
- * @author jhonn
- */
+
 public class RentHub {
 
-    public static void main(String[] args) {
-        TelaPrincipal tela = new TelaPrincipal();
-        tela.setVisible(true);
+    public static void main(String[] args) throws SQLException {
+        boolean controle = false;
+        try {
+            ConexaoDAO.conexaoBd();
+            controle = true;
+        } catch (Exception e) {
+            controle = false;
+        }
+        if (controle) {
+            TelaPrincipal tela = new TelaPrincipal();
+            tela.setVisible(true);
+        }
     }
 }

@@ -3,7 +3,6 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
 -- -----------------------------------------------------
 -- Schema aluguel
 -- -----------------------------------------------------
@@ -65,8 +64,9 @@ CREATE TABLE IF NOT EXISTS `aluguel`.`cliente` (
   `telefone` VARCHAR(11) NOT NULL,
   `id_endereco` INT NOT NULL,
   `data_registro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_cliente`, `id_endereco`),
+  PRIMARY KEY (`id_cliente`),
   UNIQUE INDEX `cpf` (`cpf` ASC) VISIBLE,
+  UNIQUE INDEX `id_cliente_UNIQUE` (`id_cliente` ASC) VISIBLE,
   INDEX `fk_cliente_endereco1_idx` (`id_endereco` ASC) VISIBLE,
   CONSTRAINT `fk_cliente_endereco1`
     FOREIGN KEY (`id_endereco`)
@@ -83,19 +83,20 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `aluguel`.`contrato` (
   `id_contrato` INT NOT NULL AUTO_INCREMENT,
-  `id_cliente` INT NOT NULL,
+  `cliente_id_cliente` INT NOT NULL,
   `tipo` ENUM('DIARIO', 'MENSAL') NOT NULL,
   `status` ENUM('ATIVO', 'FINALIZADO', 'CANCELADO') NOT NULL DEFAULT 'ATIVO',
   `data_inicio` DATE NOT NULL,
   `data_fim` DATE NOT NULL,
   `data_entrega` DATE NULL,
   `data_registro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_contrato`, `id_cliente`),
-  INDEX `id_cliente` (`id_cliente` ASC) VISIBLE,
-  CONSTRAINT `contrato_ibfk_1`
-    FOREIGN KEY (`id_cliente`)
+  PRIMARY KEY (`id_contrato`),
+  INDEX `fk_contrato_cliente1_idx` (`cliente_id_cliente` ASC) VISIBLE,
+  CONSTRAINT `fk_contrato_cliente1`
+    FOREIGN KEY (`cliente_id_cliente`)
     REFERENCES `aluguel`.`cliente` (`id_cliente`)
-    ON DELETE NO ACTION)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
