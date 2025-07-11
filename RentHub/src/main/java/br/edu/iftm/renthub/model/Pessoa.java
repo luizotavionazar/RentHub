@@ -1,4 +1,4 @@
-package model;
+package br.edu.iftm.renthub.model;
 
 public class Pessoa {
     private String nome;

@@ -1,4 +1,4 @@
-package dao;
+package br.edu.iftm.renthub.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import model.Contrato;
+import br.edu.iftm.renthub.model.Contrato;
 
 public class ContratoDAO {
     
     public String cadastrarContrato (int tipo, int idCliente, int idEquip, int qtdEquip, LocalDate dataInicio, LocalDate dataFim) {
         String sql = "INSERT INTO contrato (tipo, id_cliente, id_equip, qtd_equip, data_inicio, data_fim, data_entrega, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, tipo);
             stmt.setInt(2, idCliente);
@@ -36,7 +36,7 @@ public class ContratoDAO {
                      "FROM contrato "+
                      "ORDER BY id_contrato DESC " + 
                      "LIMIT 1";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -59,7 +59,7 @@ public class ContratoDAO {
                  "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
                  "JOIN equipamento e ON c.id_equip = e.id_equip " +
                  "WHERE id_contrato = ?";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -85,7 +85,7 @@ public class ContratoDAO {
                  "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
                  "JOIN equipamento e ON c.id_equip = e.id_equip " +
                  "WHERE c.status = 'A'";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -110,7 +110,7 @@ public class ContratoDAO {
                  "JOIN equipamento e ON c.id_equip = e.id_equip " +
                  "WHERE c.status = 'F' or c.status = 'C'" + 
                  "ORDER BY c.id_contrato ASC";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -133,7 +133,7 @@ public class ContratoDAO {
                  "FROM contrato c " +
                  "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
                  "JOIN equipamento e ON c.id_equip = e.id_equip ";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -150,7 +150,7 @@ public class ContratoDAO {
 
     public String encerrarContrato (int id, String forma, LocalDate dataAtual) {
         String sql = "UPDATE contrato SET data_entrega = ?, status = ? WHERE id_contrato = ?";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setDate(1, Date.valueOf(dataAtual));
             stmt.setString(2, forma);
@@ -164,7 +164,7 @@ public class ContratoDAO {
 
     public boolean verificarEquipamentoEmContratoAtivo (int idEquip) {
         String sql = "SELECT COUNT(*) FROM contrato WHERE id_equip = ? AND status = 'A'";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idEquip);
             ResultSet rs = stmt.executeQuery();   
@@ -179,7 +179,7 @@ public class ContratoDAO {
 
     public boolean verificarClienteEmContratoAtivo (int id) {
         String sql = "SELECT COUNT(*) FROM contrato WHERE id_cliente = ? AND status = 'A'";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();   

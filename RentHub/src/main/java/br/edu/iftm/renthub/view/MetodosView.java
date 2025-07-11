@@ -1,4 +1,4 @@
-package view;
+package br.edu.iftm.renthub.view;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -8,13 +8,13 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import control.ClienteController;
-import control.ContratoController;
-import control.EquipamentoController;
-import control.TotalizacaoController;
-import model.Cliente;
-import model.Contrato;
-import model.Equipamento;
+import br.edu.iftm.renthub.control.ClienteController;
+import br.edu.iftm.renthub.control.ContratoController;
+import br.edu.iftm.renthub.control.EquipamentoController;
+import br.edu.iftm.renthub.control.TotalizacaoController;
+import br.edu.iftm.renthub.model.Cliente;
+import br.edu.iftm.renthub.model.Contrato;
+import br.edu.iftm.renthub.model.Equipamento;
 
 public class MetodosView {
 

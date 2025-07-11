@@ -1,4 +1,4 @@
-package model;
+package br.edu.iftm.renthub.model;
 
 public class Equipamento implements ExibirDetalhes {
     private int id;

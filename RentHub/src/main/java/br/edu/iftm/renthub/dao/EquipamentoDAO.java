@@ -1,4 +1,4 @@
-package dao;
+package br.edu.iftm.renthub.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.Equipamento;
+import br.edu.iftm.renthub.model.Equipamento;
 
 public class EquipamentoDAO {
     public String cadastrarEquipamento (Equipamento equipamento) {
         String sql = "INSERT INTO equipamento (descricao, vlr_diaria, vlr_mensal, qtd_total) VALUES (?, ?, ?, ?)";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, equipamento.getDescricao());
             stmt.setDouble(2, equipamento.getVlrDiaria());
@@ -26,7 +26,7 @@ public class EquipamentoDAO {
 
     public String alterarEquipamento (int id, int campo, String coluna, String novoValor) {
         String sql = "UPDATE equipamento SET " + coluna + " = ? WHERE id_equip = ?";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             if (campo == 1) {
                 stmt.setString(1, novoValor);
@@ -47,7 +47,7 @@ public class EquipamentoDAO {
     public ArrayList<Equipamento> listarEquipamentos () {
         ArrayList<Equipamento> equipamentos = new ArrayList<>();
         String sql = "SELECT * FROM equipamento order by id_equip ASC";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -61,7 +61,7 @@ public class EquipamentoDAO {
     
     public String deletarEquipamento (int id) {
         String sql = "DELETE FROM equipamento WHERE id_equip = ?";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.executeUpdate();
@@ -74,7 +74,7 @@ public class EquipamentoDAO {
 
     public Equipamento buscarEquipamento (int idEquip) {
         String sql = "SELECT * FROM equipamento WHERE id_equip = ?";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idEquip);
             ResultSet rs = stmt.executeQuery();
