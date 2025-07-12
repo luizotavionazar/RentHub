@@ -1,6 +1,8 @@
-package view;
+package br.edu.iftm.renthub.view;
 
-import control.*;
+import br.edu.iftm.renthub.control.*;
+import br.edu.iftm.renthub.dao.ConexaoDAO;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -13,11 +15,14 @@ public class App {
         ContratoController contratoController = new ContratoController();
         TotalizacaoController totalizacaoController = new TotalizacaoController();
 
+        ConexaoDAO conexaoDAO = new ConexaoDAO();
+        conexaoDAO.conexaoBd();
+
         int opcao=0;
         boolean control= true, control2= false, control3= false;
 
         do {
-            metodo.limparTela();
+            //metodo.limparTela();
 
             do {
                 metodo.menuPrincipal();

@@ -1,4 +1,4 @@
-package model;
+package br.edu.iftm.renthub.model;
 
 public class Totalizacao implements ExibirDetalhes{
     private int id;

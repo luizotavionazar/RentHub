@@ -1,17 +1,17 @@
-package dao;
+package br.edu.iftm.renthub.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Totalizacao;
+import br.edu.iftm.renthub.model.Totalizacao;
 
 public class TotalizacaoDAO {
     
     public String Cadastrartotalizacao (int contrato, double valor, double multa, double juros, double total) {
         String sql = "INSERT INTO totalizacao (id_contrato, valor, multa, juros, vlr_total) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, contrato);
             stmt.setDouble(2, valor);
@@ -27,7 +27,7 @@ public class TotalizacaoDAO {
 
     public Totalizacao buscarTotalizacao (int contrato) {
         String sql = "SELECT * FROM totalizacao where id_contrato = ?";
-        try (Connection conn = ConexaoDAO.getConnection();){
+        try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, contrato);
             ResultSet rs = stmt.executeQuery();

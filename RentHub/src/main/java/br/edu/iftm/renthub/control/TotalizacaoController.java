@@ -1,7 +1,8 @@
-package control;
+package br.edu.iftm.renthub.control;
 
-import dao.TotalizacaoDAO;
-import model.Totalizacao;
+
+import br.edu.iftm.renthub.dao.TotalizacaoDAO;
+import br.edu.iftm.renthub.model.Totalizacao;
 
 public class TotalizacaoController {
     private TotalizacaoDAO totalizacaoDAO = new TotalizacaoDAO();
