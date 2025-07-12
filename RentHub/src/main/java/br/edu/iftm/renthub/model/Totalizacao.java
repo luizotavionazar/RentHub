@@ -1,48 +1,63 @@
 package br.edu.iftm.renthub.model;
 
-public class Totalizacao implements ExibirDetalhes{
-    private int id;
-    private int contrato;
-    private double valor;
-    private double multa;
-    private double juros;
-    private double total;
+public class Totalizacao {
+    private Integer id;
+    private Contrato contrato;
+    private double valor, juros, multa, total;
 
-    public Totalizacao(int contrato, double valor, double multa, double juros, double total) {
+    public Totalizacao(Contrato contrato, double valor, double juros, double multa, double total) {
         this.contrato = contrato;
         this.valor = valor;
-        this.multa = multa;
         this.juros = juros;
+        this.multa = multa;
         this.total = total;
     }
-    public Totalizacao(int id, int contrato, double valor, double multa, double juros, double total) {
-        this.id = id;
-        this.contrato = contrato;
-        this.valor = valor;
-        this.multa = multa;
-        this.juros = juros;
-        this.total = total;
-    }
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
-    public int getContrato() {
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Contrato getContrato() {
         return contrato;
     }
-    public double getMulta() {
-        return multa;
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
     }
-    public double getJuros() {
-        return juros;
-    }
+
     public double getValor() {
         return valor;
     }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public double getJuros() {
+        return juros;
+    }
+
+    public void setJuros(double juros) {
+        this.juros = juros;
+    }
+
+    public double getMulta() {
+        return multa;
+    }
+
+    public void setMulta(double multa) {
+        this.multa = multa;
+    }
+
     public double getTotal() {
         return total;
     }
-    @Override
-    public String exibirDetalhes() {
-        return "Identificação de Totalização: " + id + "\nContrato: " + contrato + "\nValor: R$" + valor + "\nMulta: R$" + multa + "\nJuros: R$" + juros + "\nTotal: R$" + total;
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

@@ -1,6 +1,5 @@
 br\edu\iftm\renthub\view\TelaPrincipal$16.class
 br\edu\iftm\renthub\control\TotalizacaoController.class
-br\edu\iftm\renthub\view\MetodosView.class
 br\edu\iftm\renthub\view\TelaPrincipal$13.class
 br\edu\iftm\renthub\view\TelaPrincipal$19.class
 br\edu\iftm\renthub\model\Usuario.class
@@ -37,7 +36,6 @@ br\edu\iftm\renthub\control\ContratoController.class
 br\edu\iftm\renthub\control\EquipamentoController.class
 br\edu\iftm\renthub\dao\ConexaoDAO.class
 br\edu\iftm\renthub\control\ClienteController.class
-br\edu\iftm\renthub\view\App.class
 br\edu\iftm\renthub\model\Pessoa.class
 br\edu\iftm\renthub\dao\ClienteDAO.class
 br\edu\iftm\renthub\view\TelaPrincipal$15.class

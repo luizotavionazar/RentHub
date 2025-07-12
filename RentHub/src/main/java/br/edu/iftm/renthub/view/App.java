@@ -14,7 +14,6 @@ public class App {
         ContratoController contratoController = new ContratoController();
         TotalizacaoController totalizacaoController = new TotalizacaoController();
 
-
         int opcao=0;
         boolean control= true, control2= false, control3= false;
 

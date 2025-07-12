@@ -8,10 +8,6 @@ public class Usuario {
         this.nome = usuario;
         this.senha = senha;
     }
-    
-    public String getUsuario() {
-        return nome;
-    }
 
     public String getNome() {
         return nome;
