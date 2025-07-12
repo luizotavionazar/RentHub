@@ -2,11 +2,13 @@ C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthu
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\control\ContratoController.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\control\EquipamentoController.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\control\TotalizacaoController.java
+C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\control\UsuarioController.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\dao\ClienteDAO.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\dao\ConexaoDAO.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\dao\ContratoDAO.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\dao\EquipamentoDAO.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\dao\TotalizacaoDAO.java
+C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\dao\UsuarioDAO.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\infra\FlywayBd.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\infra\VerificaBanco.java
 C:\Users\luizz\OneDrive\Desktop\RentHub\RentHub\src\main\java\br\edu\iftm\renthub\model\Cliente.java

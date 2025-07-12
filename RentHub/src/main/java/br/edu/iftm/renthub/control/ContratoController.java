@@ -1,6 +1,7 @@
 package br.edu.iftm.renthub.control;
 
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 
 import br.edu.iftm.renthub.dao.ContratoDAO;

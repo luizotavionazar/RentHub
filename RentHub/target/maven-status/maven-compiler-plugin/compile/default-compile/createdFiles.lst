@@ -7,6 +7,7 @@ br\edu\iftm\renthub\model\Usuario.class
 br\edu\iftm\renthub\dao\ContratoDAO.class
 br\edu\iftm\renthub\view\RegistrosLog.class
 br\edu\iftm\renthub\view\TelaRegistroUsuario$4.class
+br\edu\iftm\renthub\dao\UsuarioDAO.class
 br\edu\iftm\renthub\view\TelaPrincipal$2.class
 br\edu\iftm\renthub\view\TelaPrincipal$10.class
 br\edu\iftm\renthub\infra\FlywayBd.class
@@ -35,12 +36,12 @@ br\edu\iftm\renthub\view\TelaPrincipal$5.class
 br\edu\iftm\renthub\control\ContratoController.class
 br\edu\iftm\renthub\control\EquipamentoController.class
 br\edu\iftm\renthub\dao\ConexaoDAO.class
-br\edu\iftm\renthub\view\TelaPrincipal$21.class
 br\edu\iftm\renthub\control\ClienteController.class
 br\edu\iftm\renthub\view\App.class
 br\edu\iftm\renthub\model\Pessoa.class
 br\edu\iftm\renthub\dao\ClienteDAO.class
 br\edu\iftm\renthub\view\TelaPrincipal$15.class
+br\edu\iftm\renthub\control\UsuarioController.class
 br\edu\iftm\renthub\view\TelaPrincipal$9.class
 br\edu\iftm\renthub\view\TelaPrincipal$20.class
 br\edu\iftm\renthub\view\TelaPrincipal$3.class

@@ -13,12 +13,13 @@ USE `aluguel` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `aluguel`.`usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(255) NULL,
-  `senha` VARCHAR(32) NOT NULL,
+  `nome` VARCHAR(255) NOT NULL,
+  `senha` VARCHAR(60) NOT NULL,
   `email` VARCHAR(60) NULL,
   `anexo` BLOB NULL,
   `data_registro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_usuario`));
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `uk_usuario_nome` (`nome`));
 
 
 -- -----------------------------------------------------

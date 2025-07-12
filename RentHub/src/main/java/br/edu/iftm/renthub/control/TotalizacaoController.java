@@ -1,6 +1,5 @@
 package br.edu.iftm.renthub.control;
 
-
 import br.edu.iftm.renthub.dao.TotalizacaoDAO;
 import br.edu.iftm.renthub.model.Totalizacao;
 
