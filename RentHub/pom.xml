@@ -10,4 +10,11 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>br.edu.iftm.renthub.RentHub</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
+    </dependencies>
 </project>
