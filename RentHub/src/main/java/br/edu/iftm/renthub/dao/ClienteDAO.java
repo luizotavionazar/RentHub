@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import br.edu.iftm.renthub.model.Cliente;
 
 public class ClienteDAO {
-    public String CadastrarCliente (Cliente cliente) {
+    public boolean cadastrar (Cliente cliente) {
         String sql = "INSERT INTO cliente (nome, cpf, telefone, endereco) VALUES (?, ?, ?, ?)";
         try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
             stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getEndereco());
+            stmt.setInt(4, cliente.getEndereco().getId());
             stmt.executeUpdate();
-            return "Cliente cadastrado com sucesso!";
+            return true;
         } catch (SQLException e) {
-            return "Erro ao cadastrar cliente";
+            return false;
         }
     }
 
