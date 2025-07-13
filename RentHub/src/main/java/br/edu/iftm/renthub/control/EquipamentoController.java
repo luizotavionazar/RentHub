@@ -1,8 +1,9 @@
-package control;
+package br.edu.iftm.renthub.control;
 
 import java.util.ArrayList;
-import dao.EquipamentoDAO;
-import model.Equipamento;
+
+import br.edu.iftm.renthub.dao.EquipamentoDAO;
+import br.edu.iftm.renthub.model.Equipamento;
 
 public class EquipamentoController {
     private EquipamentoDAO equipamentoDAO = new EquipamentoDAO();

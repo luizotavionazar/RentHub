@@ -1,6 +1,7 @@
-package view;
+package br.edu.iftm.renthub.view;
 
-import control.*;
+import br.edu.iftm.renthub.control.*;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

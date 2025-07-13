@@ -1,30 +1,57 @@
-package model;
+package br.edu.iftm.renthub.model;
 
-public class Cliente extends Pessoa {
-    private String endereco;
-    private int id;
+public class Cliente {
+    private Integer id;
+    private String nome, cpf, telefone;;
+    private Endereco endereco;
 
-    public Cliente(String nome, String cpf, String telefone, String endereco) {
-        super(nome, cpf, telefone);
+    public Cliente() {
+    }
+
+    public Cliente(String nome, String cpf, String telefone, Endereco endereco) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
         this.endereco = endereco;
     }
 
-    public Cliente(int id, String nome, String cpf, String telefone, String endereco) {
-        super(nome, cpf, telefone);
-        this.id = id;
-        this.endereco = endereco;
-    }
-    
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public String exibirDetalhes() {
-        return "ID do Cliente: " + id + "\nNome: " + super.getNome() + "     CPF: " + super.getCpf() + "\nTelefone: " + super.getTelefone() + "\nEndereço: " + endereco;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }
