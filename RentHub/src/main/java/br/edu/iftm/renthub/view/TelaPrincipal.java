@@ -1,21 +1,26 @@
 package br.edu.iftm.renthub.view;
+// Criado por Jhonnie em 08/07/2023
 
 import br.edu.iftm.renthub.control.Endereco.ConsultaCep;
+import br.edu.iftm.renthub.control.UsuarioController;
 import br.edu.iftm.renthub.model.Usuario;
 import java.awt.CardLayout;
+import java.awt.Point;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
-// Criado por Jhonnie em 08/07/2023
 public class TelaPrincipal extends javax.swing.JFrame {
     private static TelaRegistroUsuario telaUsuario;
     private CardLayout cdl;
     private CardLayout cdlPn;
     private UtilsComponent estilo;
     private ConsultaCep consulta;
-    
-    public TelaPrincipal() {
-        telaUsuario = new TelaRegistroUsuario(this, true);
+
+    public TelaPrincipal(Connection conexao) throws SQLException {
+        usuarioController = new UsuarioController(conexao);
+        telaUsuario = new TelaRegistroUsuario(this, true, conexao);
         initComponents();
         cdl = (CardLayout) getContentPane().getLayout();
         cdlPn = (CardLayout) pnCdTelas.getLayout();
@@ -839,24 +844,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btRegistroActionPerformed
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        String usuario = tfUsuario.getText();
-        char[] senha = pfSenha.getPassword();
-        if(!usuario.isEmpty() || senha.length != 0){
-            Usuario user = telaUsuario.getUser();
-            if(user != null){
-                boolean validaUsuario = usuario.equals(user.getUsuario());
-                boolean validaSenha = Arrays.equals(senha, user.getSenha());
-                if(validaUsuario && validaSenha){
+        String nomeUsuario = tfUsuario.getText();
+        char[] senhaUsuario = pfSenha.getPassword();
+        if(!nomeUsuario.isEmpty() || senhaUsuario.length != 0){
+            Usuario usuario = new Usuario(nomeUsuario, senhaUsuario);
+            if(usuarioController.autenticar(usuario)){
                     cdl.show(getContentPane(), "cdTelaSistema");
-                    lbUsuarioLogado.setText(usuario);
+                    lbUsuarioLogado.setText(nomeUsuario);
                     tfUsuario.setText("");
                     pfSenha.setText("");
                 }else {
                     JOptionPane.showMessageDialog(rootPane, "Usuário ou Senha incorretos!", "Falha no Login", JOptionPane.ERROR_MESSAGE);
                 }
-            }else{
-                JOptionPane.showMessageDialog(rootPane, "Usuário ou Senha incorretos!", "Falha no Login", JOptionPane.ERROR_MESSAGE);
-            }
         }else{
             JOptionPane.showMessageDialog(rootPane, "Usuário ou Senha incorretos!", "Falha no Login", JOptionPane.ERROR_MESSAGE);
         }
@@ -1011,13 +1010,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaPrincipal().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

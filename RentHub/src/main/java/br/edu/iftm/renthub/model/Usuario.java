@@ -1,28 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.edu.iftm.renthub.model;
 
-/**
- *
- * @author jhonn
- */
 public class Usuario {
-    private String usuario;
+    private String nome;
     private char[] senha;
     
     public Usuario(String usuario, char[] senha) {
-        this.usuario = usuario;
+        this.nome = usuario;
         this.senha = senha;
     }
-    
-    public String getUsuario() {
-        return usuario;
+
+    public String getNome() {
+        return nome;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNome(String usuario) {
+        this.nome = usuario;
     }
 
     public char[] getSenha() {
@@ -32,6 +24,4 @@ public class Usuario {
     public void setSenha(char[] senha) {
         this.senha = senha;
     }
-    
-    
 }

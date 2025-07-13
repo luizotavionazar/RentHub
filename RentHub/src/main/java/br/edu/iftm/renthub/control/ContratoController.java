@@ -1,7 +1,8 @@
 package br.edu.iftm.renthub.control;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+
+import java.util.List;
 
 import br.edu.iftm.renthub.dao.ContratoDAO;
 import br.edu.iftm.renthub.model.Contrato;
@@ -9,23 +10,23 @@ import br.edu.iftm.renthub.model.Contrato;
 public class ContratoController {
     private ContratoDAO contratoDAO = new ContratoDAO();
 
-    public String cadastrarContrato(int tipo, int idCliente, int idEquip, int qtdEquip, LocalDate dataInicio, LocalDate dataFim) {
-        return contratoDAO.cadastrarContrato(tipo, idCliente, idEquip, qtdEquip, dataInicio, dataFim);
+    public boolean cadastrar(Contrato contrato) {
+        return contratoDAO.cadastrar(tipo, idCliente, idEquip, qtdEquip, dataInicio, dataFim);
     }
 
     public String encerrarContrato(int id, String forma, LocalDate dataAtual) {
         return contratoDAO.encerrarContrato(id, forma, dataAtual);
     }
 
-    public ArrayList<Contrato> listarContratoAtivo() {
+    public List<Contrato> listarContratoAtivo() {
         return contratoDAO.listarContratoAtivo();
     }
 
-    public ArrayList<Contrato> listarContratoEncerrado() {
+    public List<Contrato> listarContratoEncerrado() {
         return contratoDAO.listarContratoEncerrado();
     }
 
-    public ArrayList<Contrato> listarContrato() {
+    public List<Contrato> listarContrato() {
         return contratoDAO.listarContrato();
     }
 
@@ -41,7 +42,7 @@ public class ContratoController {
         return contratoDAO.verificarClienteEmContratoAtivo(id);
     }
 
-    public Contrato  ultimoContrato () {
+    public Contrato ultimoContrato () {
         return contratoDAO.buscarUltimoContrato();
     }
 

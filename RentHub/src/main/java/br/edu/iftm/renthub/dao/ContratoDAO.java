@@ -12,7 +12,7 @@ import br.edu.iftm.renthub.model.Contrato;
 
 public class ContratoDAO {
     
-    public String cadastrarContrato (int tipo, int idCliente, int idEquip, int qtdEquip, LocalDate dataInicio, LocalDate dataFim) {
+    public String cadastrar (int tipo, int idCliente, int idEquip, int qtdEquip, LocalDate dataInicio, LocalDate dataFim) {
         String sql = "INSERT INTO contrato (tipo, id_cliente, id_equip, qtd_equip, data_inicio, data_fim, data_entrega, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConexaoDAO.conexaoBd();){
             PreparedStatement stmt = conn.prepareStatement(sql);

@@ -1,6 +1,7 @@
 package br.edu.iftm.renthub.control;
 
 import java.util.ArrayList;
+
 import br.edu.iftm.renthub.dao.EquipamentoDAO;
 import br.edu.iftm.renthub.model.Equipamento;
 
