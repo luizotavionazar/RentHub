@@ -16,10 +16,10 @@ public class EnderecoDAO {
 
     public boolean cadastrar(String cep, String ibge, String logradouro, String bairro, Integer numero, String complemento) throws SQLException {
         log.registrarLog(1, "EnderecoDAO", "cadastrar", "endereco", "Cadastrando o endereco no banco de dados");
-        StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO endereco (cep, id_ibge, logradouro, bairro, numero, complemento) ");
-        sql.append("VALUES (?, ?, ?, ?, ?, ?) ");
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql.toString())) {
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO endereco (cep, id_ibge, logradouro, bairro, numero, complemento) ");
+        query.append("VALUES (?, ?, ?, ?, ?, ?) ");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             stmt.setString(1, cep);
             stmt.setString(2, ibge);
             stmt.setString(3, logradouro);

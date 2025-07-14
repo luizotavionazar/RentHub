@@ -17,10 +17,10 @@ public class UsuarioDAO {
 
     public boolean cadastrar(String nomeUsuario, String senhaCrip) throws SQLException {
         log.registrarLog(1, "UsuarioDAO", "cadastrar", "", "Cadastrando o usuário no Banco de Dados");
-        StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO usuario (nome, senha) ");
-        sql.append("VALUES (?, ?) ");
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql.toString(), PreparedStatement.RETURN_GENERATED_KEYS)) {
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO usuario (nome, senha) ");
+        query.append("VALUES (?, ?) ");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString(), PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, nomeUsuario);
             stmt.setString(2, senhaCrip);
             stmt.executeUpdate();
@@ -35,11 +35,11 @@ public class UsuarioDAO {
 
     public String buscarSenha(String nomeUsuario) throws SQLException {
         log.registrarLog(1, "UsuarioDAO", "buscarSenha", "", "Buscando a senha do usuário no Banco de Dados");
-        StringBuilder sql = new StringBuilder();
-        sql.append("SELECT senha ");
-        sql.append("FROM usuario ");
-        sql.append("WHERE nome = ?");
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql.toString())) {
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT senha ");
+        query.append("FROM usuario ");
+        query.append("WHERE nome = ?");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             stmt.setString(1, nomeUsuario);
             var rs = stmt.executeQuery();
             if (rs.next()) {

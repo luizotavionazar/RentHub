@@ -8,9 +8,20 @@ public class Equipamento {
     public Equipamento() {
     }
 
+    //CONTRUTOR PARA CADASTRO - FRONT
     public Equipamento(String descricao, Integer qtdTotal, double vlrDiaria, double vlrMensal) {
         this.descricao = descricao;
         this.qtdTotal = qtdTotal;
+        this.vlrDiaria = vlrDiaria;
+        this.vlrMensal = vlrMensal;
+    }
+
+    //CONTRUTOR PARA CAPTURA DO REGISTRO NO BD - BACK
+    public Equipamento(Integer id, Integer qtdTotal, Integer qtdDisponivel, String descricao, double vlrDiaria, double vlrMensal) {
+        this.id = id;
+        this.qtdTotal = qtdTotal;
+        this.qtdDisponivel = qtdDisponivel;
+        this.descricao = descricao;
         this.vlrDiaria = vlrDiaria;
         this.vlrMensal = vlrMensal;
     }

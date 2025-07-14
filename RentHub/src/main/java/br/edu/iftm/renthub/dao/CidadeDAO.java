@@ -18,11 +18,11 @@ public class CidadeDAO {
 
     public boolean verificarExistencia(String ibge) throws SQLException {
         log.registrarLog(1, "CidadeDAO", "verificarExistencia", "cidade", "Verificando se a cidade existe");
-        StringBuilder sql = new StringBuilder();
-        sql.append("SELECT nome ");
-        sql.append("FROM cidade ");
-        sql.append("WHERE id_ibge = ? ");
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql.toString())) {
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT nome ");
+        query.append("FROM cidade ");
+        query.append("WHERE id_ibge = ? ");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             stmt.setString(1, ibge);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -41,10 +41,10 @@ public class CidadeDAO {
 
     public boolean cadastrar(String ibge, String cidade, String estado) throws SQLException {
         log.registrarLog(1, "CidadeDAO", "cadastrar", "cidade", "Cadastrando a cidade no banco de dados");
-        StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO cidade (id_ibge, nome, uf) ");
-        sql.append("VALUES (?, ?, ?) ");
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql.toString())) {
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO cidade (id_ibge, nome, uf) ");
+        query.append("VALUES (?, ?, ?) ");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             stmt.setString(1, ibge);
             stmt.setString(2, cidade);
             stmt.setString(3, estado);

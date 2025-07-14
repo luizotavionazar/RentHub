@@ -1,31 +1,107 @@
 package br.edu.iftm.renthub.control;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+//import java.util.ArrayList;
 
 import br.edu.iftm.renthub.dao.EquipamentoDAO;
 import br.edu.iftm.renthub.model.Equipamento;
+import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class EquipamentoController {
-    private EquipamentoDAO equipamentoDAO = new EquipamentoDAO();
+    private EquipamentoDAO equipamentoDAO;
 
-    public String cadastrarEquipamento (String descricao, double vlrDiaria, double vlrMensal, int qtdTotal) {
-        Equipamento equipamento = new Equipamento(descricao, vlrDiaria, vlrMensal, qtdTotal);
-        return equipamentoDAO.cadastrarEquipamento(equipamento);
+    public EquipamentoController(Connection conexao) {
+        this.equipamentoDAO = new EquipamentoDAO(conexao);
     }
 
-    public ArrayList<Equipamento> listarEquipamentos () {
-        return equipamentoDAO.listarEquipamentos();
+    RegistrosLog log = new RegistrosLog();
+
+    public boolean cadastrar(Equipamento equipamento) {
+        log.registrarLog(1, "EquipamentoController", "cadastrar", "equipamento",
+                "Cadastrando o equipamento: " + equipamento.getDescricao());
+        try {
+            if (equipamentoDAO.cadastrar(equipamento.getDescricao(), equipamento.getQtdTotal(),
+                    equipamento.getVlrDiaria(), equipamento.getVlrMensal())) {
+                log.registrarLog(2, "EquipamentoController", "cadastrar", "equipamento",
+                        "Equipamento: " + equipamento.getDescricao() + " cadastrado com sucesso");
+                return true;
+            } else {
+                log.registrarLog(3, "EquipamentoController", "cadastrar", "equipamento",
+                        "Não foi possivel cadastrar o equipamento: " + equipamento.getDescricao());
+                return false;
+            }
+        } catch (Exception e) {
+            log.registrarLog(4, "EquipamentoController", "cadastrar", "equipamento",
+                    "Erro ao tentar cadastrar o equipamento: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public String alterarEquipamento (int id, int campo, String coluna, String novoValor) {
-        return equipamentoDAO.alterarEquipamento(id, campo, coluna, novoValor);
+    public boolean alterar(int id, Equipamento novoEquipamento) {
+        log.registrarLog(1, "EquipamentoController", "alterar", "equipamento",
+                "Alterando o equipamento: " + id + " " + novoEquipamento.getDescricao());
+        try {
+            if (equipamentoDAO.alterar(id, novoEquipamento.getDescricao(), novoEquipamento.getQtdTotal(),
+                    novoEquipamento.getVlrDiaria(), novoEquipamento.getVlrMensal())) {
+                log.registrarLog(2, "EquipamentoController", "alterar", "equipamento",
+                        "Equipamento: " + id + " " + novoEquipamento.getDescricao() + " alterado com sucesso");
+                return true;
+            } else {
+                log.registrarLog(3, "EquipamentoController", "alterar", "equipamento",
+                        "Falha ao alterar o equipamento: " + id + " " + novoEquipamento.getDescricao());
+                return false;
+            }
+        } catch (Exception e) {
+            log.registrarLog(4, "EquipamentoController", "alterar", "equipamento",
+                    "Erro ao tentar alterar o equipamento: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public String deletarEquipamento (int id) {
-        return equipamentoDAO.deletarEquipamento(id);
+    public boolean deletar(int id) {
+        log.registrarLog(1, "EquipamentoController", "deletar", "equipamento", "Deletando o equipamento: " + id);
+        try {
+            if (equipamentoDAO.deletar(id)) {
+                log.registrarLog(2, "EquipamentoController", "deletar", "equipamento",
+                        "Equipamento: " + id + " deletado com sucesso");
+                return true;
+            } else {
+                log.registrarLog(3, "EquipamentoController", "deletar", "equipamento",
+                        "Falha ao deletar o equipamento: " + id);
+                return false;
+            }
+        } catch (Exception e) {
+            log.registrarLog(4, "EquipamentoController", "deletar", "equipamento",
+                    "Erro ao tentar deletar o equipamento: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public Equipamento buscarEquipamento (int id) {
-        return equipamentoDAO.buscarEquipamento(id);
+    public Equipamento buscarPorId(int id) {
+        log.registrarLog(1, "EquipamentoController", "buscarPorId", "equipamento", "Buscando o equipamento: " + id);
+        try {
+            Equipamento equipamento = equipamentoDAO.buscarPorId(id);
+            if (equipamento != null) {
+                log.registrarLog(2, "EquipamentoController", "buscarPorId", "equipamento",
+                        "Equipamento encontrado: " + equipamento.getDescricao());
+            } else {
+                log.registrarLog(3, "EquipamentoController", "buscarPorId", "equipamento",
+                        "Equipamento não encontrado");
+            }
+            return equipamento;
+        } catch (Exception e) {
+            log.registrarLog(4, "EquipamentoController", "buscarPorId", "equipamento",
+                    "Erro ao buscar o equipamento: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
     }
+
+    // FAZER SEMELHANTE A BUSCA FILTRADA UTILIZADA NO PROJETO NOSSO LAR
+    // public ArrayList<Equipamento> listarEquipamentos () {
+    // return equipamentoDAO.listarEquipamentos();
+    // }
 }

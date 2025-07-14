@@ -119,6 +119,15 @@ AUTO_INCREMENT = 12
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+public Equipamento(Integer id, Integer qtdTotal, Integer qtdDisponivel, String descricao, double vlrDiaria, double vlrMensal) {
+        this.id = id;
+        this.qtdTotal = qtdTotal;
+        this.qtdDisponivel = qtdDisponivel;
+        this.descricao = descricao;
+        this.vlrDiaria = vlrDiaria;
+        this.vlrMensal = vlrMensal;
+    }
+
 
 -- -----------------------------------------------------
 -- Table `aluguel`.`totalizacao`

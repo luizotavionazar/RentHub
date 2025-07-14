@@ -15,21 +15,21 @@ public class CidadeController {
     }
 
     public boolean cadastrar(Cidade cidade){
-        log.registrarLog(1, "CidadeController", "cadastrar", "cidade", "Iniciando cadastro da cidade "+ cidade.getNome());
+        log.registrarLog(1, "CidadeController", "cadastrar", "cidade", "Iniciando cadastro da cidade: "+ cidade.getNome());
         try {
             if (!cidadeDAO.verificarExistencia(cidade.getId())) {
                 if (cidadeDAO.cadastrar(cidade.getId(), cidade.getNome(), cidade.getUf())) {
-                    log.registrarLog(2, "CidadeControler", "cadastrar", "cidade", "Cidade "+ cidade.getNome() +" cadastrada com sucesso");
+                    log.registrarLog(2, "CidadeControler", "cadastrar", "cidade", "Cidade: "+ cidade.getNome() +" cadastrada com sucesso");
                 } else {
                     log.registrarLog(3, "CidadeControler", "cadastrar", "cidade", "Não foi possivel cadastrar a cidade "+ cidade.getNome());
                     return false;
                 }
             } else {
-                log.registrarLog(3, "CidadeControler", "cadastrar", "cidade", "A cidade "+ cidade.getNome() +" já existe");
+                log.registrarLog(3, "CidadeControler", "cadastrar", "cidade", "A cidade: "+ cidade.getNome() +" já existe");
             }
             return true;
         } catch (Exception e) {
-            log.registrarLog(2, "CidadeControler", "cadastrar", "cidade", "Cidade "+ cidade.getNome() +" cadastrada com sucesso");
+            log.registrarLog(2, "CidadeControler", "cadastrar", "cidade", "Cidade: "+ cidade.getNome() +" cadastrada com sucesso");
             e.printStackTrace();
             return false;
         }
