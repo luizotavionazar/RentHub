@@ -2,15 +2,15 @@ package br.edu.iftm.renthub.model;
 
 public class Cliente {
     private Integer id;
-    private String nome, cpf, telefone;;
+    private String nome, documento, telefone;;
     private Endereco endereco;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String cpf, String telefone, Endereco endereco) {
+    public Cliente(String nome, String documento, String telefone, Endereco endereco) {
         this.nome = nome;
-        this.cpf = cpf;
+        this.documento = documento;
         this.telefone = telefone;
         this.endereco = endereco;
     }
@@ -31,12 +31,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getDocumento() {
+        return documento;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
     public String getTelefone() {

@@ -9,12 +9,12 @@ public class EnderecoController {
     private EnderecoDAO enderecoDAO;
     private CidadeController cidadeController;
 
-    RegistrosLog log = new RegistrosLog();
-
     public EnderecoController(Connection conexao) {
         this.enderecoDAO = new EnderecoDAO(conexao);
         this.cidadeController = new CidadeController(conexao);
     }
+
+    RegistrosLog log = new RegistrosLog();
 
     public boolean cadastrar(Endereco endereco){
         log.registrarLog(1, "EnderecoController", "cadastrar", "cidade, endereco", "Iniciando cadastro de endereço");

@@ -39,7 +39,7 @@ public class EquipamentoDAO {
         }
     }
 
-    public boolean alterar(int id, String descricao, Integer qtdTotal, Double vlrDiaria, Double vlrMensal) {
+    public boolean alterar(Integer id, String descricao, Integer qtdTotal, Double vlrDiaria, Double vlrMensal) {
         log.registrarLog(1, "EquipamentoDAO", "alterar", "equipamento", "Alterando o Equipamento no Banco de Dados");
         StringBuilder query = new StringBuilder();
         query.append("UPDATE equipamento ");
@@ -61,7 +61,7 @@ public class EquipamentoDAO {
         }
     }
 
-    public boolean deletar(int id) {
+    public boolean deletar(Integer id) {
         log.registrarLog(1, "EquipamentoDAO", "deletar", "equipamento", "Deletando o Equipamento no Banco de Dados");
         StringBuilder query = new StringBuilder();
         query.append("DELETE FROM equipamento ");
@@ -78,7 +78,7 @@ public class EquipamentoDAO {
         }
     }
 
-    public Equipamento buscarPorId(int id) {
+    public Equipamento buscarPorId(Integer id) {
         log.registrarLog(1, "EquipamentoDAO", "buscarPorId", "equipamento", "Buscando equipamento pelo ID no Banco de Dados");
         StringBuilder query = new StringBuilder();
         query.append("SELECT id, descri FROM equipamento ");
@@ -106,7 +106,6 @@ public class EquipamentoDAO {
             return null;
         }
     }
-
     //FAZER SEMELHANTE A BUSCA FILTRADA UTILIZADA NO PROJETO NOSSO LAR
     //public List<Equipamento> listar() {
     //    List<Equipamento> equipamentos = new ArrayList<>();
@@ -122,6 +121,4 @@ public class EquipamentoDAO {
     //    }
     //    return equipamentos;
     //}
-
-    
 }

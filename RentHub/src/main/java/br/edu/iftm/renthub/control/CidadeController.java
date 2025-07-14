@@ -7,12 +7,12 @@ import java.sql.Connection;
 
 public class CidadeController {
     private CidadeDAO cidadeDAO;
-
-    RegistrosLog log = new RegistrosLog();
     
     public CidadeController(Connection conexao) {
         this.cidadeDAO = new CidadeDAO(conexao);
     }
+
+    RegistrosLog log = new RegistrosLog();
 
     public boolean cadastrar(Cidade cidade){
         log.registrarLog(1, "CidadeController", "cadastrar", "cidade", "Iniciando cadastro da cidade: "+ cidade.getNome());

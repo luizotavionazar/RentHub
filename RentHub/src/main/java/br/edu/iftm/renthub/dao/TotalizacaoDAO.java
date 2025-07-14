@@ -32,7 +32,7 @@ public class TotalizacaoDAO {
             stmt.setInt(1, contrato);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new Totalizacao(rs.getInt("id_tot"), rs.getInt("id_contrato"), rs.getDouble("valor"), rs.getDouble("multa"), rs.getDouble("juros"), rs.getDouble("vlr_total"));
+                //return new Totalizacao(rs.getInt("id_tot"), rs.getInt("id_contrato"), rs.getDouble("valor"), rs.getDouble("multa"), rs.getDouble("juros"), rs.getDouble("vlr_total"));
             }
             return null;
         } catch (SQLException e) {
