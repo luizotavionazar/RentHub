@@ -2,10 +2,7 @@ package br.edu.iftm.renthub.infra;
 
 import java.io.InputStream;
 import java.util.Properties;
-
 import org.flywaydb.core.Flyway;
-
-
 import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class FlywayBd {

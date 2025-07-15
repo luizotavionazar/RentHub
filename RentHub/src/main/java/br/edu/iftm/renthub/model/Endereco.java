@@ -16,6 +16,14 @@ public class Endereco {
         return id;
     }
 
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

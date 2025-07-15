@@ -60,12 +60,12 @@ CREATE TABLE IF NOT EXISTS `aluguel`.`endereco` (
 CREATE TABLE IF NOT EXISTS `aluguel`.`cliente` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `cpf` VARCHAR(11) NOT NULL,
+  `documento` VARCHAR(14) NOT NULL,
   `telefone` VARCHAR(11) NOT NULL,
   `id_endereco` INT NOT NULL,
   `data_registro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `cpf` (`cpf` ASC) VISIBLE,
+  UNIQUE INDEX `documento` (`documento` ASC) VISIBLE,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   INDEX `fk_cliente_endereco1_idx` (`id_endereco` ASC) VISIBLE,
   CONSTRAINT `fk_cliente_endereco1`

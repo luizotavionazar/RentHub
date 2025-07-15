@@ -1,11 +1,8 @@
 package br.edu.iftm.renthub.infra;
 
 import br.edu.iftm.renthub.view.RegistrosLog;
-
 import java.io.InputStream;
-
 import java.util.Properties;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;

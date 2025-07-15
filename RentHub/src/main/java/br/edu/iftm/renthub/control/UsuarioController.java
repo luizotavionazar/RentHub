@@ -22,14 +22,14 @@ public class UsuarioController {
         String senhaCripto = BCrypt.hashpw(new String(usuario.getSenha()), BCrypt.gensalt());
         try {
             if (usuarioDAO.cadastrar(usuario.getNome(), senhaCripto)) {
-                log.registrarLog(2, "UsuarioController", "cadastrar", "", "Usuário "+ usuario.getNome() +" cadastrado com sucesso");
+                log.registrarLog(2, "UsuarioController", "cadastrar", "", "Usuário: "+ usuario.getNome() +" cadastrado com sucesso");
                 return true;
             } else {
                 log.registrarLog(3, "UsuarioController", "cadastrar", "", "Não foi possivel cadastrar o usuário: " + usuario.getNome());
                 return false;
             }    
         } catch (Exception e) {
-            log.registrarLog(4, "UsuarioController", "cadastrar", "", "Erro ao tentar cadastrar usuário: " + e.getMessage());
+            log.registrarLog(4, "UsuarioController", "cadastrar", "", "Erro ao tentar cadastrar o usuário: " + e.getMessage());
             e.printStackTrace();
             return false;
         }   
@@ -42,14 +42,14 @@ public class UsuarioController {
             if (senhaUsuarioBd != null) {
                 String senhaCripto = new String(usuario.getSenha());
                 if (BCrypt.checkpw(senhaCripto, new String(senhaUsuarioBd))) {
-                    log.registrarLog(2, "UsuarioController", "autenticar", "", "Usuário "+ usuario.getNome() +" autenticado com sucesso");
+                    log.registrarLog(2, "UsuarioController", "autenticar", "", "Usuário: "+ usuario.getNome() +" autenticado com sucesso");
                     return true;
                 } else {
-                    log.registrarLog(3, "UsuarioController", "autenticar", "", "Usuário "+ usuario.getNome() +" não autenticado");
+                    log.registrarLog(3, "UsuarioController", "autenticar", "", "Usuário: "+ usuario.getNome() +" não autenticado");
                     return false;
                 }
             } else {
-                log.registrarLog(3, "UsuarioController", "autenticar", "", "Usuário "+ usuario.getNome() +" não encontrado");
+                log.registrarLog(3, "UsuarioController", "autenticar", "", "Usuário: "+ usuario.getNome() +" não encontrado");
                 return false;
             }
         } catch (Exception e) {
