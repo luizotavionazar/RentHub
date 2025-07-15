@@ -11,9 +11,11 @@ import java.sql.Connection;
 import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 
+// Criado por Jhonnie em 08/07/2023
 public class TelaRegistroUsuario extends javax.swing.JDialog {
     private static Usuario usuario;
     private static UsuarioController usuarioController;
@@ -182,6 +184,7 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
                 usuario = new Usuario(nomeUsuario, senha);
                 if (usuarioController.cadastrar(usuario)) { // Chama o método de registro do usuário no controlador
                     JOptionPane.showMessageDialog(rootPane, "Usuário cadastrado com sucesso!", "Cadastro de Usuário", JOptionPane.INFORMATION_MESSAGE);
+                    pfConfSenha.setBorder(UIManager.getBorder("TextField.border"));
                     limpaCampos();
                     dispose();    
                 }

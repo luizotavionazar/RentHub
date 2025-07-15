@@ -10,10 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JSpinner;
 
-/**
- *
- * @author jhonn
- */
+// Criado por Jhonnie em 08/07/2023
 public class UtilsComponent {
     public void aplicaHoverEntered(JButton button){
         button.setBackground(new Color(155,155,155));
