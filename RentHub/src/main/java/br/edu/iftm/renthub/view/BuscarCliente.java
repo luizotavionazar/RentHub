@@ -4,6 +4,8 @@
  */
 package br.edu.iftm.renthub.view;
 
+import java.sql.Connection;
+
 /**
  *
  * @author jhonn
@@ -13,7 +15,7 @@ public class BuscarCliente extends javax.swing.JDialog {
     /**
      * Creates new form BuscarCliente
      */
-    public BuscarCliente(java.awt.Frame parent, boolean modal) {
+    public BuscarCliente(java.awt.Frame parent, boolean modal, Connection conexao) {
         super(parent, modal);
         initComponents();
         estilo = new UtilsComponent();
@@ -266,20 +268,6 @@ public class BuscarCliente extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(BuscarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                BuscarCliente dialog = new BuscarCliente(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
