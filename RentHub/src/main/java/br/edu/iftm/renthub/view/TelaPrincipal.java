@@ -74,7 +74,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btMenuContrato = new RoundedButton("");
         btMenuEquipamento = new RoundedButton("");
         btMenuCliente = new RoundedButton("");
-        btMenuRelatorio = new RoundedButton("");
         pnCdTelas = new javax.swing.JPanel();
         pnTelaHome = new javax.swing.JPanel();
         lbLogoHm = new javax.swing.JLabel();
@@ -210,9 +209,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel41 = new javax.swing.JLabel();
         btClienteCancelar = new RoundedButton("");
         btClienteSalvar = new RoundedButton("");
-        pnRelatório = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel40 = new javax.swing.JLabel();
 
         menuSair.setText("Sair");
         menuSair.addActionListener(new java.awt.event.ActionListener() {
@@ -487,19 +483,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btMenuRelatorio.setBackground(new java.awt.Color(240, 240, 240));
-        btMenuRelatorio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btMenuRelatorio.setForeground(new java.awt.Color(0, 0, 0));
-        btMenuRelatorio.setText("Relatórios");
-        btMenuRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btMenuRelatorioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btMenuRelatorioMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
         pnMenuLayout.setHorizontalGroup(
@@ -508,9 +491,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btMenuContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btMenuEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btMenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btMenuRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                    .addComponent(btMenuEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(btMenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         pnMenuLayout.setVerticalGroup(
@@ -522,9 +504,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(btMenuEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btMenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btMenuRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(410, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
 
         pnTela.add(pnMenu, java.awt.BorderLayout.WEST);
@@ -1044,14 +1024,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(pnTelaCadastroCtLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(2, 2, 2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btContratoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btContratoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btContratoRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pnCdTelas.add(pnTelaCadastroCt, "cdTelaCadastroContrato");
@@ -1414,7 +1393,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel33.setText("Novo Equipamento");
+        jLabel33.setText("NOVO EQUIPAMENTO");
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(0, 0, 0));
@@ -1631,7 +1610,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel37.setText("Cliente");
+        jLabel37.setText("CLIENTE");
 
         btClienteAlterar.setBackground(new java.awt.Color(240, 240, 240));
         btClienteAlterar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1964,53 +1943,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pnCdTelas.add(pnTelaCliente, "cdTelaCliente");
 
-        pnRelatório.setBackground(new java.awt.Color(215, 215, 215));
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1009, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 513, Short.MAX_VALUE)
-        );
-
-        jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel40.setText("RELATÓRIOS");
-
-        javax.swing.GroupLayout pnRelatórioLayout = new javax.swing.GroupLayout(pnRelatório);
-        pnRelatório.setLayout(pnRelatórioLayout);
-        pnRelatórioLayout.setHorizontalGroup(
-            pnRelatórioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnRelatórioLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel40)
-                .addContainerGap(838, Short.MAX_VALUE))
-            .addGroup(pnRelatórioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnRelatórioLayout.createSequentialGroup()
-                    .addGap(35, 35, 35)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(36, 36, 36)))
-        );
-        pnRelatórioLayout.setVerticalGroup(
-            pnRelatórioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnRelatórioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel40)
-                .addContainerGap(606, Short.MAX_VALUE))
-            .addGroup(pnRelatórioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnRelatórioLayout.createSequentialGroup()
-                    .addGap(67, 67, 67)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(80, Short.MAX_VALUE)))
-        );
-
-        pnCdTelas.add(pnRelatório, "cdTelaRelatorio");
-
         pnTela.add(pnCdTelas, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnTela, "cdTelaSistema");
@@ -2086,10 +2018,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         estilo.aplicaHoverEntered(btMenuContrato);
     }//GEN-LAST:event_btMenuContratoMouseEntered
 
-    private void btMenuRelatorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btMenuRelatorioMouseEntered
-        estilo.aplicaHoverEntered(btMenuRelatorio);
-    }//GEN-LAST:event_btMenuRelatorioMouseEntered
-
     private void btMenuContratoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btMenuContratoMouseExited
         estilo.aplicaHoverExited(btMenuContrato);
     }//GEN-LAST:event_btMenuContratoMouseExited
@@ -2101,10 +2029,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btMenuClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btMenuClienteMouseExited
         estilo.aplicaHoverExited(btMenuCliente);
     }//GEN-LAST:event_btMenuClienteMouseExited
-
-    private void btMenuRelatorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btMenuRelatorioMouseExited
-        estilo.aplicaHoverExited(btMenuRelatorio);
-    }//GEN-LAST:event_btMenuRelatorioMouseExited
 
     private void btNovoContratoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btNovoContratoMouseEntered
         estilo.aplicaHoverEntered(btNovoContrato);
@@ -2405,9 +2329,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btAlterarEquipamento;
+    private javax.swing.JButton btAlterarEquipamento1;
+    private javax.swing.JButton btAlterarEquipamento2;
+    private javax.swing.JButton btAlterarEquipamento3;
     private javax.swing.JButton btBuscarContrato;
     private javax.swing.JButton btBuscarContratoEncerrarContrato;
     private javax.swing.JButton btBuscarEquipamento;
+    private javax.swing.JButton btBuscarEquipamento1;
+    private javax.swing.JButton btBuscarEquipamento2;
+    private javax.swing.JButton btBuscarEquipamento3;
     private javax.swing.JButton btCancelarEncerrarContrato;
     private javax.swing.JButton btCancelarEquipamento;
     private javax.swing.JButton btClienteAlterar;
@@ -2420,6 +2350,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btContratoLimpar;
     private javax.swing.JButton btContratoRegistrar;
     private javax.swing.JButton btDeletarEquipamento;
+    private javax.swing.JButton btDeletarEquipamento1;
+    private javax.swing.JButton btDeletarEquipamento2;
+    private javax.swing.JButton btDeletarEquipamento3;
     private javax.swing.JButton btEncerrarContrato;
     private javax.swing.JButton btEntrar;
     private javax.swing.JButton btLimparEncerrarContrato;
@@ -2427,7 +2360,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btMenuCliente;
     private javax.swing.JButton btMenuContrato;
     private javax.swing.JButton btMenuEquipamento;
-    private javax.swing.JButton btMenuRelatorio;
     private javax.swing.JButton btNovoContrato;
     private javax.swing.JButton btRegistrarEncerrarContrato;
     private javax.swing.JButton btRegistrarEquipamento;
@@ -2448,10 +2380,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField10;
     private javax.swing.JFormattedTextField jFormattedTextField11;
+    private javax.swing.JFormattedTextField jFormattedTextField12;
     private javax.swing.JFormattedTextField jFormattedTextField13;
     private javax.swing.JFormattedTextField jFormattedTextField14;
     private javax.swing.JFormattedTextField jFormattedTextField15;
+    private javax.swing.JFormattedTextField jFormattedTextField16;
+    private javax.swing.JFormattedTextField jFormattedTextField17;
+    private javax.swing.JFormattedTextField jFormattedTextField18;
+    private javax.swing.JFormattedTextField jFormattedTextField19;
     private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JFormattedTextField jFormattedTextField20;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JFormattedTextField jFormattedTextField5;
@@ -2493,7 +2431,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
@@ -2501,6 +2438,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
@@ -2508,15 +2446,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
@@ -2530,7 +2487,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -2540,6 +2500,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private javax.swing.JSpinner jsQtdEquipamento;
     private javax.swing.JSpinner jsQtdEstoqueEquipamento;
+    private javax.swing.JSpinner jsQtdEstoqueEquipamento1;
+    private javax.swing.JSpinner jsQtdEstoqueEquipamento2;
+    private javax.swing.JSpinner jsQtdEstoqueEquipamento3;
     private javax.swing.JLabel lbCadastrarContratoDataEntrega;
     private javax.swing.JLabel lbCadastrarContratoDataFinal;
     private javax.swing.JLabel lbCadastrarContratoDataInicio;
@@ -2554,7 +2517,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnLogin1;
     private javax.swing.JPanel pnLogo;
     private javax.swing.JPanel pnMenu;
-    private javax.swing.JPanel pnRelatório;
     private javax.swing.JPanel pnTela;
     private javax.swing.JPanel pnTelaCadastroCt;
     private javax.swing.JPanel pnTelaCliente;
