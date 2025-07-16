@@ -4,6 +4,7 @@ br\edu\iftm\renthub\view\MetodosView.class
 br\edu\iftm\renthub\view\VerTotalizazao.class
 br\edu\iftm\renthub\view\BuscarEquipamento.class
 br\edu\iftm\renthub\control\EnderecoController.class
+br\edu\iftm\renthub\view\BuscarCliente$3.class
 br\edu\iftm\renthub\view\TelaPrincipal$2.class
 br\edu\iftm\renthub\view\TelaPrincipal$45.class
 br\edu\iftm\renthub\view\TelaPrincipal$7.class
@@ -22,6 +23,7 @@ br\edu\iftm\renthub\view\TelaPrincipal$42.class
 br\edu\iftm\renthub\infra\VerificaBanco.class
 br\edu\iftm\renthub\view\TelaPrincipal$1.class
 br\edu\iftm\renthub\view\TelaRegistroUsuario$2.class
+br\edu\iftm\renthub\view\BuscarCliente.class
 br\edu\iftm\renthub\view\TelaPrincipal$11.class
 br\edu\iftm\renthub\view\BuscarContrato$4.class
 br\edu\iftm\renthub\view\TelaPrincipal$24.class
@@ -29,6 +31,7 @@ br\edu\iftm\renthub\model\Endereco.class
 br\edu\iftm\renthub\view\TelaPrincipal$18.class
 br\edu\iftm\renthub\view\VerTotalizazao$1.class
 br\edu\iftm\renthub\view\TelaPrincipal$34.class
+br\edu\iftm\renthub\view\BuscarCliente$5.class
 br\edu\iftm\renthub\view\TelaPrincipal$41.class
 br\edu\iftm\renthub\view\TelaPrincipal$5.class
 br\edu\iftm\renthub\control\EquipamentoController.class
@@ -36,6 +39,7 @@ br\edu\iftm\renthub\view\TelaPrincipal$35.class
 br\edu\iftm\renthub\view\BuscarContrato$5.class
 br\edu\iftm\renthub\dao\EnderecoDAO.class
 br\edu\iftm\renthub\view\TelaPrincipal$40.class
+br\edu\iftm\renthub\view\BuscarCliente$6.class
 br\edu\iftm\renthub\view\BuscarEquipamento$6.class
 br\edu\iftm\renthub\view\UtilsComponent.class
 br\edu\iftm\renthub\view\TelaPrincipal$6.class
@@ -69,9 +73,12 @@ br\edu\iftm\renthub\model\Cliente.class
 br\edu\iftm\renthub\view\TelaPrincipal$30.class
 br\edu\iftm\renthub\view\TelaRegistroUsuario$1.class
 br\edu\iftm\renthub\dao\TotalizacaoDAO.class
+br\edu\iftm\renthub\view\BuscarCliente$1.class
+br\edu\iftm\renthub\view\BuscarCliente$4.class
 br\edu\iftm\renthub\model\Cidade.class
 br\edu\iftm\renthub\RentHub.class
 br\edu\iftm\renthub\dao\EquipamentoDAO.class
+br\edu\iftm\renthub\view\BuscarCliente$2.class
 br\edu\iftm\renthub\view\TelaPrincipal$8.class
 br\edu\iftm\renthub\view\TelaPrincipal$44.class
 br\edu\iftm\renthub\view\TelaPrincipal$14.class

@@ -1,13 +1,14 @@
 package br.edu.iftm.renthub.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Contrato {
-    private Integer id, qtdEquipamento;
+    private Integer id;
     private Tipo tipo;
     private Status status;
     private Cliente cliente;
-    private Equipamento equipamento;
+    private List<Equipamento> equipamentos;
     private LocalDate dataInicio, dataFim, dataEntrega;
     private Totalizacao totalizacao;
 
@@ -38,13 +39,13 @@ public class Contrato {
         }
     }
     
-    public Contrato(){
+    public Contrato() {
+        this.status = Status.ATIVO;
     }
 
-    public Contrato(Cliente cliente, Equipamento equipamento, int qtdEquipamento, Tipo tipo, LocalDate dataInicio, LocalDate dataFim) {
+    public Contrato(Cliente cliente, List<Equipamento> equipamentos, Tipo tipo, LocalDate dataInicio, LocalDate dataFim) {
         this.cliente = cliente;
-        this.equipamento = equipamento;
-        this.qtdEquipamento = qtdEquipamento;
+        this.equipamentos = equipamentos;
         this.tipo = tipo;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
@@ -67,20 +68,8 @@ public class Contrato {
         this.cliente = cliente;
     }
 
-    public Equipamento getEquipamento() {
-        return equipamento;
-    }
-
-    public void setEquipamento(Equipamento equipamento) {
-        this.equipamento = equipamento;
-    }
-
-    public int getQtdEquipamento() {
-        return qtdEquipamento;
-    }
-
-    public void setQtdEquipamento(int qtdEquipamento) {
-        this.qtdEquipamento = qtdEquipamento;
+    public List<Equipamento> getEquipamentos() {
+        return equipamentos;
     }
 
     public Tipo getTipo() {
