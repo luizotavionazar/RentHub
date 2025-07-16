@@ -76,11 +76,11 @@ public class BuscarEquipamento extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Descrição", "Qtd. Disponivel"
+                "ID", "Descrição", "Qtd. Disponivel", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -92,6 +92,7 @@ public class BuscarEquipamento extends javax.swing.JDialog {
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(350);
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(50);
         }
 
         btSelecionar.setBackground(new java.awt.Color(240, 240, 240));
