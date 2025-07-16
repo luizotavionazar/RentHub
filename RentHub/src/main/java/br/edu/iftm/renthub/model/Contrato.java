@@ -71,6 +71,10 @@ public class Contrato {
     public List<Equipamento> getEquipamentos() {
         return equipamentos;
     }
+    
+    public void setEquipamentos(List<Equipamento> equipamentos){
+        this.equipamentos = equipamentos;
+    }
 
     public Tipo getTipo() {
         return tipo;

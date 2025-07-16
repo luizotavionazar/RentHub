@@ -8,6 +8,11 @@ public class Cidade {
         this.nome = nome;
         this.uf = uf;
     }
+    
+    public Cidade(String nome, String uf) {
+        this.nome = nome;
+        this.uf = uf;
+    }
 
     public String getId() {
         return id;

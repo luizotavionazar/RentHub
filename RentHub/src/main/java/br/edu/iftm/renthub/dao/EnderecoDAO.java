@@ -1,8 +1,11 @@
 package br.edu.iftm.renthub.dao;
 
+import br.edu.iftm.renthub.model.Cidade;
+import br.edu.iftm.renthub.model.Endereco;
 import br.edu.iftm.renthub.view.RegistrosLog;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EnderecoDAO {
@@ -37,6 +40,19 @@ public class EnderecoDAO {
             log.registrarLog(4, "EnderecoDAO", "cadastrar", "endereco", "Erro ao cadastrar o endereço no Banco de Dados: " + e.getMessage());
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    public Endereco buscarEndereco(int idEndereco){
+        String sql = "SELECT e.cep, e.bairro, e.logradouro, e.numero, e.complemento, c.nome, c.uf FROM endereco e JOIN cidade c ON c.id_ibge = e.id_ibge WHERE e.id = ?";
+        try(Connection conn = ConexaoDAO.conexaoBd()){
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            Cidade cidade = new Cidade(rs.getString("nome"), rs.getString("uf"));
+            return new Endereco(rs.getString("cep"), cidade, rs.getString("bairro"), rs.getString("complemento"), rs.getString("logradouro"), rs.getInt("numero"));
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
         }
     }
 }
