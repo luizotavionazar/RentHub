@@ -2,6 +2,7 @@ br\edu\iftm\renthub\control\TotalizacaoController.class
 br\edu\iftm\renthub\model\Contrato$Status.class
 br\edu\iftm\renthub\view\MetodosView.class
 br\edu\iftm\renthub\view\VerTotalizazao.class
+br\edu\iftm\renthub\view\BuscarEquipamento$9.class
 br\edu\iftm\renthub\control\EnderecoController.class
 br\edu\iftm\renthub\view\BuscarCliente$3.class
 br\edu\iftm\renthub\view\TelaPrincipal$2.class

@@ -30,115 +30,120 @@ public class VerTotalizazao extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
-        jButton1 = new RoundedButton("");
+        pnTelaTotalizacao = new javax.swing.JPanel();
+        lbTituloValor = new javax.swing.JLabel();
+        lbTituloMulta = new javax.swing.JLabel();
+        lbTituloJuros = new javax.swing.JLabel();
+        lbTituloTotal = new javax.swing.JLabel();
+        lbTituloTotalizacao = new javax.swing.JLabel();
+        ffMulta = new javax.swing.JFormattedTextField();
+        ffValor = new javax.swing.JFormattedTextField();
+        ffJuros = new javax.swing.JFormattedTextField();
+        ffTotal = new javax.swing.JFormattedTextField();
+        btSair = new RoundedButton("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnTelaTotalizacao.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Valor");
+        lbTituloValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloValor.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloValor.setText("Valor");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Multa");
+        lbTituloMulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloMulta.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloMulta.setText("Multa");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Juros");
+        lbTituloJuros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloJuros.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloJuros.setText("Juros");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Total");
+        lbTituloTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloTotal.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloTotal.setText("Total");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Totalização Contrato Nº");
+        lbTituloTotalizacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbTituloTotalizacao.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloTotalizacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTituloTotalizacao.setText("Totalização Contrato Nº");
 
-        jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setBackground(new java.awt.Color(215, 215, 215));
+        ffMulta.setEditable(false);
+        ffMulta.setBackground(new java.awt.Color(215, 215, 215));
 
-        jFormattedTextField2.setEditable(false);
-        jFormattedTextField2.setBackground(new java.awt.Color(215, 215, 215));
+        ffValor.setEditable(false);
+        ffValor.setBackground(new java.awt.Color(215, 215, 215));
 
-        jFormattedTextField4.setEditable(false);
-        jFormattedTextField4.setBackground(new java.awt.Color(215, 215, 215));
+        ffJuros.setEditable(false);
+        ffJuros.setBackground(new java.awt.Color(215, 215, 215));
 
-        jFormattedTextField5.setEditable(false);
-        jFormattedTextField5.setBackground(new java.awt.Color(215, 215, 215));
+        ffTotal.setEditable(false);
+        ffTotal.setBackground(new java.awt.Color(215, 215, 215));
 
-        jButton1.setBackground(new java.awt.Color(240, 240, 240));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Sair");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btSair.setBackground(new java.awt.Color(240, 240, 240));
+        btSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btSair.setForeground(new java.awt.Color(0, 0, 0));
+        btSair.setText("Sair");
+        btSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
+                btSairMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton1MouseExited(evt);
+                btSairMouseExited(evt);
+            }
+        });
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnTelaTotalizacaoLayout = new javax.swing.GroupLayout(pnTelaTotalizacao);
+        pnTelaTotalizacao.setLayout(pnTelaTotalizacaoLayout);
+        pnTelaTotalizacaoLayout.setHorizontalGroup(
+            pnTelaTotalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbTituloTotalizacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnTelaTotalizacaoLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnTelaTotalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnTelaTotalizacaoLayout.createSequentialGroup()
+                        .addGroup(pnTelaTotalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbTituloTotal)
+                            .addComponent(lbTituloJuros)
+                            .addComponent(lbTituloMulta)
+                            .addComponent(ffValor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbTituloValor)
+                            .addComponent(ffMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ffJuros, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnTelaTotalizacaoLayout.createSequentialGroup()
+                        .addComponent(ffTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btSair)
                         .addGap(43, 43, 43))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnTelaTotalizacaoLayout.setVerticalGroup(
+            pnTelaTotalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTelaTotalizacaoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(lbTituloTotalizacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(lbTituloValor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ffValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(lbTituloMulta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ffMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(lbTituloJuros)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ffJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(lbTituloTotal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addGroup(pnTelaTotalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ffTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btSair))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -146,23 +151,31 @@ public class VerTotalizazao extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTelaTotalizacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTelaTotalizacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        estilo.aplicaHoverEntered(jButton1);
-    }//GEN-LAST:event_jButton1MouseEntered
+    private void btSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairMouseEntered
+        estilo.aplicaHoverEntered(btSair);
+    }//GEN-LAST:event_btSairMouseEntered
 
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        estilo.aplicaHoverExited(jButton1);
-    }//GEN-LAST:event_jButton1MouseExited
+    private void btSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairMouseExited
+        estilo.aplicaHoverExited(btSair);
+    }//GEN-LAST:event_btSairMouseExited
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        ffJuros.setText("");
+        ffMulta.setText("");
+        ffValor.setText("");
+        ffTotal.setText("");
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,16 +185,16 @@ public class VerTotalizazao extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btSair;
+    private javax.swing.JFormattedTextField ffJuros;
+    private javax.swing.JFormattedTextField ffMulta;
+    private javax.swing.JFormattedTextField ffTotal;
+    private javax.swing.JFormattedTextField ffValor;
+    private javax.swing.JLabel lbTituloJuros;
+    private javax.swing.JLabel lbTituloMulta;
+    private javax.swing.JLabel lbTituloTotal;
+    private javax.swing.JLabel lbTituloTotalizacao;
+    private javax.swing.JLabel lbTituloValor;
+    private javax.swing.JPanel pnTelaTotalizacao;
     // End of variables declaration//GEN-END:variables
 }

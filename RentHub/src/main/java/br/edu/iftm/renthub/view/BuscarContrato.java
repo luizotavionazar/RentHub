@@ -5,6 +5,7 @@
 package br.edu.iftm.renthub.view;
 
 import java.sql.Connection;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,13 +13,17 @@ import java.sql.Connection;
  */
 public class BuscarContrato extends javax.swing.JDialog {
     private UtilsComponent estilo;
+    private DefaultTableModel modelo;
+    private static BuscarCliente buscarCliente;
     /**
      * Creates new form BuscarContrato
      */
     public BuscarContrato(java.awt.Frame parent, boolean modal, Connection conexao) {
         super(parent, modal);
+        buscarCliente = new BuscarCliente(parent, modal, conexao);
         initComponents();
         estilo = new UtilsComponent();
+        modelo = (DefaultTableModel)  tbBuscarContrato.getModel();
     }
 
     /**
@@ -30,35 +35,35 @@ public class BuscarContrato extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnTelaBuscarContrato = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        tbBuscarContrato = new javax.swing.JTable();
+        dtDataInicio = new com.toedter.calendar.JDateChooser();
+        dtDataFim = new com.toedter.calendar.JDateChooser();
+        dtDataEntrega = new com.toedter.calendar.JDateChooser();
+        lbTituloDataInicio = new javax.swing.JLabel();
+        lbTituloDataFim = new javax.swing.JLabel();
+        lbTituloDataEntrega = new javax.swing.JLabel();
+        lbTituloTipo = new javax.swing.JLabel();
+        lbTituloStatus = new javax.swing.JLabel();
+        cbTipo = new javax.swing.JComboBox<>();
+        cbStatus = new javax.swing.JComboBox<>();
         btSelecionar = new RoundedButton("");
         btSair = new RoundedButton("");
         btLimpar = new RoundedButton("");
-        jTextField1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        tfCliente = new javax.swing.JTextField();
+        lbTituloCliente = new javax.swing.JLabel();
         btBuscarCliente = new javax.swing.JButton();
         btFiltrar = new RoundedButton("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("RentHub - Busca de Contrato");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnTelaBuscarContrato.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setBackground(new java.awt.Color(215, 215, 215));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbBuscarContrato.setBackground(new java.awt.Color(215, 215, 215));
+        tbBuscarContrato.setForeground(new java.awt.Color(0, 0, 0));
+        tbBuscarContrato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -74,39 +79,39 @@ public class BuscarContrato extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(20);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(150);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(20);
+        jScrollPane1.setViewportView(tbBuscarContrato);
+        if (tbBuscarContrato.getColumnModel().getColumnCount() > 0) {
+            tbBuscarContrato.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tbBuscarContrato.getColumnModel().getColumn(1).setPreferredWidth(150);
+            tbBuscarContrato.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tbBuscarContrato.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tbBuscarContrato.getColumnModel().getColumn(4).setPreferredWidth(50);
+            tbBuscarContrato.getColumnModel().getColumn(5).setPreferredWidth(20);
         }
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Data de Inicio");
+        lbTituloDataInicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloDataInicio.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloDataInicio.setText("Data de Inicio");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Data Final");
+        lbTituloDataFim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloDataFim.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloDataFim.setText("Data Final");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Data de Entrega");
+        lbTituloDataEntrega.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloDataEntrega.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloDataEntrega.setText("Data de Entrega");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Tipo de Contrato");
+        lbTituloTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloTipo.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloTipo.setText("Tipo de Contrato");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Status do Contrato");
+        lbTituloStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloStatus.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloStatus.setText("Status do Contrato");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diario", "Mensal" }));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diario", "Mensal" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Cancelado", "Encerrado" }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Cancelado", "Encerrado" }));
 
         btSelecionar.setBackground(new java.awt.Color(240, 240, 240));
         btSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -133,6 +138,11 @@ public class BuscarContrato extends javax.swing.JDialog {
                 btSairMouseExited(evt);
             }
         });
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         btLimpar.setBackground(new java.awt.Color(240, 240, 240));
         btLimpar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -152,11 +162,11 @@ public class BuscarContrato extends javax.swing.JDialog {
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(215, 215, 215));
+        tfCliente.setBackground(new java.awt.Color(215, 215, 215));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Cliente");
+        lbTituloCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloCliente.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloCliente.setText("Cliente");
 
         btBuscarCliente.setBackground(new java.awt.Color(240, 240, 240));
         btBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/loupe.png"))); // NOI18N
@@ -166,6 +176,11 @@ public class BuscarContrato extends javax.swing.JDialog {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btBuscarClienteMouseExited(evt);
+            }
+        });
+        btBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarClienteActionPerformed(evt);
             }
         });
 
@@ -181,89 +196,91 @@ public class BuscarContrato extends javax.swing.JDialog {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnTelaBuscarContratoLayout = new javax.swing.GroupLayout(pnTelaBuscarContrato);
+        pnTelaBuscarContrato.setLayout(pnTelaBuscarContratoLayout);
+        pnTelaBuscarContratoLayout.setHorizontalGroup(
+            pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
+                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
+                                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cbTipo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(dtDataInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbTituloDataInicio, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbTituloTipo, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(jLabel5))
+                                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(cbStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(dtDataFim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbTituloDataFim, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(lbTituloStatus))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
+                                        .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbTituloDataEntrega)
+                                            .addComponent(lbTituloCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
+                                        .addComponent(dtDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField1)
+                                    .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
+                                        .addComponent(tfCliente)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
                                 .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
                         .addContainerGap(37, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        pnTelaBuscarContratoLayout.setVerticalGroup(
+            pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTelaBuscarContratoLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTituloDataInicio)
+                    .addComponent(lbTituloDataFim)
+                    .addComponent(lbTituloDataEntrega))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dtDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btFiltrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)))
+                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbTituloTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbTituloStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbTituloCliente)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -271,18 +288,18 @@ public class BuscarContrato extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTelaBuscarContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTelaBuscarContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
+        limpaBuscarContrato();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btSelecionarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSelecionarMouseEntered
@@ -325,6 +342,27 @@ public class BuscarContrato extends javax.swing.JDialog {
         estilo.aplicaHoverExited(btBuscarCliente);
     }//GEN-LAST:event_btBuscarClienteMouseExited
 
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        limpaBuscarContrato();
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
+    private void btBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarClienteActionPerformed
+        buscarCliente.setLocationRelativeTo(this);
+        buscarCliente.setVisible(true);
+    }//GEN-LAST:event_btBuscarClienteActionPerformed
+    
+    
+    //Metodo para limpeza dos campos da tela
+    public void limpaBuscarContrato(){
+        dtDataInicio.setDate(null);
+        dtDataFim.setDate(null);
+        dtDataEntrega.setDate(null);
+        cbTipo.setSelectedIndex(0);
+        cbStatus.setSelectedIndex(0);
+        tfCliente.setText("");
+        modelo.setRowCount(0);
+    }
     /**
      * @param args the command line arguments
      */
@@ -338,20 +376,20 @@ public class BuscarContrato extends javax.swing.JDialog {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSelecionar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> cbStatus;
+    private javax.swing.JComboBox<String> cbTipo;
+    private com.toedter.calendar.JDateChooser dtDataEntrega;
+    private com.toedter.calendar.JDateChooser dtDataFim;
+    private com.toedter.calendar.JDateChooser dtDataInicio;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbTituloCliente;
+    private javax.swing.JLabel lbTituloDataEntrega;
+    private javax.swing.JLabel lbTituloDataFim;
+    private javax.swing.JLabel lbTituloDataInicio;
+    private javax.swing.JLabel lbTituloStatus;
+    private javax.swing.JLabel lbTituloTipo;
+    private javax.swing.JPanel pnTelaBuscarContrato;
+    private javax.swing.JTable tbBuscarContrato;
+    private javax.swing.JTextField tfCliente;
     // End of variables declaration//GEN-END:variables
 }

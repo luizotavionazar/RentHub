@@ -6,6 +6,7 @@ import java.util.List;
 import br.edu.iftm.renthub.dao.EquipamentoDAO;
 import br.edu.iftm.renthub.model.Equipamento;
 import br.edu.iftm.renthub.view.RegistrosLog;
+import java.util.ArrayList;
 
 public class EquipamentoController {
     private EquipamentoDAO equipamentoDAO;
@@ -89,13 +90,13 @@ public class EquipamentoController {
     public List<Equipamento> listar(String descricao) {
         log.registrarLog(1, "EquipamentoController", "listar", "equipamento", "Listando os equipamentos");
         StringBuilder sqlFiltro = new StringBuilder();
-        //List<Object> filtros = new ArrayList<>(); - UTILIZADO PARA EXIBIR OS FILTROS NO RELATORIO
+        List<Object> filtros = new ArrayList<>();
         if (!descricao.isEmpty() || !descricao.equals("")) {
             sqlFiltro.append("AND descricao LIKE ? ");
-            //filtros.add("%"+ descricao +"%");
+            filtros.add("%"+ descricao +"%");
         }
         try {
-            return equipamentoDAO.listar(sqlFiltro.toString());
+            return equipamentoDAO.listar(sqlFiltro.toString(), filtros);
         } catch (Exception e) {
             log.registrarLog(4, "EquipamentoController", "listar", "equipamento", "Erro ao listar os equipamentos: "+ e.getMessage());
             e.printStackTrace();

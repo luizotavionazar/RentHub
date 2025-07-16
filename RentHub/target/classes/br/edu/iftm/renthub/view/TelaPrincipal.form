@@ -51,7 +51,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="pnLogin">
+    <Container class="javax.swing.JPanel" name="pnTelaLogin">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
@@ -73,7 +73,7 @@
                   <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
                   <Component id="pnLogo" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnLogin1" max="32767" attributes="0"/>
+                  <Component id="pnLogin" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -83,7 +83,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnLogin1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnLogin" alignment="0" max="32767" attributes="0"/>
                       <Component id="pnLogo" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
@@ -129,7 +129,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnLogin1">
+        <Container class="javax.swing.JPanel" name="pnLogin">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="d9" red="d9" type="rgb"/>
@@ -139,13 +139,13 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" alignment="1" min="-2" pref="393" max="-2" attributes="0"/>
+                  <Component id="lbTituloLogin" alignment="1" min="-2" pref="393" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pfSenha" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbTituloSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbTituloUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="tfUsuario" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -162,13 +162,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="lbTituloLogin" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="lbTituloUsuario" min="-2" pref="19" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="tfUsuario" min="-2" pref="29" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbTituloSenha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="pfSenha" min="-2" pref="29" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -182,7 +182,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lbTituloLogin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="0"/>
@@ -194,7 +194,7 @@
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JLabel" name="lbTituloUsuario">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -202,7 +202,7 @@
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="lbTituloSenha">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -290,7 +290,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbTituloRentHub" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="788" max="32767" attributes="0"/>
                       <Component id="lbUsuarioLogado" min="-2" pref="274" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -306,7 +306,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbPerfil" alignment="0" max="32767" attributes="0"/>
                           <Component id="lbUsuarioLogado" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbTituloRentHub" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -314,7 +314,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel10">
+            <Component class="javax.swing.JLabel" name="lbTituloRentHub">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="22" style="0"/>
@@ -328,7 +328,7 @@
                 <Property name="text" type="java.lang.String" value="RentHub"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel10MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbTituloRentHubMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbUsuarioLogado">
@@ -389,9 +389,8 @@
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btMenuContrato" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btMenuEquipamento" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btMenuEquipamento" alignment="0" pref="151" max="32767" attributes="0"/>
                           <Component id="btMenuCliente" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btMenuRelatorio" alignment="0" pref="151" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
@@ -406,9 +405,7 @@
                       <Component id="btMenuEquipamento" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btMenuCliente" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btMenuRelatorio" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="410" max="32767" attributes="0"/>
+                      <EmptySpace pref="468" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -474,27 +471,7 @@
               <Events>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btMenuClienteMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btMenuClienteMouseExited"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btMenuRelatorio">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btMenuRelatorioMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btMenuRelatorioMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btMenuClienteActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
@@ -591,13 +568,13 @@
                               </Group>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbTituloContratoCadastro" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="btBuscarContrato" min="-2" pref="155" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btEncerrarContrato" min="-2" pref="155" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnContratoCadastro" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
@@ -614,24 +591,25 @@
                                   <Component id="btBuscarContrato" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTituloContratoCadastro" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jPanel1" min="-2" pref="515" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="pnContratoCadastro" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btContratoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btContratoLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btContratoRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="lbTituloContratoCadastro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="36" style="1"/>
@@ -664,7 +642,7 @@
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
                   </AuxValues>
                 </Component>
-                <Container class="javax.swing.JPanel" name="jPanel1">
+                <Container class="javax.swing.JPanel" name="pnContratoCadastro">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -678,52 +656,48 @@
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoCidade" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <Component id="jTextField3" max="32767" attributes="0"/>
+                                                  <Component id="tfContratoCadastroCidade" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jComboBox1" min="-2" pref="55" max="-2" attributes="0"/>
+                                                  <Component id="lbTituloContratoUf" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbContratoCadastroUf" min="-2" pref="55" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Component id="jTextField4" max="32767" attributes="0"/>
+                                          <Component id="tfContratoCadastroLogradouro" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField5" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                                                  <Component id="lbTituloContratoBairro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tfContratoCadastroBairro" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField6" pref="110" max="32767" attributes="0"/>
+                                                  <Component id="lbTituloContratoComplemento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tfContratoCadastroComplemento" pref="110" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jFormattedTextField1" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="ffContratoCadastroCpf" alignment="0" max="32767" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jFormattedTextField3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloContratoCpf" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="ffContratoCadastroCep" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloContratoCep" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloContratoLogradouro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloContratoCliente" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace max="32767" attributes="0"/>
                                                   </Group>
@@ -731,53 +705,73 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
                                                       <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoTelefone" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jTextField1" min="-2" pref="68" max="-2" attributes="0"/>
+                                                      <Component id="tfContratoCadastroNumero" min="-2" pref="68" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="ckbContratoCadastroSemNumero" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jFormattedTextField2" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
+                                                  <Component id="lbTituloContratoNumero" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="ffContratoCadastroTelefone" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="tfContratoCadastroCliente" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbTituloContratoEquipamento" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jTextField11" min="-2" pref="270" max="-2" attributes="0"/>
+                                                      <Component id="tfContratoCadastroEquipamento" min="-2" pref="270" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="btContratoBuscarEquipamento" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbTituloContratoQuantidade" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jsQtdEquipamento" min="-2" pref="90" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="btAdicionar" min="-2" pref="26" max="-2" attributes="0"/>
+                                                      <Component id="btContratoCadastroAdicionarEquipamento" min="-2" pref="26" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="dcCadastrarContratoEntrega" min="-2" pref="150" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btTotalizacaoContrato" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="lbCadastrarContratoDataEntrega" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbCadastrarContratoDataInicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbCadastrarContratoDataFinal" min="-2" pref="67" max="-2" attributes="0"/>
-                                          <Component id="dcCadastroContratoInicio" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="dcCadastroContratoFinal" min="-2" pref="150" max="-2" attributes="0"/>
                                           <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbTituloContratoCadastroDataInicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="dcContratoCadastroDataInicio" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="lbTituloContratoValor" max="32767" attributes="0"/>
+                                                  <Component id="ffContratoCadastroValor" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbTituloContratoCadastroDataFinal" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                                                  <Component id="dcContratoCadastroDataFinal" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="dcContratoCadastroDataEntrega" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                                  <Component id="lbTituloContratoCadastroDataEntrega" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="btContratoCadastroTotalizacao" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lbTituloContratoNovo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="tfNumeroDoContrato" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -787,112 +781,127 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbTituloContratoNovo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfNumeroDoContrato" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbTituloContratoCliente" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfContratoCadastroCliente" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lbTituloContratoCpf" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ffContratoCadastroCpf" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
-                                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lbTituloContratoTelefone" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jFormattedTextField2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ffContratoCadastroTelefone" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jFormattedTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ffContratoCadastroCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfContratoCadastroNumero" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Component id="ckbContratoCadastroSemNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbTituloContratoLogradouro" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfContratoCadastroLogradouro" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfContratoCadastroBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfContratoCadastroComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoUf" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfContratoCadastroCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbContratoCadastroUf" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace pref="65" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jTextField11" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Group type="102" alignment="1" attributes="0">
+                                                              <Component id="lbTituloContratoEquipamento" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="tfContratoCadastroEquipamento" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="btContratoCadastroAdicionarEquipamento" min="-2" pref="26" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="btAdicionar" min="-2" pref="26" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="lbTituloContratoQuantidade" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jsQtdEquipamento" min="-2" pref="26" max="-2" attributes="0"/>
+                                                          <Component id="btContratoBuscarEquipamento" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jScrollPane1" min="-2" pref="123" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jsQtdEquipamento" min="-2" pref="26" max="-2" attributes="0"/>
-                                                  <Component id="btContratoBuscarEquipamento" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="lbTituloContratoCadastroDataInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloContratoValor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="dcContratoCadastroDataInicio" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="ffContratoCadastroValor" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoCadastroDataFinal" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="dcContratoCadastroDataFinal" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="btContratoCadastroTotalizacao" alignment="1" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                           </Group>
-                                      </Group>
-                                      <Component id="jScrollPane1" min="-2" pref="123" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="lbCadastrarContratoDataInicio" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lbTituloContratoCadastroDataEntrega" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="dcCadastroContratoInicio" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="lbCadastrarContratoDataFinal" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="dcCadastroContratoFinal" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="lbCadastrarContratoDataEntrega" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="dcCadastrarContratoEntrega" min="-2" max="-2" attributes="0"/>
+                                              <Component id="dcContratoCadastroDataEntrega" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="btTotalizacaoContrato" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel7">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoNovo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="1"/>
@@ -903,7 +912,7 @@
                         <Property name="text" type="java.lang.String" value="NOVO"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel8">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoCliente">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -914,14 +923,14 @@
                         <Property name="text" type="java.lang.String" value="Nome do Cliente"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField2">
+                    <Component class="javax.swing.JTextField" name="tfContratoCadastroCliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel9">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoCpf">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -932,7 +941,7 @@
                         <Property name="text" type="java.lang.String" value="CPF/CNPJ"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoCadastroCpf">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -940,7 +949,7 @@
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoCadastroTelefone">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -948,7 +957,7 @@
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel12">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoTelefone">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -959,7 +968,7 @@
                         <Property name="text" type="java.lang.String" value="Telefone"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel13">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoCep">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -970,14 +979,17 @@
                         <Property name="text" type="java.lang.String" value="CEP"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoCadastroCep">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ffContratoCadastroCepFocusLost"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel14">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoCidade">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -988,21 +1000,21 @@
                         <Property name="text" type="java.lang.String" value="Cidade"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField3">
+                    <Component class="javax.swing.JTextField" name="tfContratoCadastroCidade">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField4">
+                    <Component class="javax.swing.JTextField" name="tfContratoCadastroLogradouro">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel15">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoLogradouro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1013,7 +1025,7 @@
                         <Property name="text" type="java.lang.String" value="Logradouro"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel16">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoUf">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1024,13 +1036,41 @@
                         <Property name="text" type="java.lang.String" value="UF"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox1">
+                    <Component class="javax.swing.JComboBox" name="cbContratoCadastroUf">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="0"/>
+                          <StringArray count="27">
+                            <StringItem index="0" value="AC"/>
+                            <StringItem index="1" value="AL"/>
+                            <StringItem index="2" value="AP"/>
+                            <StringItem index="3" value="AM"/>
+                            <StringItem index="4" value="BA"/>
+                            <StringItem index="5" value="CE"/>
+                            <StringItem index="6" value="DF"/>
+                            <StringItem index="7" value="ES"/>
+                            <StringItem index="8" value="GO"/>
+                            <StringItem index="9" value="MA"/>
+                            <StringItem index="10" value="MT"/>
+                            <StringItem index="11" value="MS"/>
+                            <StringItem index="12" value="MG"/>
+                            <StringItem index="13" value="PA"/>
+                            <StringItem index="14" value="PB"/>
+                            <StringItem index="15" value="PR"/>
+                            <StringItem index="16" value="PE"/>
+                            <StringItem index="17" value="PI"/>
+                            <StringItem index="18" value="RJ"/>
+                            <StringItem index="19" value="RN"/>
+                            <StringItem index="20" value="RS"/>
+                            <StringItem index="21" value="RO"/>
+                            <StringItem index="22" value="RR"/>
+                            <StringItem index="23" value="SC"/>
+                            <StringItem index="24" value="SP"/>
+                            <StringItem index="25" value="SE"/>
+                            <StringItem index="26" value="TO"/>
+                          </StringArray>
                         </Property>
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
@@ -1038,14 +1078,14 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField5">
+                    <Component class="javax.swing.JTextField" name="tfContratoCadastroBairro">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel17">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoBairro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1056,14 +1096,14 @@
                         <Property name="text" type="java.lang.String" value="Bairro"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField6">
+                    <Component class="javax.swing.JTextField" name="tfContratoCadastroComplemento">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel18">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoComplemento">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1074,7 +1114,7 @@
                         <Property name="text" type="java.lang.String" value="Complemento"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel19">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoEquipamento">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1085,7 +1125,7 @@
                         <Property name="text" type="java.lang.String" value="Equipamentos"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel20">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoQuantidade">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1098,7 +1138,7 @@
                     </Component>
                     <Component class="javax.swing.JSpinner" name="jsQtdEquipamento">
                     </Component>
-                    <Component class="javax.swing.JButton" name="btAdicionar">
+                    <Component class="javax.swing.JButton" name="btContratoCadastroAdicionarEquipamento">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1110,9 +1150,9 @@
                         <Property name="focusPainted" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btAdicionarMouseEntered"/>
-                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btAdicionarMouseExited"/>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAdicionarActionPerformed"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btContratoCadastroAdicionarEquipamentoMouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btContratoCadastroAdicionarEquipamentoMouseExited"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btContratoCadastroAdicionarEquipamentoActionPerformed"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -1122,7 +1162,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable1">
+                        <Component class="javax.swing.JTable" name="tbContratoCadastroEquipamento">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -1135,24 +1175,24 @@
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="3" rowCount="0">
-                                <Column editable="true" title="C&#xf3;d." type="java.lang.Object"/>
-                                <Column editable="true" title="Equipamento" type="java.lang.Object"/>
-                                <Column editable="true" title="Qtd." type="java.lang.Object"/>
+                                <Column editable="false" title="C&#xf3;d." type="java.lang.Object"/>
+                                <Column editable="false" title="Equipamento" type="java.lang.Object"/>
+                                <Column editable="false" title="Qtd." type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="300" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
@@ -1166,14 +1206,14 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JTextField" name="jTextField1">
+                    <Component class="javax.swing.JTextField" name="tfContratoCadastroNumero">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel1">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoNumero">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1184,7 +1224,7 @@
                         <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                    <Component class="javax.swing.JCheckBox" name="ckbContratoCadastroSemNumero">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1193,7 +1233,7 @@
                         <Property name="focusPainted" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lbCadastrarContratoDataFinal">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoCadastroDataFinal">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1204,14 +1244,14 @@
                         <Property name="text" type="java.lang.String" value="Data Final"/>
                       </Properties>
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="dcCadastroContratoFinal">
+                    <Component class="com.toedter.calendar.JDateChooser" name="dcContratoCadastroDataFinal">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lbCadastrarContratoDataInicio">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoCadastroDataInicio">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1222,7 +1262,7 @@
                         <Property name="text" type="java.lang.String" value="Data Inicio"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lbCadastrarContratoDataEntrega">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoCadastroDataEntrega">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1233,10 +1273,10 @@
                         <Property name="text" type="java.lang.String" value="Data de Entrega"/>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="lbCadastrarContratoDataEntrega.setVisible(false);"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="lbTituloContratoCadastroDataEntrega.setVisible(false);"/>
                       </AuxValues>
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="dcCadastroContratoInicio">
+                    <Component class="com.toedter.calendar.JDateChooser" name="dcContratoCadastroDataInicio">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -1244,17 +1284,17 @@
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="dcCadastrarContratoEntrega">
+                    <Component class="com.toedter.calendar.JDateChooser" name="dcContratoCadastroDataEntrega">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="dcCadastrarContratoEntrega.setVisible(false);"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="dcContratoCadastroDataEntrega.setVisible(false);"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btTotalizacaoContrato">
+                    <Component class="javax.swing.JButton" name="btContratoCadastroTotalizacao">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1268,16 +1308,16 @@
                         <Property name="text" type="java.lang.String" value="Totaliza&#xe7;&#xe3;o"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btTotalizacaoContratoMouseEntered"/>
-                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btTotalizacaoContratoMouseExited"/>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btTotalizacaoContratoActionPerformed"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btContratoCadastroTotalizacaoMouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btContratoCadastroTotalizacaoMouseExited"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btContratoCadastroTotalizacaoActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btTotalizacaoContrato.setVisible(false);"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btContratoCadastroTotalizacao.setVisible(false);"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField11">
+                    <Component class="javax.swing.JTextField" name="tfContratoCadastroEquipamento">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -1302,6 +1342,37 @@
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
                       </AuxValues>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoValor">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI" size="14" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Valor Parcial"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoCadastroValor">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="d7" green="d7" red="d7" type="rgb"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tfNumeroDoContrato">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="null"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JButton" name="btContratoRegistrar">
@@ -1323,6 +1394,7 @@
                   <Events>
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btContratoRegistrarMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btContratoRegistrarMouseExited"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btContratoRegistrarActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
@@ -1423,12 +1495,12 @@
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTituloContratoEncerrar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="659" max="-2" attributes="0"/>
                                   <Component id="btNovoContrato" min="-2" pref="155" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="pnContratoEncerrar" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btRegistrarEncerrarContrato" min="-2" pref="110" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1448,10 +1520,10 @@
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btNovoContrato" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTituloContratoEncerrar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="pnContratoEncerrar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btCancelarEncerrarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1464,7 +1536,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel2">
+                <Container class="javax.swing.JPanel" name="pnContratoEncerrar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1477,36 +1549,36 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel22" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Component id="lbTituloContratoEncerramento" min="-2" pref="153" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jTextField7" min="-2" pref="68" max="-2" attributes="0"/>
+                                              <Component id="tfContratoEncerrarNumeroContrato" min="-2" pref="68" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btBuscarContratoEncerrarContrato" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btContratoEncerrarBuscarContrato" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoNumeroContrato" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox3" min="-2" pref="132" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoTipoEncerramento" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbContratoEncerrarTipo" min="-2" pref="132" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField8" max="32767" attributes="0"/>
+                                          <Component id="lbTituloContratoTipo" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfContratoEncerrarTipo" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tfClienteEncerrarContrato" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoNomeCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfContratoEncerrarCliente" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField4" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoEncerrarCpf" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ffContratoEncerrarCpf" min="-2" pref="130" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jScrollPane3" alignment="1" min="-2" pref="397" max="-2" attributes="0"/>
@@ -1515,39 +1587,39 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField5" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoEncerraValor" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ffContratoEncerraValor" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField6" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoJuros" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ffContratoEncerrarJuros" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField7" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoMulta" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ffContratoEncerraMulta" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField8" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoValorTotal" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ffContratoEncerraValorTotal" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jDateChooser1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoEncerrarDataInicio" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dtContratoEncerrarDataInicio" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jDateChooser2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoEncerrarDataFinal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dtContratoEncerrarDataFinal" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jDateChooser3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbTituloContratoEncerrarDataEntrega" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dtContratoEncerrarDataEntrega" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1561,7 +1633,7 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbTituloContratoEncerramento" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
@@ -1569,82 +1641,82 @@
                                                   <Group type="102" attributes="0">
                                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="jTextField7" min="-2" pref="26" max="-2" attributes="0"/>
+                                                          <Component id="tfContratoEncerrarNumeroContrato" min="-2" pref="26" max="-2" attributes="0"/>
                                                           <Group type="102" attributes="0">
                                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="lbTituloContratoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="lbTituloContratoNumeroContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="lbTituloContratoTipoEncerramento" alignment="3" min="-2" max="-2" attributes="0"/>
                                                               </Group>
                                                               <EmptySpace max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                                  <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="tfContratoEncerrarTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="cbContratoEncerrarTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
-                                                          <Component id="btBuscarContratoEncerrarContrato" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="btContratoEncerrarBuscarContrato" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoEncerrarDataEntrega" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jDateChooser3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="dtContratoEncerrarDataEntrega" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoEncerrarDataFinal" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="dtContratoEncerrarDataFinal" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoNomeCliente" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="tfClienteEncerrarContrato" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="tfContratoEncerrarCliente" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoEncerrarCpf" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jFormattedTextField4" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="ffContratoEncerrarCpf" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lbTituloContratoEncerrarDataInicio" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="dtContratoEncerrarDataInicio" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                                      <EmptySpace pref="40" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jScrollPane3" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoJuros" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jFormattedTextField6" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="ffContratoEncerrarJuros" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloContratoEncerraValor" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jFormattedTextField5" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="ffContratoEncerraValor" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Group type="102" attributes="0">
-                                                  <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbTituloContratoMulta" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jFormattedTextField7" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="ffContratoEncerraMulta" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbTituloContratoValorTotal" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextField8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ffContratoEncerraValorTotal" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
@@ -1653,7 +1725,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel11">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoTipo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1664,7 +1736,7 @@
                         <Property name="text" type="java.lang.String" value="Tipo de Contrato"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel22">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoEncerramento">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="1"/>
@@ -1675,7 +1747,7 @@
                         <Property name="text" type="java.lang.String" value="ENCERRAMENTO"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel23">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoNumeroContrato">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1686,14 +1758,14 @@
                         <Property name="text" type="java.lang.String" value="Contrato"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField7">
+                    <Component class="javax.swing.JTextField" name="tfContratoEncerrarNumeroContrato">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel24">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoEncerrarCpf">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1704,7 +1776,7 @@
                         <Property name="text" type="java.lang.String" value="CPF/CNPJ"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoEncerrarCpf">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -1712,7 +1784,7 @@
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btBuscarContratoEncerrarContrato">
+                    <Component class="javax.swing.JButton" name="btContratoEncerrarBuscarContrato">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -1722,12 +1794,12 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btBuscarContratoEncerrarContratoMouseEntered"/>
-                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btBuscarContratoEncerrarContratoMouseExited"/>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarContratoEncerrarContratoActionPerformed"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btContratoEncerrarBuscarContratoMouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btContratoEncerrarBuscarContratoMouseExited"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btContratoEncerrarBuscarContratoActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel6">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoNomeCliente">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1738,21 +1810,21 @@
                         <Property name="text" type="java.lang.String" value="Cliente"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="tfClienteEncerrarContrato">
+                    <Component class="javax.swing.JTextField" name="tfContratoEncerrarCliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField8">
+                    <Component class="javax.swing.JTextField" name="tfContratoEncerrarTipo">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel21">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoEncerrarDataInicio">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1763,14 +1835,14 @@
                         <Property name="text" type="java.lang.String" value="Data Inicial"/>
                       </Properties>
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+                    <Component class="com.toedter.calendar.JDateChooser" name="dtContratoEncerrarDataInicio">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel25">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoEncerrarDataFinal">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1781,14 +1853,14 @@
                         <Property name="text" type="java.lang.String" value="Data Final"/>
                       </Properties>
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+                    <Component class="com.toedter.calendar.JDateChooser" name="dtContratoEncerrarDataFinal">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel26">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoEncerrarDataEntrega">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1799,7 +1871,7 @@
                         <Property name="text" type="java.lang.String" value="Data de Entrega"/>
                       </Properties>
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser3">
+                    <Component class="com.toedter.calendar.JDateChooser" name="dtContratoEncerrarDataEntrega">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -1813,7 +1885,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable3">
+                        <Component class="javax.swing.JTable" name="tbContratoEncerrarEquipamentos">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -1826,24 +1898,24 @@
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="3" rowCount="0">
-                                <Column editable="true" title="C&#xf3;d." type="java.lang.Object"/>
-                                <Column editable="true" title="Equipamento" type="java.lang.Object"/>
-                                <Column editable="true" title="Qtd." type="java.lang.Object"/>
+                                <Column editable="false" title="C&#xf3;d." type="java.lang.Object"/>
+                                <Column editable="false" title="Equipamento" type="java.lang.Object"/>
+                                <Column editable="false" title="Qtd." type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="300" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
@@ -1857,7 +1929,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JComboBox" name="jComboBox3">
+                    <Component class="javax.swing.JComboBox" name="cbContratoEncerrarTipo">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -1876,7 +1948,7 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel27">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoTipoEncerramento">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1887,7 +1959,7 @@
                         <Property name="text" type="java.lang.String" value="Fechamento"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel28">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoEncerraValor">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1898,14 +1970,14 @@
                         <Property name="text" type="java.lang.String" value="Valor"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField5">
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoEncerraValor">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel29">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoJuros">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1916,14 +1988,14 @@
                         <Property name="text" type="java.lang.String" value="Juros"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField6">
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoEncerrarJuros">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel30">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoMulta">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1934,14 +2006,14 @@
                         <Property name="text" type="java.lang.String" value="Multa"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField7">
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoEncerraMulta">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel31">
+                    <Component class="javax.swing.JLabel" name="lbTituloContratoValorTotal">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1952,7 +2024,7 @@
                         <Property name="text" type="java.lang.String" value="Valor Total"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField8">
+                    <Component class="javax.swing.JFormattedTextField" name="ffContratoEncerraValorTotal">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -1961,7 +2033,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel36">
+                <Component class="javax.swing.JLabel" name="lbTituloContratoEncerrar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="36" style="1"/>
@@ -2087,12 +2159,12 @@
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel46" min="-2" pref="260" max="-2" attributes="0"/>
+                                  <Component id="lbTituloEquipamento" min="-2" pref="260" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jPanel3" max="32767" attributes="0"/>
+                                      <Component id="pnEquipamento" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="0" pref="643" max="32767" attributes="0"/>
                                           <Component id="btRegistrarEquipamento" min="-2" pref="110" max="-2" attributes="0"/>
@@ -2112,9 +2184,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jLabel46" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="lbTituloEquipamento" min="-2" pref="45" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnEquipamento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btLimparEquipamento" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2127,7 +2199,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel3">
+                <Container class="javax.swing.JPanel" name="pnEquipamento">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2140,20 +2212,20 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTituloEquipamentoValorMensal" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTituloEquipamentoValorDiario" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTituloEquipamentoNomeEquipamento" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTituloEquipamentoNovo" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTextField9" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="tfEquipamentoNomeEquipamento" min="-2" pref="200" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btBuscarEquipamento" min="-2" pref="26" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTituloEquipamentoQtd" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jsQtdEstoqueEquipamento" alignment="0" pref="120" max="32767" attributes="0"/>
-                                      <Component id="jFormattedTextField9" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jFormattedTextField10" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jsEquipamentoQtdEstoque" alignment="0" pref="120" max="32767" attributes="0"/>
+                                      <Component id="ffEquipamentoValorDiario" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="ffEquipamentoValorMensal" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -2171,26 +2243,26 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTituloEquipamentoNovo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTituloEquipamentoNomeEquipamento" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfEquipamentoNomeEquipamento" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btBuscarEquipamento" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTituloEquipamentoQtd" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jsQtdEstoqueEquipamento" min="-2" max="-2" attributes="0"/>
+                              <Component id="jsEquipamentoQtdEstoque" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTituloEquipamentoValorDiario" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jFormattedTextField9" min="-2" max="-2" attributes="0"/>
+                              <Component id="ffEquipamentoValorDiario" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTituloEquipamentoValorMensal" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jFormattedTextField10" min="-2" max="-2" attributes="0"/>
+                              <Component id="ffEquipamentoValorMensal" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="150" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btAlterarEquipamento" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2202,7 +2274,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel33">
+                    <Component class="javax.swing.JLabel" name="lbTituloEquipamentoNovo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="1"/>
@@ -2210,10 +2282,10 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Novo Equipamento"/>
+                        <Property name="text" type="java.lang.String" value="NOVO EQUIPAMENTO"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel47">
+                    <Component class="javax.swing.JLabel" name="lbTituloEquipamentoNomeEquipamento">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2224,7 +2296,7 @@
                         <Property name="text" type="java.lang.String" value="Equipamento"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField9">
+                    <Component class="javax.swing.JTextField" name="tfEquipamentoNomeEquipamento">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -2246,7 +2318,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarEquipamentoActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel32">
+                    <Component class="javax.swing.JLabel" name="lbTituloEquipamentoQtd">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2257,9 +2329,9 @@
                         <Property name="text" type="java.lang.String" value="Quantidade de Estoque"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jsQtdEstoqueEquipamento">
+                    <Component class="javax.swing.JSpinner" name="jsEquipamentoQtdEstoque">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel34">
+                    <Component class="javax.swing.JLabel" name="lbTituloEquipamentoValorDiario">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2270,14 +2342,14 @@
                         <Property name="text" type="java.lang.String" value="Valor Di&#xe1;rio"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField9">
+                    <Component class="javax.swing.JFormattedTextField" name="ffEquipamentoValorDiario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel35">
+                    <Component class="javax.swing.JLabel" name="lbTituloEquipamentoValorMensal">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2288,7 +2360,7 @@
                         <Property name="text" type="java.lang.String" value="Valor Mensal"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField10">
+                    <Component class="javax.swing.JFormattedTextField" name="ffEquipamentoValorMensal">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -2345,7 +2417,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel46">
+                <Component class="javax.swing.JLabel" name="lbTituloEquipamento">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="36" style="1"/>
@@ -2430,67 +2502,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="pnUsuario">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d7" green="d7" red="d7" type="rgb"/>
-                </Property>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="cdTelaUsuario"/>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1080" max="32767" attributes="0"/>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="jPanel5" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="660" max="32767" attributes="0"/>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="80" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel5">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="1009" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="513" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-              </SubComponents>
-            </Container>
             <Container class="javax.swing.JPanel" name="pnTelaCliente">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -2499,18 +2510,13 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="card7"/>
+                  <CardConstraints cardName="cdTelaCliente"/>
                 </Constraint>
               </Constraints>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="794" max="32767" attributes="0"/>
                           <Component id="btClienteSalvar" min="-2" pref="110" max="-2" attributes="0"/>
@@ -2518,10 +2524,15 @@
                           <Component id="btClienteCancelar" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="lbTituloClientes" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                              <Component id="pnCliente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="50" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -2531,7 +2542,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel41" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="lbTituloClientes" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace pref="558" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btClienteCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2542,15 +2553,15 @@
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="56" max="32767" attributes="0"/>
+                              <Component id="pnCliente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="58" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel4">
+                <Container class="javax.swing.JPanel" name="pnCliente">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2572,70 +2583,74 @@
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jTextField12" min="-2" pref="354" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbTituloClienteIdCliente" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                      <Component id="tfClienteIdCliente" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btClienteBuscarCliente" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="jFormattedTextField13" pref="190" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace pref="19" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbTituloClienteNomeCliente" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tfClienteNomeCliente" min="-2" pref="308" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jFormattedTextField14" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
+                                                  <Component id="lbTituloClienteCpf" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="ffClienteCpf" min="-2" pref="230" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbTituloClienteTelefone" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="ffClienteTelefone" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel42" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="793" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbTituloCliente" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jFormattedTextField15" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                                          <Component id="jLabel45" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="ffClienteCep" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloClienteCep" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jTextField14" min="-2" pref="350" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloClienteLogradouro" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="tfClienteLogradouro" min="-2" pref="350" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloClienteNumero" min="-2" max="-2" attributes="0"/>
                                                           <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="jTextField13" min="-2" pref="68" max="-2" attributes="0"/>
+                                                              <Component id="tfClienteNumero" min="-2" pref="68" max="-2" attributes="0"/>
                                                               <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="ckbClienteSemNumero" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
                                                   </Group>
                                                   <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel51" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jTextField15" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloClienteBairro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="tfClienteBairro" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jTextField16" min="-2" pref="90" max="-2" attributes="0"/>
-                                                          <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="tfClienteComplemento" min="-2" pref="90" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloClienteComplemento" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel53" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jTextField17" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloClienteCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="tfClienteCidade" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jComboBox2" min="-2" pref="55" max="-2" attributes="0"/>
-                                                          <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="cbClienteUf" min="-2" pref="55" max="-2" attributes="0"/>
+                                                          <Component id="lbTituloClienteUf" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -2652,80 +2667,89 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTituloCliente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="lbTituloClienteNomeCliente" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="tfClienteNomeCliente" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="lbTituloClienteLogradouro" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloClienteIdCliente" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jTextField12" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="tfClienteIdCliente" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="btClienteBuscarCliente" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lbTituloClienteCpf" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ffClienteCpf" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbTituloClienteTelefone" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jFormattedTextField13" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jFormattedTextField14" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="ffClienteTelefone" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jFormattedTextField15" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="jTextField13" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                                          <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="lbTituloClienteCep" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="ffClienteCep" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Component id="lbTituloClienteNumero" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="3" attributes="0">
+                                                              <Component id="tfClienteNumero" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                                              <Component id="ckbClienteSemNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
                                                       </Group>
                                                   </Group>
+                                                  <Component id="tfClienteLogradouro" alignment="1" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                          </Group>
-                                          <Component id="jTextField14" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lbTituloClienteComplemento" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField15" min="-2" max="-2" attributes="0"/>
+                                              <Component id="tfClienteComplemento" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                              <Component id="jTextField17" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel54" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                                                  <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="lbTituloClienteBairro" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="tfClienteBairro" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField16" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lbTituloClienteCidade" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Component id="tfClienteCidade" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="lbTituloClienteUf" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                                          <Component id="cbClienteUf" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="227" max="32767" attributes="0"/>
+                              <EmptySpace pref="229" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btClienteAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btClienteDeletar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2736,7 +2760,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel37">
+                    <Component class="javax.swing.JLabel" name="lbTituloCliente">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="1"/>
@@ -2744,7 +2768,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cliente"/>
+                        <Property name="text" type="java.lang.String" value="CLIENTE"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btClienteAlterar">
@@ -2795,7 +2819,7 @@
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel42">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteNomeCliente">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2806,14 +2830,14 @@
                         <Property name="text" type="java.lang.String" value="Nome do Cliente"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField12">
+                    <Component class="javax.swing.JTextField" name="tfClienteNomeCliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel43">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteCpf">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2824,7 +2848,7 @@
                         <Property name="text" type="java.lang.String" value="CPF/CNPJ"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField13">
+                    <Component class="javax.swing.JFormattedTextField" name="ffClienteCpf">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -2832,7 +2856,7 @@
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel44">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteTelefone">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2843,7 +2867,7 @@
                         <Property name="text" type="java.lang.String" value="Telefone"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField14">
+                    <Component class="javax.swing.JFormattedTextField" name="ffClienteTelefone">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -2851,7 +2875,7 @@
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel45">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteCep">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2862,14 +2886,14 @@
                         <Property name="text" type="java.lang.String" value="CEP"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField15">
+                    <Component class="javax.swing.JFormattedTextField" name="ffClienteCep">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel49">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteNumero">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2880,14 +2904,14 @@
                         <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField13">
+                    <Component class="javax.swing.JTextField" name="tfClienteNumero">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+                    <Component class="javax.swing.JCheckBox" name="ckbClienteSemNumero">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -2896,7 +2920,7 @@
                         <Property name="focusPainted" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel50">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteLogradouro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2907,14 +2931,15 @@
                         <Property name="text" type="java.lang.String" value="Logradouro"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField14">
+                    <Component class="javax.swing.JTextField" name="tfClienteLogradouro">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel51">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteBairro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2925,14 +2950,15 @@
                         <Property name="text" type="java.lang.String" value="Bairro"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField15">
+                    <Component class="javax.swing.JTextField" name="tfClienteBairro">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel52">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteComplemento">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2943,14 +2969,15 @@
                         <Property name="text" type="java.lang.String" value="Complemento"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField16">
+                    <Component class="javax.swing.JTextField" name="tfClienteComplemento">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel53">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteCidade">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2961,14 +2988,15 @@
                         <Property name="text" type="java.lang.String" value="Cidade"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField17">
+                    <Component class="javax.swing.JTextField" name="tfClienteCidade">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel54">
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteUf">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2979,7 +3007,7 @@
                         <Property name="text" type="java.lang.String" value="UF"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox2">
+                    <Component class="javax.swing.JComboBox" name="cbClienteUf">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d7" green="d7" red="d7" type="rgb"/>
@@ -2993,9 +3021,49 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="lbTituloClienteIdCliente">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI" size="14" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="ID Cliente"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tfClienteIdCliente">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="d7" green="d7" red="d7" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btClienteBuscarCliente">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI" size="14" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/loupe.png"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btClienteBuscarClienteActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel41">
+                <Component class="javax.swing.JLabel" name="lbTituloClientes">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="36" style="1"/>

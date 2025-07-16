@@ -25,6 +25,14 @@ public class Equipamento {
         this.vlrDiaria = vlrDiaria;
         this.vlrMensal = vlrMensal;
     }
+    
+    public Equipamento(Integer id, String descricao, double vlrDiaria, double vlrMensal, Integer qtdContrato){
+        this.id = id;
+        this.descricao = descricao;
+        this.vlrDiaria = vlrDiaria;
+        this.vlrMensal = vlrMensal;
+        this.qtdContrato = qtdContrato;
+    }
 
     public Integer getId() {
         return id;

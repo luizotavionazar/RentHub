@@ -11,6 +11,14 @@ public class Endereco {
         this.logradouro = logradouro;
         this.bairro = bairro;
     }
+    public Endereco(String cep, Cidade cidade, String logradouro, String bairro, String complemento,Integer numero) {
+        this.cep = cep;
+        this.cidade = cidade;
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.complemento = complemento;
+        this.numero = numero;
+    }
 
     public Integer getId() {
         return id;

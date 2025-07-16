@@ -107,14 +107,18 @@ public class EquipamentoDAO {
         }
     }
     
-    public List<Equipamento> listar(String sqlFiltro) throws SQLException {
+    public List<Equipamento> listar(String sqlFiltro, List<Object> filtros) throws SQLException {
         log.registrarLog(1, "EquipamentoDAO", "listar", "equipamento", "Listando os Equipamentos cadastrados no Banco de Dados");
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT id, descricao, valor_diaria, valor_mensal, qtd_total, qtd_disponivel ");
         sql.append("FROM equipamento ");
+        sql.append("Where 1 = 1 ");
         sql.append(sqlFiltro);
         sql.append("ORDER BY descricao ASC");
         try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql.toString())) {
+            for(int i = 0; i < filtros.size(); i++){
+                stmt.setObject(i+1, filtros.get(i));
+            }
             ResultSet rs = stmt.executeQuery();
             List<Equipamento> equipamentos = new ArrayList<>();
             int qtdEquipamentos = 0;

@@ -5,6 +5,7 @@
 package br.edu.iftm.renthub.view;
 
 import java.sql.Connection;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,6 +13,7 @@ import java.sql.Connection;
  */
 public class BuscarCliente extends javax.swing.JDialog {
     private UtilsComponent estilo;
+    private DefaultTableModel modelo;
     /**
      * Creates new form BuscarCliente
      */
@@ -19,6 +21,7 @@ public class BuscarCliente extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         estilo = new UtilsComponent();
+        modelo = (DefaultTableModel) tbBuscarCliente.getModel();
     }
 
     /**
@@ -30,35 +33,35 @@ public class BuscarCliente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        pnTelaBuscarCliente = new javax.swing.JPanel();
+        çbTituloNome = new javax.swing.JLabel();
+        tfNome = new javax.swing.JTextField();
+        lbTituloCpf = new javax.swing.JLabel();
+        tfCpf = new javax.swing.JTextField();
         btBuscar = new RoundedButton("");
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbBuscarCliente = new javax.swing.JTable();
         btSelecionar = new RoundedButton("");
         btLimpar = new RoundedButton("");
         btSair = new RoundedButton("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnTelaBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Nome do Cliente");
+        çbTituloNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        çbTituloNome.setForeground(new java.awt.Color(0, 0, 0));
+        çbTituloNome.setText("Nome do Cliente");
 
-        jTextField1.setBackground(new java.awt.Color(215, 215, 215));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        tfNome.setBackground(new java.awt.Color(215, 215, 215));
+        tfNome.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("CPF/CNPJ");
+        lbTituloCpf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloCpf.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloCpf.setText("CPF/CNPJ");
 
-        jTextField2.setBackground(new java.awt.Color(215, 215, 215));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        tfCpf.setBackground(new java.awt.Color(215, 215, 215));
+        tfCpf.setForeground(new java.awt.Color(0, 0, 0));
 
         btBuscar.setBackground(new java.awt.Color(240, 240, 240));
         btBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -78,9 +81,9 @@ public class BuscarCliente extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(215, 215, 215));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbBuscarCliente.setBackground(new java.awt.Color(215, 215, 215));
+        tbBuscarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        tbBuscarCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -96,11 +99,11 @@ public class BuscarCliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(300);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jScrollPane1.setViewportView(tbBuscarCliente);
+        if (tbBuscarCliente.getColumnModel().getColumnCount() > 0) {
+            tbBuscarCliente.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tbBuscarCliente.getColumnModel().getColumn(1).setPreferredWidth(300);
+            tbBuscarCliente.getColumnModel().getColumn(2).setPreferredWidth(100);
         }
 
         btSelecionar.setBackground(new java.awt.Color(240, 240, 240));
@@ -128,6 +131,11 @@ public class BuscarCliente extends javax.swing.JDialog {
                 btLimparMouseExited(evt);
             }
         });
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btSair.setBackground(new java.awt.Color(240, 240, 240));
         btSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -141,51 +149,56 @@ public class BuscarCliente extends javax.swing.JDialog {
                 btSairMouseExited(evt);
             }
         });
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnTelaBuscarClienteLayout = new javax.swing.GroupLayout(pnTelaBuscarCliente);
+        pnTelaBuscarCliente.setLayout(pnTelaBuscarClienteLayout);
+        pnTelaBuscarClienteLayout.setHorizontalGroup(
+            pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTelaBuscarClienteLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnTelaBuscarClienteLayout.createSequentialGroup()
                         .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnTelaBuscarClienteLayout.createSequentialGroup()
+                            .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(çbTituloNome)
+                                .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(30, 30, 30)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTextField2)
+                            .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbTituloCpf)
+                                .addGroup(pnTelaBuscarClienteLayout.createSequentialGroup()
+                                    .addComponent(tfCpf)
                                     .addGap(18, 18, 18)
                                     .addComponent(btBuscar))))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnTelaBuscarClienteLayout.setVerticalGroup(
+            pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTelaBuscarClienteLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(çbTituloNome)
+                    .addComponent(lbTituloCpf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -196,11 +209,11 @@ public class BuscarCliente extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTelaBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTelaBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -239,9 +252,24 @@ public class BuscarCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_btSairMouseExited
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btBuscarActionPerformed
 
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        limpaBuscarCliente();
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        limpaBuscarCliente();
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+    
+    //Metodo para limpeza dos campos da tela
+    public void limpaBuscarCliente(){
+        tfNome.setText("");
+        tfCpf.setText("");
+        modelo.setRowCount(0);
+    }
     /**
      * @param args the command line arguments
      */
@@ -275,12 +303,12 @@ public class BuscarCliente extends javax.swing.JDialog {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSelecionar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lbTituloCpf;
+    private javax.swing.JPanel pnTelaBuscarCliente;
+    private javax.swing.JTable tbBuscarCliente;
+    private javax.swing.JTextField tfCpf;
+    private javax.swing.JTextField tfNome;
+    private javax.swing.JLabel çbTituloNome;
     // End of variables declaration//GEN-END:variables
 }

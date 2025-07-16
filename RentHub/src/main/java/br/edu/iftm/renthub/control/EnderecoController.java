@@ -37,4 +37,8 @@ public class EnderecoController {
             return false;
         }
     }
+    
+    public Endereco buscarEndereco(int idEndereco){
+        return enderecoDAO.buscarEndereco(idEndereco);
+    }
 }

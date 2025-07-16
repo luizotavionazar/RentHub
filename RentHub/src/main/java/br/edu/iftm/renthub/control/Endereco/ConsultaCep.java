@@ -4,6 +4,8 @@
  */
 package br.edu.iftm.renthub.control.Endereco;
 
+import br.edu.iftm.renthub.model.Cidade;
+import br.edu.iftm.renthub.model.Endereco;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -14,7 +16,7 @@ import org.json.JSONObject;
 
 //Criado por Jhonnie em 09/07/2025
 public class ConsultaCep {
-    public static void buscarCep(String cep){
+    public static Endereco buscarCep(String cep){
         try{
             URL url = new URL ("https://viacep.com.br/ws/" + cep + "/json/");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -38,16 +40,13 @@ public class ConsultaCep {
                 String bairro = json.getString("bairro");
                 String localidade = json.getString("localidade");
                 String uf = json.getString("uf");
-
-                // Aqui você preenche os campos do seu formulário
-                System.out.println("Logradouro: " + logradouro);
-                System.out.println("Bairro: " + bairro);
-                System.out.println("Cidade: " + localidade);
-                System.out.println("Estado: " + uf);
+                return new Endereco(cep, new Cidade(localidade, uf), logradouro, bairro);
             }
+            return null;
         }catch(Exception e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao buscar o CEP.");
-        }  
+            return null;
+        }
     }
 }

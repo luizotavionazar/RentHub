@@ -4,7 +4,13 @@
  */
 package br.edu.iftm.renthub.view;
 
+import br.edu.iftm.renthub.control.EquipamentoController;
+import br.edu.iftm.renthub.model.Equipamento;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,13 +18,21 @@ import java.sql.Connection;
  */
 public class BuscarEquipamento extends javax.swing.JDialog {
     private UtilsComponent estilo;
+    private DefaultTableModel modelo;
+    private EquipamentoController  equipamentoController;
+    private List<Equipamento> equipamentos;
+    private Equipamento equipamento;
+    private TelaPrincipal tela;
     /**
      * Creates new form BuscarEquipamento
      */
-    public BuscarEquipamento(java.awt.Frame parent, boolean modal, Connection conexao) {
+    public BuscarEquipamento(java.awt.Frame parent, boolean modal, Connection conexao, TelaPrincipal tela) throws SQLException {
         super(parent, modal);
+        equipamentoController = new EquipamentoController(conexao);
+        this.tela = tela;
         initComponents();
         estilo = new UtilsComponent();
+        modelo = (DefaultTableModel) tbBuscaEquipamento.getModel();
     }
 
     /**
@@ -30,26 +44,26 @@ public class BuscarEquipamento extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        pnTelaBuscaEquipamento = new javax.swing.JPanel();
+        lbTituloDescricao = new javax.swing.JLabel();
+        tfBuscaEquipamento = new javax.swing.JTextField();
         btBuscar = new RoundedButton("");
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbBuscaEquipamento = new javax.swing.JTable();
         btSelecionar = new RoundedButton("");
         btLimpar = new RoundedButton("");
         btSair = new RoundedButton("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnTelaBuscaEquipamento.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Descrição do Equipamento");
+        lbTituloDescricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloDescricao.setText("Descrição do Equipamento");
 
-        jTextField1.setBackground(new java.awt.Color(215, 215, 215));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        tfBuscaEquipamento.setBackground(new java.awt.Color(215, 215, 215));
+        tfBuscaEquipamento.setForeground(new java.awt.Color(0, 0, 0));
 
         btBuscar.setBackground(new java.awt.Color(240, 240, 240));
         btBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -69,30 +83,31 @@ public class BuscarEquipamento extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(215, 215, 215));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbBuscaEquipamento.setBackground(new java.awt.Color(215, 215, 215));
+        tbBuscaEquipamento.setForeground(new java.awt.Color(0, 0, 0));
+        tbBuscaEquipamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Descrição", "Qtd. Disponivel", "Valor"
+                "ID", "Descrição", "Qtd. Disp.", "Vlr. Diario", "Vlr. Mensal"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(350);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(50);
+        jScrollPane1.setViewportView(tbBuscaEquipamento);
+        if (tbBuscaEquipamento.getColumnModel().getColumnCount() > 0) {
+            tbBuscaEquipamento.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tbBuscaEquipamento.getColumnModel().getColumn(1).setPreferredWidth(350);
+            tbBuscaEquipamento.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tbBuscaEquipamento.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tbBuscaEquipamento.getColumnModel().getColumn(4).setPreferredWidth(80);
         }
 
         btSelecionar.setBackground(new java.awt.Color(240, 240, 240));
@@ -105,6 +120,11 @@ public class BuscarEquipamento extends javax.swing.JDialog {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btSelecionarMouseExited(evt);
+            }
+        });
+        btSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSelecionarActionPerformed(evt);
             }
         });
 
@@ -120,6 +140,11 @@ public class BuscarEquipamento extends javax.swing.JDialog {
                 btLimparMouseExited(evt);
             }
         });
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btSair.setBackground(new java.awt.Color(240, 240, 240));
         btSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -133,45 +158,50 @@ public class BuscarEquipamento extends javax.swing.JDialog {
                 btSairMouseExited(evt);
             }
         });
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnTelaBuscaEquipamentoLayout = new javax.swing.GroupLayout(pnTelaBuscaEquipamento);
+        pnTelaBuscaEquipamento.setLayout(pnTelaBuscaEquipamentoLayout);
+        pnTelaBuscaEquipamentoLayout.setHorizontalGroup(
+            pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTelaBuscaEquipamentoLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnTelaBuscaEquipamentoLayout.createSequentialGroup()
                         .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
+                    .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnTelaBuscaEquipamentoLayout.createSequentialGroup()
+                            .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnTelaBuscaEquipamentoLayout.createSequentialGroup()
+                                    .addComponent(lbTituloDescricao)
                                     .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jTextField1))
+                                .addComponent(tfBuscaEquipamento))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btBuscar))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnTelaBuscaEquipamentoLayout.setVerticalGroup(
+            pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTelaBuscaEquipamentoLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1)
+                .addComponent(lbTituloDescricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfBuscaEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,11 +212,11 @@ public class BuscarEquipamento extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTelaBuscaEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTelaBuscaEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -201,7 +231,13 @@ public class BuscarEquipamento extends javax.swing.JDialog {
     }//GEN-LAST:event_btBuscarMouseExited
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
+        String descricao = tfBuscaEquipamento.getText();
+        equipamentos = equipamentoController.listar(descricao);
+        modelo.setRowCount(0);
+        for (Equipamento equipamento : equipamentos){
+            Object[] linha = { equipamento.getId(), equipamento.getDescricao(), equipamento.getQtdDisponivel(), equipamento.getVlrDiaria(), equipamento.getVlrMensal()};
+            modelo.addRow(linha);
+        }
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btSelecionarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSelecionarMouseEntered
@@ -228,6 +264,38 @@ public class BuscarEquipamento extends javax.swing.JDialog {
         estilo.aplicaHoverExited(btSair);
     }//GEN-LAST:event_btSairMouseExited
 
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        limpaBuscarEquipamento();
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        limpaBuscarEquipamento();
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
+        int indiceTabela = tbBuscaEquipamento.getSelectedRow();
+        if(indiceTabela == -1){
+            JOptionPane.showMessageDialog(rootPane, "Selecione um equipamento!", "Busca de equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else{
+            equipamento = equipamentos.get(indiceTabela);
+            tela.preencheEquipamento(equipamento);
+        }
+        limpaBuscarEquipamento();
+        dispose();
+    }//GEN-LAST:event_btSelecionarActionPerformed
+    
+    public Equipamento getEquipamento(){
+        return equipamento;
+    }
+    
+    //Metodo para limpeza dos campos da tela
+    public void limpaBuscarEquipamento(){
+        tfBuscaEquipamento.setText("");
+        modelo.setRowCount(0);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -261,10 +329,10 @@ public class BuscarEquipamento extends javax.swing.JDialog {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSelecionar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbTituloDescricao;
+    private javax.swing.JPanel pnTelaBuscaEquipamento;
+    private javax.swing.JTable tbBuscaEquipamento;
+    private javax.swing.JTextField tfBuscaEquipamento;
     // End of variables declaration//GEN-END:variables
 }
