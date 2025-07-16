@@ -44,6 +44,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private static VerTotalizazao verTotalizazao;
     private static BuscarEquipamento buscarEquipamento;
     private static BuscarCliente buscarCliente;
+    private List<Equipamento> equipamentosContrato;
 
     public TelaPrincipal(Connection conexao) throws SQLException {
         usuarioController = new UsuarioController(conexao);
@@ -2190,6 +2191,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Equipamento equipamento = buscarEquipamento.getEquipamento();
         Object[] linha = {equipamento.getId(), equipamento.getDescricao(), jsQtdEquipamento.getValue()};
         modeloTabelaEquipamento.addRow(linha);
+        equipamento.setQtdContrato(jsQtdEquipamento.getValue());
+        equipamentosContrato.add(equipamento);
     }//GEN-LAST:event_btContratoCadastroAdicionarEquipamentoActionPerformed
 
     private void btBuscarContratoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btBuscarContratoMouseEntered
@@ -2386,8 +2389,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(!tfContratoCadastroComplemento.getText().isEmpty()||!tfContratoCadastroComplemento.getText().equals("")){
             endereco.setComplemento(tfContratoCadastroComplemento.getText());
         }
-        clienteController.cadastrar(new Cliente(nomeCliente, identificacao, telefone, endereco));
-        
+        Cliente cliente = new Cliente(nomeCliente, identificacao, telefone, endereco);
+        cliente.setId(clienteController.cadastrar(cliente));
+        Contrato contrato = new Contrato();
+        //PEGAR A DATA INICIO E DATA FIM E CONVERTER PARA LOCALDATE EM dataInicio e dataFim
+        contratoController.cadastrar(new Contrato(cliente, equipamentosContrato, dataInicio, dataFim));
     }//GEN-LAST:event_btContratoRegistrarActionPerformed
 
     private void ffContratoCadastroCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ffContratoCadastroCepFocusLost
@@ -2410,7 +2416,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     public void preencheEquipamento(Equipamento equipamento){
-        tfContratoCadastroEquipamento.setText(equipamento.getDescricao());    
+        tfContratoCadastroEquipamento.setText(equipamento.getDescricao());
+        equipamentosContrato.add(equipamento);
     }
     
     // metodos para limpeza dos componentes das telas

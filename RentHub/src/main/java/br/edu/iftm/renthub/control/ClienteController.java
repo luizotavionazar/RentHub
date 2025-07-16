@@ -18,25 +18,23 @@ public class ClienteController {
 
     RegistrosLog log = new RegistrosLog();
 
-    public boolean cadastrar(Cliente cliente) {
+    public Integer cadastrar(Cliente cliente) {
         log.registrarLog(1, "ClienteController", "cadastrar", "cliente", "Cadastrando o cliente: " + cliente.getNome());
         try {
             if (enderecoController.cadastrar(cliente.getEndereco())) {
-                if (clienteDAO.cadastrar(cliente.getNome(), cliente.getDocumento(), cliente.getTelefone(), cliente.getEndereco().getId())) {
-                    log.registrarLog(2, "ClienteController", "cadastrar", "cliente", "Cliente: " + cliente.getNome() + " cadastrado com sucesso");
-                    return true;
+                    return clienteDAO.cadastrar(cliente.getNome(), cliente.getDocumento(), cliente.getTelefone(), cliente.getEndereco().getId());
                 } else {
                     log.registrarLog(3, "ClienteController", "cadastrar", "cliente", "Cliente: " + cliente.getNome() + " não cadastrado");
-                    return false;
+                    return 0;
                 }
             } else {
                 log.registrarLog(3, "ClienteController", "cadastrar", "cliente", "Falha ao cadastrar o endereço do cliente: " + cliente.getNome() + ". Cadastrado não realizado");
-                return false;
+                return 0;
             }
         } catch (Exception e) {
             log.registrarLog(4, "ClienteController", "cadastrar", "cliente", "Erro ao cadastrar o cliente: " + e.getMessage());
             e.printStackTrace();
-            return false;
+            return 0;
         }
     }
 
