@@ -1,33 +1,71 @@
 package br.edu.iftm.renthub.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-import br.edu.iftm.renthub.model.Contrato;
+import br.edu.iftm.renthub.model.Equipamento;
+import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class ContratoDAO {
-    
-    public String cadastrar (int tipo, int idCliente, int idEquip, int qtdEquip, LocalDate dataInicio, LocalDate dataFim) {
-        String sql = "INSERT INTO contrato (tipo, id_cliente, id_equip, qtd_equip, data_inicio, data_fim, data_entrega, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = ConexaoDAO.conexaoBd();){
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, tipo);
-            stmt.setInt(2, idCliente);
-            stmt.setInt(3, idEquip);
-            stmt.setInt(4, qtdEquip);
-            stmt.setDate(5, Date.valueOf(dataInicio));
-            stmt.setDate(6, Date.valueOf(dataFim));
-            stmt.setNull(7, java.sql.Types.DATE);
-            stmt.setString(8, "A");
-            stmt.executeUpdate();   
-            return "Contrato realizado com sucesso!\n";
+    private final Connection conexaoBanco;
+
+    public ContratoDAO(Connection conexao) {
+        this.conexaoBanco = conexao;
+    }
+
+    RegistrosLog log = new RegistrosLog();
+
+    public boolean cadastrar(Integer idCliente, String tipo, String status, LocalDate dataInicio, LocalDate dataFim, List<Equipamento> equipamentos) throws SQLException {
+        log.registrarLog(1, "ContratoDAO", "cadastrar", "contrato, equipamento_contrato", "Cadastrando o contrato no banco de dados");
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO contrato (id_cliente, tipo, status, data_inicio, data_fim) ");
+        query.append("VALUES (?, ?, ?, ?, ?)");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString(), PreparedStatement.RETURN_GENERATED_KEYS)) {
+            stmt.setInt(1, idCliente);
+            stmt.setString(2, tipo);
+            stmt.setString(3, status);
+            stmt.setObject(4, dataInicio);
+            stmt.setObject(5, dataFim);
+            stmt.executeUpdate();
+            log.registrarLog(2, "ContratoDAO", "cadastrar", "contrato", "Contrato cadastrado no banco de dados");
+            log.registrarLog(1, "ContratoDAO", "cadastrar", "equipamento_contrato", "Cadastrando a relação do equipamento com o contrato no banco de dados");
+            Integer idContrato = null;
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    idContrato = rs.getInt(1);
+                }
+            } catch (SQLException e) {
+                log.registrarLog(4, "ContratoDAO", "cadastrar", "contrato", "Erro ao obter o ID do contrato no Banco de Dados: "+ e.getMessage());
+                e.printStackTrace();
+            }
+            List<Equipamento> temp = equipamentos;
+            Iterator<Equipamento> iter = temp.iterator();
+            while (iter.hasNext()) {
+                Equipamento equipTemp = iter.next();
+                query = new StringBuilder();
+                query.append("INSERT INTO equipamento_contrato (id_contrato, id_equipamento, quantidade) ");
+                query.append("VALUES (?, ?, ?)");
+                try (PreparedStatement stmtEquip = conexaoBanco.prepareStatement(query.toString())) {
+                    stmtEquip.setInt(1, idContrato);
+                    stmtEquip.setInt(2, equipTemp.getId());
+                    stmtEquip.setInt(3, equipTemp.getQtdContrato());
+                    stmtEquip.executeUpdate();
+                    log.registrarLog(2, "ContratoDAO", "cadastrar", "equipamento_contrato", "Relação de equipamento com  ocontrato cadastrada no banco de dados");
+                } catch (SQLException e) {
+                    log.registrarLog(4, "ContratoDAO", "cadastrar", "equipamento_contrato", "Erro ao cadastrar a relação do equipamento com o contrato no banco de dados: "+ e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+            return true;
         } catch (SQLException e) {
-            return "Erro ao cadastrar o Contrato\n";
+            log.registrarLog(4, "ContratoDAO", "cadastrar", "contrato, equipamento_contrato", "Erro ao cadastrar o contrato no banco de dados: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 

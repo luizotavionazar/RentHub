@@ -39,5 +39,4 @@ public class EnderecoDAO {
             return false;
         }
     }
-
 }

@@ -6,8 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.iftm.renthub.model.Totalizacao;
+import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class TotalizacaoDAO {
+    private final Connection conexaoBanco;
+
+    public TotalizacaoDAO(Connection conexao) {
+        this.conexaoBanco = conexao;
+    }
+
+    RegistrosLog log = new RegistrosLog();
     
     public String Cadastrartotalizacao (int contrato, double valor, double multa, double juros, double total) {
         String sql = "INSERT INTO totalizacao (id_contrato, valor, multa, juros, vlr_total) VALUES (?, ?, ?, ?, ?)";

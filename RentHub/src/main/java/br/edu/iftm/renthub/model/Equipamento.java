@@ -1,7 +1,7 @@
 package br.edu.iftm.renthub.model;
 
 public class Equipamento {
-    private Integer id, qtdTotal, qtdDisponivel;
+    private Integer id, qtdTotal, qtdDisponivel, qtdContrato;
     private String descricao;
     private double vlrDiaria, vlrMensal;
 
@@ -48,6 +48,14 @@ public class Equipamento {
 
     public void setQtdDisponivel(Integer qtdDisponivel) {
         this.qtdDisponivel = qtdDisponivel;
+    }
+
+    public Integer getQtdContrato() {
+        return qtdContrato;
+    }
+
+    public void setQtdContrato(Integer qtdContrato) {
+        this.qtdDisponivel = qtdContrato;
     }
 
     public String getDescricao() {

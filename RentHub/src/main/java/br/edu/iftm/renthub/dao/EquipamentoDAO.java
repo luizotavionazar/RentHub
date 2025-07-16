@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.util.ArrayList;
-//import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.iftm.renthub.model.Equipamento;
 import br.edu.iftm.renthub.view.RegistrosLog;
@@ -106,19 +106,39 @@ public class EquipamentoDAO {
             return null;
         }
     }
-    //FAZER SEMELHANTE A BUSCA FILTRADA UTILIZADA NO PROJETO NOSSO LAR
-    //public List<Equipamento> listar() {
-    //    List<Equipamento> equipamentos = new ArrayList<>();
-    //    String query = "SELECT * FROM equipamento order by id_equip ASC";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(query);
-    //        ResultSet rs = stmt.executeQuery();
-    //        while (rs.next()) {
-    //            
-    //        }
-    //    } catch (SQLException e) {
-    //        e.printStackTrace();
-    //    }
-    //    return equipamentos;
-    //}
+    
+    public List<Equipamento> listar(String sqlFiltro) throws SQLException {
+        log.registrarLog(1, "EquipamentoDAO", "listar", "equipamento", "Listando os Equipamentos cadastrados no Banco de Dados");
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT id, descricao, valor_diaria, valor_mensal, qtd_total, qtd_disponivel ");
+        sql.append("FROM equipamento ");
+        sql.append(sqlFiltro);
+        sql.append("ORDER BY descricao ASC");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql.toString())) {
+            ResultSet rs = stmt.executeQuery();
+            List<Equipamento> equipamentos = new ArrayList<>();
+            int qtdEquipamentos = 0;
+            while (rs.next()) {
+                Equipamento equipamento = new Equipamento();
+                equipamento.setId(rs.getInt("id"));
+                equipamento.setDescricao(rs.getString("descricao"));
+                equipamento.setVlrDiaria(rs.getDouble("valor_diaria"));
+                equipamento.setVlrMensal(rs.getDouble("valor_mensal"));
+                equipamento.setQtdTotal(rs.getInt("qtd_total"));
+                equipamento.setQtdDisponivel(rs.getInt("qtd_disponivel"));
+                qtdEquipamentos++;
+                equipamentos.add(equipamento);
+            }
+            if (!equipamentos.isEmpty()) {
+                log.registrarLog(2, "EquipamentoDAO", "listar", "equipamento", "Equipamentos listados - foram encontrados " + qtdEquipamentos + " registros no Banco de Dados");
+            } else {
+                log.registrarLog(3, "EquipamentoDAO", "listar", "equipamento", "Não foram encontrados equipamentos no Banco de Dados");
+            }
+            return equipamentos;
+        } catch (SQLException e) {
+            log.registrarLog(4, "EquipamentoDAO", "listar", "equipamento", "Erro ao listar os equipamentos do Banco de Dados: "+ e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

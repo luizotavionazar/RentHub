@@ -1,7 +1,7 @@
 package br.edu.iftm.renthub.control;
 
 import java.sql.Connection;
-//import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.iftm.renthub.dao.EquipamentoDAO;
 import br.edu.iftm.renthub.model.Equipamento;
@@ -86,8 +86,21 @@ public class EquipamentoController {
         }
     }
 
-    // FAZER SEMELHANTE A BUSCA FILTRADA UTILIZADA NO PROJETO NOSSO LAR
-    // public ArrayList<Equipamento> listarEquipamentos () {
-    // return equipamentoDAO.listarEquipamentos();
-    // }
+    public List<Equipamento> listar(String descricao) {
+        log.registrarLog(1, "EquipamentoController", "listar", "equipamento", "Listando os equipamentos");
+        StringBuilder sqlFiltro = new StringBuilder();
+        //List<Object> filtros = new ArrayList<>(); - UTILIZADO PARA EXIBIR OS FILTROS NO RELATORIO
+        if (!descricao.isEmpty() || !descricao.equals("")) {
+            sqlFiltro.append("AND descricao LIKE ? ");
+            //filtros.add("%"+ descricao +"%");
+        }
+        try {
+            return equipamentoDAO.listar(sqlFiltro.toString());
+        } catch (Exception e) {
+            log.registrarLog(4, "EquipamentoController", "listar", "equipamento", "Erro ao listar os equipamentos: "+ e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+        
+    }
 }
