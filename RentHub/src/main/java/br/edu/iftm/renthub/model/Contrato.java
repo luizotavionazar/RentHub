@@ -43,10 +43,9 @@ public class Contrato {
         this.status = Status.ATIVO;
     }
 
-    public Contrato(Cliente cliente, List<Equipamento> equipamentos, Tipo tipo, LocalDate dataInicio, LocalDate dataFim) {
+    public Contrato(Cliente cliente, List<Equipamento> equipamentos, LocalDate dataInicio, LocalDate dataFim) {
         this.cliente = cliente;
         this.equipamentos = equipamentos;
-        this.tipo = tipo;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.status = Status.ATIVO;
