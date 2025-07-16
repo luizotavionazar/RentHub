@@ -21,6 +21,10 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.localDate;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -2069,6 +2073,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btMenuContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuContratoActionPerformed
         cdlPn.show(pnCdTelas, "cdTelaCadastroContrato");
+        LocalDate dataAgora = LocalDate.now();
+        Date date = Date.from(dataAgora.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        dcContratoCadastroDataInicio.setDate(date);
     }//GEN-LAST:event_btMenuContratoActionPerformed
 
     private void btMenuClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btMenuClienteMouseEntered
@@ -2380,7 +2387,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             endereco.setComplemento(tfContratoCadastroComplemento.getText());
         }
         clienteController.cadastrar(new Cliente(nomeCliente, identificacao, telefone, endereco));
-        contratoController.cadastrar();
+        
     }//GEN-LAST:event_btContratoRegistrarActionPerformed
 
     private void ffContratoCadastroCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ffContratoCadastroCepFocusLost
