@@ -20,23 +20,35 @@ public class ClienteDAO {
 
     RegistrosLog log = new RegistrosLog();
 
-    public boolean cadastrar(String nome, String documento, String telefone, Integer idEndereco) {
+    public Integer cadastrar(String nome, String documento, String telefone, Integer idEndereco) {
         log.registrarLog(1, "ClienteDAO", "cadastrar", "cliente", "Cadastrando o Cliente no Banco de Dados");
         StringBuilder query = new StringBuilder();
         query.append("INSERT INTO cliente (nome, documento, telefone, id_endereco) ");
         query.append("VALUES (?, ?, ?, ?)");
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString(), PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, nome);
             stmt.setString(2, documento);
             stmt.setString(3, telefone);
             stmt.setInt(4, idEndereco);
             stmt.executeUpdate();
             log.registrarLog(2, "ClienteDAO", "cadastrar", "cliente", "Cliente cadastrado no Banco de Dados com sucesso");
+            Integer idCli = null;
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    idCli = rs.getInt(1);
+                    return idCli;
+                } else {
+                    return 0;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return 0;
+            }
             return true;
         } catch (SQLException e) {
             log.registrarLog(4, "ClienteDAO", "cadastrar", "cliente", "Erro ao cadastrar o cliente no Banco de Dados: " + e.getMessage());
             e.printStackTrace();
-            return false;
+            return 0;
         }
     }
 
