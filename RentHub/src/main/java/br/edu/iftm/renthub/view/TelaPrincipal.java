@@ -180,6 +180,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         lbFoto = new javax.swing.JLabel();
         btAddFoto = new RoundedButton("");
+        pnTelaCliente = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        btBuscarEquipamento1 = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        jsQtdEstoqueEquipamento1 = new javax.swing.JSpinner();
+        jLabel39 = new javax.swing.JLabel();
+        jFormattedTextField11 = new javax.swing.JFormattedTextField();
+        jLabel40 = new javax.swing.JLabel();
+        jFormattedTextField12 = new javax.swing.JFormattedTextField();
+        btAlterarEquipamento1 = new RoundedButton("");
+        btDeletarEquipamento1 = new RoundedButton("");
 
         menuSair.setText("Sair");
         menuSair.addActionListener(new java.awt.event.ActionListener() {
@@ -1641,6 +1655,161 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pnCdTelas.add(pnUsuario, "cdTelaUsuario");
 
+        pnTelaCliente.setBackground(new java.awt.Color(215, 215, 215));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel37.setText("Novo Equipamento");
+
+        jLabel48.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel48.setText("Equipamento");
+
+        jTextField10.setBackground(new java.awt.Color(215, 215, 215));
+
+        btBuscarEquipamento1.setBackground(new java.awt.Color(240, 240, 240));
+        btBuscarEquipamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/loupe.png"))); // NOI18N
+        btBuscarEquipamento1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btBuscarEquipamento1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btBuscarEquipamento1MouseExited(evt);
+            }
+        });
+        btBuscarEquipamento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarEquipamento1ActionPerformed(evt);
+            }
+        });
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel38.setText("Quantidade de Estoque");
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel39.setText("Valor Diário");
+
+        jFormattedTextField11.setBackground(new java.awt.Color(215, 215, 215));
+
+        jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel40.setText("Valor Mensal");
+
+        jFormattedTextField12.setBackground(new java.awt.Color(215, 215, 215));
+
+        btAlterarEquipamento1.setBackground(new java.awt.Color(240, 240, 240));
+        btAlterarEquipamento1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btAlterarEquipamento1.setForeground(new java.awt.Color(0, 0, 0));
+        btAlterarEquipamento1.setText("Alterar");
+        btAlterarEquipamento1.setPreferredSize(new java.awt.Dimension(76, 35));
+        btAlterarEquipamento1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btAlterarEquipamento1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btAlterarEquipamento1MouseExited(evt);
+            }
+        });
+
+        btDeletarEquipamento1.setBackground(new java.awt.Color(240, 240, 240));
+        btDeletarEquipamento1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btDeletarEquipamento1.setForeground(new java.awt.Color(0, 0, 0));
+        btDeletarEquipamento1.setText("Deletar");
+        btDeletarEquipamento1.setPreferredSize(new java.awt.Dimension(76, 35));
+        btDeletarEquipamento1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btDeletarEquipamento1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btDeletarEquipamento1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel48)
+                    .addComponent(jLabel37)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btBuscarEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel38)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jsQtdEstoqueEquipamento1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addComponent(jFormattedTextField11, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jFormattedTextField12, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btAlterarEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btDeletarEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel37)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jsQtdEstoqueEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jFormattedTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jFormattedTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btAlterarEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDeletarEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
+        );
+
+        javax.swing.GroupLayout pnTelaClienteLayout = new javax.swing.GroupLayout(pnTelaCliente);
+        pnTelaCliente.setLayout(pnTelaClienteLayout);
+        pnTelaClienteLayout.setHorizontalGroup(
+            pnTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGroup(pnTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnTelaClienteLayout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(36, 36, 36)))
+        );
+        pnTelaClienteLayout.setVerticalGroup(
+            pnTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 660, Short.MAX_VALUE)
+            .addGroup(pnTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnTelaClienteLayout.createSequentialGroup()
+                    .addGap(67, 67, 67)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(68, Short.MAX_VALUE)))
+        );
+
+        pnCdTelas.add(pnTelaCliente, "card7");
+
         pnTela.add(pnCdTelas, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnTela, "cdTelaSistema");
@@ -1984,6 +2153,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btAddFotoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAddFotoMouseExited
         estilo.aplicaHoverExited(btAddFoto);
     }//GEN-LAST:event_btAddFotoMouseExited
+
+    private void btBuscarEquipamento1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btBuscarEquipamento1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btBuscarEquipamento1MouseEntered
+
+    private void btBuscarEquipamento1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btBuscarEquipamento1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btBuscarEquipamento1MouseExited
+
+    private void btBuscarEquipamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarEquipamento1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btBuscarEquipamento1ActionPerformed
+
+    private void btAlterarEquipamento1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAlterarEquipamento1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAlterarEquipamento1MouseEntered
+
+    private void btAlterarEquipamento1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAlterarEquipamento1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAlterarEquipamento1MouseExited
+
+    private void btDeletarEquipamento1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDeletarEquipamento1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btDeletarEquipamento1MouseEntered
+
+    private void btDeletarEquipamento1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDeletarEquipamento1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btDeletarEquipamento1MouseExited
     
     public ImageIcon criarImagemCircular(File arquivo, int largura, int altura, int borda) {
         try{
@@ -2046,15 +2243,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btAddFoto;
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btAlterarEquipamento;
+    private javax.swing.JButton btAlterarEquipamento1;
     private javax.swing.JButton btBuscarContrato;
     private javax.swing.JButton btBuscarContratoEncerrarContrato;
     private javax.swing.JButton btBuscarEquipamento;
+    private javax.swing.JButton btBuscarEquipamento1;
     private javax.swing.JButton btCancelarEncerrarContrato;
     private javax.swing.JButton btCancelarEquipamento;
     private javax.swing.JButton btContratoCancelar;
     private javax.swing.JButton btContratoLimpar;
     private javax.swing.JButton btContratoRegistrar;
     private javax.swing.JButton btDeletarEquipamento;
+    private javax.swing.JButton btDeletarEquipamento1;
     private javax.swing.JButton btEncerrarContrato;
     private javax.swing.JButton btEntrar;
     private javax.swing.JButton btLimparEncerrarContrato;
@@ -2082,6 +2282,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField10;
+    private javax.swing.JFormattedTextField jFormattedTextField11;
+    private javax.swing.JFormattedTextField jFormattedTextField12;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextField4;
@@ -2120,9 +2322,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2131,12 +2338,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -2147,6 +2356,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private javax.swing.JSpinner jsQtdEquipamento;
     private javax.swing.JSpinner jsQtdEstoqueEquipamento;
+    private javax.swing.JSpinner jsQtdEstoqueEquipamento1;
     private javax.swing.JLabel lbCadastrarContratoDataEntrega;
     private javax.swing.JLabel lbCadastrarContratoDataFinal;
     private javax.swing.JLabel lbCadastrarContratoDataInicio;
@@ -2164,6 +2374,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnMenu;
     private javax.swing.JPanel pnTela;
     private javax.swing.JPanel pnTelaCadastroCt;
+    private javax.swing.JPanel pnTelaCliente;
     private javax.swing.JPanel pnTelaEncerrarCt;
     private javax.swing.JPanel pnTelaEquipamento;
     private javax.swing.JPanel pnTelaHome;
