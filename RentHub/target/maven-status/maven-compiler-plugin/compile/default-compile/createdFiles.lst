@@ -40,6 +40,7 @@ br\edu\iftm\renthub\view\TelaPrincipal$41.class
 br\edu\iftm\renthub\view\TelaPrincipal$5.class
 br\edu\iftm\renthub\view\TelaPrincipal$51.class
 br\edu\iftm\renthub\control\EquipamentoController.class
+br\edu\iftm\renthub\view\BuscarContrato$10.class
 br\edu\iftm\renthub\view\TelaPrincipal$35.class
 br\edu\iftm\renthub\view\BuscarContrato$5.class
 br\edu\iftm\renthub\dao\EnderecoDAO.class
@@ -91,6 +92,7 @@ br\edu\iftm\renthub\view\BuscarCliente$4.class
 br\edu\iftm\renthub\model\Cidade.class
 br\edu\iftm\renthub\view\BuscarCliente$7.class
 br\edu\iftm\renthub\RentHub.class
+br\edu\iftm\renthub\view\BuscarContrato$11.class
 br\edu\iftm\renthub\dao\EquipamentoDAO.class
 br\edu\iftm\renthub\view\BuscarCliente$2.class
 br\edu\iftm\renthub\view\TelaPrincipal$8.class
