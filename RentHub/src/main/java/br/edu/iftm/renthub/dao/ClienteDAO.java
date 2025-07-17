@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 //import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.iftm.renthub.model.Cidade;
 import br.edu.iftm.renthub.model.Cliente;
@@ -38,16 +40,16 @@ public class ClienteDAO {
                     idCli = rs.getInt(1);
                     return idCli;
                 } else {
-                    return 0;
+                    return null;
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                return 0;
+                return null;
             }
         } catch (SQLException e) {
             log.registrarLog(4, "ClienteDAO", "cadastrar", "cliente", "Erro ao cadastrar o cliente no Banco de Dados: " + e.getMessage());
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 
@@ -133,6 +135,41 @@ public class ClienteDAO {
             return null;
         }
     }
+
+    public List<Cliente> listar(String filtroQuery, List<Object> filtros) {
+        log.registrarLog(1, "ClienteDAO", "listarClientes", "cliente", "Buscando clientes no banco de dados");
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT c.id, c.nome, c.documento ");
+        query.append("FROM cliente c ");
+        query.append("WHERE 1=1 ");
+        query.append(filtroQuery);
+        query.append(" ORDER BY c.nome ASC");
+        List<Cliente> clientes = new ArrayList<>();
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
+            for (int i = 0; i < filtros.size(); i++) {
+                stmt.setObject(i + 1, filtros.get(i));
+            }
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setDocumento(rs.getString("documento"));
+                clientes.add(cliente);
+            }
+            if (clientes.isEmpty()) {
+                log.registrarLog(3, "ClienteDAO", "listarClientes", "cliente", "Nenhum cliente encontrado");
+            } else {
+                log.registrarLog(2, "ClienteDAO", "listarClientes", "cliente", "Clientes encontrados: " + clientes.size());
+            }
+            return clientes;
+        } catch (SQLException e) {
+            log.registrarLog(4, "ClienteDAO", "listarClientes", "cliente", "Erro ao buscar clientes: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     //public ArrayList<Cliente> listarClientes () {
     //    ArrayList<Cliente> clientes = new ArrayList<>();
     //    String sql = "SELECT * FROM cliente order by id_cliente ASC";
