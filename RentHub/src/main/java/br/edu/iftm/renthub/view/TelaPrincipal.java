@@ -927,48 +927,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfContratoCadastroCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbContratoCadastroUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(65, Short.MAX_VALUE))
-                    .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                        .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                        .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                                .addComponent(lbTituloContratoEquipamento)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tfContratoCadastroEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(btContratoCadastroAdicionarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(19, 19, 19))
-                                    .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                        .addComponent(lbTituloContratoQuantidade)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jsQtdEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btContratoBuscarEquipamento))
-                                        .addGap(18, 18, 18)))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                        .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(lbTituloContratoCadastroDataInicio)
-                                            .addComponent(lbTituloContratoValor))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(dcContratoCadastroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ffContratoCadastroValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lbTituloContratoCadastroDataFinal)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dcContratoCadastroDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btContratoCadastroTotalizacao, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                .addComponent(lbTituloContratoCadastroDataEntrega)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dcContratoCadastroDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbContratoCadastroUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnContratoCadastroLayout.createSequentialGroup()
+                            .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(pnContratoCadastroLayout.createSequentialGroup()
+                                    .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(pnContratoCadastroLayout.createSequentialGroup()
+                                            .addComponent(lbTituloContratoEquipamento)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(tfContratoCadastroEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btContratoCadastroAdicionarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(19, 19, 19))
+                                .addGroup(pnContratoCadastroLayout.createSequentialGroup()
+                                    .addComponent(lbTituloContratoQuantidade)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jsQtdEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btContratoBuscarEquipamento))
+                                    .addGap(18, 18, 18)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnContratoCadastroLayout.createSequentialGroup()
+                                    .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lbTituloContratoCadastroDataInicio)
+                                        .addComponent(lbTituloContratoValor))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dcContratoCadastroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ffContratoCadastroValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lbTituloContratoCadastroDataFinal)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dcContratoCadastroDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btContratoCadastroTotalizacao, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGroup(pnContratoCadastroLayout.createSequentialGroup()
+                            .addComponent(lbTituloContratoCadastroDataEntrega)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(dcContratoCadastroDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         btContratoRegistrar.setBackground(new java.awt.Color(240, 240, 240));
@@ -1082,7 +1080,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(pnTelaCadastroCtLayout.createSequentialGroup()
                         .addComponent(lbTituloContratoCadastro)
                         .addGap(2, 2, 2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(pnContratoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2469,14 +2467,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlterarEquipamento;
-    private javax.swing.JButton btAlterarEquipamento1;
-    private javax.swing.JButton btAlterarEquipamento2;
-    private javax.swing.JButton btAlterarEquipamento3;
     private javax.swing.JButton btBuscarContrato;
     private javax.swing.JButton btBuscarEquipamento;
-    private javax.swing.JButton btBuscarEquipamento1;
-    private javax.swing.JButton btBuscarEquipamento2;
-    private javax.swing.JButton btBuscarEquipamento3;
     private javax.swing.JButton btCancelarEncerrarContrato;
     private javax.swing.JButton btCancelarEquipamento;
     private javax.swing.JButton btClienteAlterar;
@@ -2492,9 +2484,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btContratoLimpar;
     private javax.swing.JButton btContratoRegistrar;
     private javax.swing.JButton btDeletarEquipamento;
-    private javax.swing.JButton btDeletarEquipamento1;
-    private javax.swing.JButton btDeletarEquipamento2;
-    private javax.swing.JButton btDeletarEquipamento3;
     private javax.swing.JButton btEncerrarContrato;
     private javax.swing.JButton btEntrar;
     private javax.swing.JButton btLimparEncerrarContrato;
@@ -2532,43 +2521,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ffContratoEncerrarJuros;
     private javax.swing.JFormattedTextField ffEquipamentoValorDiario;
     private javax.swing.JFormattedTextField ffEquipamentoValorMensal;
-    private javax.swing.JFormattedTextField jFormattedTextField12;
-    private javax.swing.JFormattedTextField jFormattedTextField16;
-    private javax.swing.JFormattedTextField jFormattedTextField17;
-    private javax.swing.JFormattedTextField jFormattedTextField18;
-    private javax.swing.JFormattedTextField jFormattedTextField19;
-    private javax.swing.JFormattedTextField jFormattedTextField20;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
     private javax.swing.JSpinner jsEquipamentoQtdEstoque;
     private javax.swing.JSpinner jsQtdEquipamento;
-    private javax.swing.JSpinner jsQtdEstoqueEquipamento1;
-    private javax.swing.JSpinner jsQtdEstoqueEquipamento2;
-    private javax.swing.JSpinner jsQtdEstoqueEquipamento3;
     private javax.swing.JLabel lbLogoHm;
     private javax.swing.JLabel lbLogoLg;
     private javax.swing.JLabel lbPerfil;
