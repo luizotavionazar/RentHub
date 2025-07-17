@@ -54,23 +54,23 @@ public class ContratoController {
             filtros.add(contratoFiltro.getCliente().getId());
         }
         if (contratoFiltro.getTipo() != null) {
-            sqlFiltro.append("AND ct.tipo = ? ");
+            sqlFiltro.append("AND c.tipo = ? ");
             filtros.add(contratoFiltro.getTipo().name());
         }
         if (contratoFiltro.getStatus() != null) {
-            sqlFiltro.append("AND ct.status = ? ");
+            sqlFiltro.append("AND c.status = ? ");
             filtros.add(contratoFiltro.getStatus().name());
         }
         if (contratoFiltro.getDataInicio() != null) {
-            sqlFiltro.append("AND ct.data_inicio >= ? ");
+            sqlFiltro.append("AND c.data_inicio >= ? ");
             filtros.add(contratoFiltro.getDataInicio());
         }
         if (contratoFiltro.getDataFim() != null) {
-            sqlFiltro.append("AND ct.data_fim <= ? ");
+            sqlFiltro.append("AND c.data_fim <= ? ");
             filtros.add(contratoFiltro.getDataFim());
         }
         if (contratoFiltro.getDataEntrega() != null) {
-            sqlFiltro.append("AND ct.data_entrega = ? ");
+            sqlFiltro.append("AND c.data_entrega = ? ");
             filtros.add(contratoFiltro.getDataEntrega());
         }
         try {

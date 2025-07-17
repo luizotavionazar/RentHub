@@ -96,6 +96,7 @@ br\edu\iftm\renthub\view\BuscarContrato$11.class
 br\edu\iftm\renthub\dao\EquipamentoDAO.class
 br\edu\iftm\renthub\view\BuscarCliente$2.class
 br\edu\iftm\renthub\view\TelaPrincipal$8.class
+br\edu\iftm\renthub\view\BuscarCliente$9.class
 br\edu\iftm\renthub\view\TelaPrincipal$44.class
 br\edu\iftm\renthub\view\TelaPrincipal$14.class
 br\edu\iftm\renthub\view\BuscarContrato$8.class
