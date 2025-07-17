@@ -1,9 +1,11 @@
 package br.edu.iftm.renthub.dao;
 
 import br.edu.iftm.renthub.control.ClienteController;
-import br.edu.iftm.renthub.control.EnderecoController;
 import br.edu.iftm.renthub.model.Cliente;
 import br.edu.iftm.renthub.model.Contrato;
+import br.edu.iftm.renthub.model.Contrato.Status;
+import br.edu.iftm.renthub.model.Contrato.Tipo;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,16 +17,15 @@ import java.util.List;
 import br.edu.iftm.renthub.model.Equipamento;
 import br.edu.iftm.renthub.view.RegistrosLog;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class ContratoDAO {
     private final Connection conexaoBanco;
     private ClienteController clienteController;
-    private EnderecoController enderecoController;
 
     public ContratoDAO(Connection conexao) {
         this.conexaoBanco = conexao;
         clienteController = new ClienteController(conexao);
-        enderecoController = new EnderecoController(conexao);
     }
 
     RegistrosLog log = new RegistrosLog();
@@ -75,6 +76,60 @@ public class ContratoDAO {
             log.registrarLog(4, "ContratoDAO", "cadastrar", "contrato, equipamento_contrato", "Erro ao cadastrar o contrato no banco de dados: " + e.getMessage());
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public List<Contrato> listar(String filtrosSql, List<Object> filtros) throws SQLException {
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT c.id AS id_contrato, cl.nome AS nome_cliente, c.data_inicio, c.data_fim, c.data_entrega, c.status ");
+        query.append("FROM contrato c ");
+        query.append("JOIN cliente cl ON cl.id = c.id_cliente ");
+        query.append("WHERE 1=1 ");
+        query.append(filtrosSql);
+        query.append(" ORDER BY c.data_inicio ASC");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
+            for (int i = 0; i < filtros.size(); i++) {
+                Object campo = filtros.get(i);
+                if (campo instanceof LocalDate) {
+                    stmt.setDate(i + 1, java.sql.Date.valueOf((LocalDate) campo));
+                } else {
+                    stmt.setObject(i + 1, campo);
+                }
+            }
+            ResultSet rs = stmt.executeQuery();
+            List<Contrato> contratos = new ArrayList<>();
+            int qtdContratos = 0;
+            while (rs.next()) {
+                Contrato contrato = new Contrato();
+                contrato.setId(rs.getInt("id_contrato"));
+                contrato.setTipo(Tipo.valueOf(rs.getString("tipo")));
+                contrato.setStatus(Status.valueOf(rs.getString("status")));
+                contrato.setDataInicio(rs.getDate("data_inicio").toLocalDate());
+                contrato.setDataFim(rs.getDate("data_fim").toLocalDate());
+
+                Date dataEntregaSql = rs.getDate("data_entrega");
+                if (dataEntregaSql != null) {
+                    contrato.setDataEntrega(dataEntregaSql.toLocalDate());
+                }
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("id_cliente"));
+                cliente.setNome(rs.getString("nome_cliente"));
+                contrato.setCliente(cliente);
+                contratos.add(contrato);
+                qtdContratos++;
+            }
+            if (!contratos.isEmpty()) {
+                log.registrarLog(2, "ContratoDAO", "listarContratos", "contrato, cliente", "Foram encontrados " + qtdContratos + " contratos.");
+            } else {
+                log.registrarLog(3, "ContratoDAO", "listarContratos", "contrato, cliente", "Nenhum contrato encontrado.");
+            }
+
+            return contratos;
+
+        } catch (SQLException e) {
+            log.registrarLog(4, "ContratoDAO", "listarContratos", "contrato, cliente", "Erro ao listar contratos: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
 

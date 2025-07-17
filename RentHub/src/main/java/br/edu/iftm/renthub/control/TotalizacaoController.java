@@ -13,6 +13,7 @@ import br.edu.iftm.renthub.dao.TotalizacaoDAO;
 import br.edu.iftm.renthub.model.Contrato;
 import br.edu.iftm.renthub.model.Equipamento;
 import br.edu.iftm.renthub.model.Totalizacao;
+import br.edu.iftm.renthub.model.Contrato.Tipo;
 import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class TotalizacaoController {
@@ -40,7 +41,7 @@ public class TotalizacaoController {
 
     public Double calcularValor(Contrato contrato, int forma, LocalDate dataAtual) {
         double total = 0;
-        if (contrato.getTipo().equals("MENSAL")) {
+        if (contrato.getTipo() == Tipo.MENSAL) {
             long mesesContratados = ChronoUnit.MONTHS.between(contrato.getDataInicio(), contrato.getDataFim());
             List<Equipamento> temp = contrato.getEquipamentos();
             Iterator<Equipamento> iter = temp.iterator();
@@ -48,7 +49,7 @@ public class TotalizacaoController {
                 Equipamento equipTemp = iter.next();
                 total= total + (equipTemp.getVlrMensal()*mesesContratados)*equipTemp.getQtdContrato();
             }
-        } else if (contrato.getTipo().equals("DIARIO")) {
+        } else if (contrato.getTipo() == Tipo.DIARIO) {
             long diasContratados = ChronoUnit.DAYS.between(contrato.getDataInicio(), contrato.getDataFim());
             List<Equipamento> temp = contrato.getEquipamentos();
             Iterator<Equipamento> iter = temp.iterator();
@@ -67,7 +68,6 @@ public class TotalizacaoController {
                 calcularMulta(forma, contrato.getTipo().toString(), total);
             }    
         }
-        
         return total;
     }
 

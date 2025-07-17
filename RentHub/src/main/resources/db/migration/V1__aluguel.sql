@@ -195,7 +195,7 @@ FOR EACH ROW
 BEGIN
 	UPDATE equipamento
 		SET qtd_disponivel = qtd_disponivel - NEW.quantidade
-		WHERE id_equipamento = NEW.id_equipamento;
+		WHERE id = NEW.id_equipamento;
 END$$
 
 CREATE DEFINER = CURRENT_USER TRIGGER `aluguel`.`equipamento_contrato_AFTER_DELETE` 
@@ -204,7 +204,7 @@ FOR EACH ROW
 BEGIN
 	UPDATE equipamento
     SET qtd_disponivel = qtd_disponivel + OLD.quantidade
-    WHERE id_equipamento = OLD.id_equipamento;
+    WHERE id = OLD.id_equipamento;
 END$$
 
 DELIMITER ;

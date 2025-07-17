@@ -1491,6 +1491,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloEquipamentoQtd.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloEquipamentoQtd.setText("Quantidade de Estoque");
 
+        jsEquipamentoQtdEstoque.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
         lbTituloEquipamentoValorDiario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbTituloEquipamentoValorDiario.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloEquipamentoValorDiario.setText("Valor Diário");
@@ -1618,6 +1620,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btRegistrarEquipamentoMouseExited(evt);
+            }
+        });
+        btRegistrarEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegistrarEquipamentoActionPerformed(evt);
             }
         });
 
@@ -2407,6 +2414,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tfContratoCadastroLogradouro.setText(endereco.getLogradouro());
         cbContratoCadastroUf.setSelectedItem(endereco.getCidade().getUf());
     }//GEN-LAST:event_ffContratoCadastroCepFocusLost
+
+    private void btRegistrarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEquipamentoActionPerformed
+        Equipamento equipamento = new Equipamento();
+
+        if (tfEquipamentoNomeEquipamento.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Informe o nome do Equipamento!", "Cadastro de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            equipamento.setDescricao(tfEquipamentoNomeEquipamento.getText());
+            System.out.println("TESTE nome: "+equipamento.getDescricao());
+        }
+        if ((Integer)jsEquipamentoQtdEstoque.getValue() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Informe a quantidade do Equipamento!", "Cadastro de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            equipamento.setQtdTotal((Integer)jsEquipamentoQtdEstoque.getValue());
+            System.out.println("TESTE qtdtotal: "+equipamento.getQtdTotal());
+        }
+
+        if (ffEquipamentoValorDiario.getValue() == null || ffEquipamentoValorDiario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Informe o valor diário do Equipamento!", "Cadastro de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            equipamento.setVlrDiaria(((Number) ffEquipamentoValorDiario.getValue()).doubleValue());
+            System.out.println("TESTE vlrdiaria: "+equipamento.getVlrDiaria());
+        }
+        if (ffEquipamentoValorMensal.getValue() == null || ffEquipamentoValorMensal.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Informe o valor mensal do Equipamento!", "Cadastro de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            equipamento.setVlrMensal(((Number) ffEquipamentoValorMensal.getValue()).doubleValue());
+            System.out.println("TESTE vlrmensal: "+equipamento.getVlrMensal());
+        }
+    }//GEN-LAST:event_btRegistrarEquipamentoActionPerformed
      
     public void resetaEstadoComponentesCadastroContrato(){
         lbTituloContratoCadastroDataEntrega.setVisible(false);
