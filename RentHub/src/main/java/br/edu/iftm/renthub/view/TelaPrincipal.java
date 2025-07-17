@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import static java.time.temporal.TemporalQueries.localDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private static VerTotalizazao verTotalizazao;
     private static BuscarEquipamento buscarEquipamento;
     private static BuscarCliente buscarCliente;
-    private List<Equipamento> equipamentosContrato;
+    private List<Equipamento> equipamentosContrato = new ArrayList<>();
 
     public TelaPrincipal(Connection conexao) throws SQLException {
         usuarioController = new UsuarioController(conexao);
@@ -2198,7 +2199,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Equipamento equipamento = buscarEquipamento.getEquipamento();
         Object[] linha = {equipamento.getId(), equipamento.getDescricao(), jsQtdEquipamento.getValue()};
         modeloTabelaEquipamento.addRow(linha);
-        equipamento.setQtdContrato((int)jsQtdEquipamento.getValue());
+        Integer qtd = (Integer)jsQtdEquipamento.getValue();
+        equipamento.setQtdContrato(qtd);
         equipamentosContrato.add(equipamento);
     }//GEN-LAST:event_btContratoCadastroAdicionarEquipamentoActionPerformed
 
@@ -2461,7 +2463,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public void preencheEquipamento(Equipamento equipamento){
         tfContratoCadastroEquipamento.setText(equipamento.getDescricao());
-        equipamentosContrato.add(equipamento);
     }
     
     // metodos para limpeza dos componentes das telas

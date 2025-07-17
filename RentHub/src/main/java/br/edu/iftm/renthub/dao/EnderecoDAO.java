@@ -17,12 +17,12 @@ public class EnderecoDAO {
         this.conexaoBanco = conexao;
     }
 
-    public boolean cadastrar(String cep, String ibge, String logradouro, String bairro, Integer numero, String complemento) throws SQLException {
+    public Integer cadastrar(String cep, String ibge, String logradouro, String bairro, Integer numero, String complemento) throws SQLException {
         log.registrarLog(1, "EnderecoDAO", "cadastrar", "endereco", "Cadastrando o endereco no banco de dados");
         StringBuilder query = new StringBuilder();
         query.append("INSERT INTO endereco (cep, id_ibge, logradouro, bairro, numero, complemento) ");
         query.append("VALUES (?, ?, ?, ?, ?, ?) ");
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString(), PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, cep);
             stmt.setString(2, ibge);
             stmt.setString(3, logradouro);
@@ -35,11 +35,22 @@ public class EnderecoDAO {
             stmt.setString(6, complemento);
             stmt.executeUpdate();
             log.registrarLog(2, "EnderecoDAO", "cadastrar", "endereco", "Endereço cadastrado no banco de dados");
-            return true;
+            Integer idEnd = null;
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    idEnd = rs.getInt(1);
+                    return idEnd;
+                } else {
+                    return null;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
         } catch (SQLException e) {
             log.registrarLog(4, "EnderecoDAO", "cadastrar", "endereco", "Erro ao cadastrar o endereço no Banco de Dados: " + e.getMessage());
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
     
