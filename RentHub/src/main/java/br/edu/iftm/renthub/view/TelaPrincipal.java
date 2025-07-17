@@ -21,6 +21,12 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.localDate;
+import java.util.Date;
+import java.util.List;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -2070,6 +2076,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btMenuContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuContratoActionPerformed
         cdlPn.show(pnCdTelas, "cdTelaCadastroContrato");
+        LocalDate dataAgora = LocalDate.now();
+        Date date = Date.from(dataAgora.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        dcContratoCadastroDataInicio.setDate(date);
     }//GEN-LAST:event_btMenuContratoActionPerformed
 
     private void btMenuClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btMenuClienteMouseEntered
@@ -2184,7 +2193,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Equipamento equipamento = buscarEquipamento.getEquipamento();
         Object[] linha = {equipamento.getId(), equipamento.getDescricao(), jsQtdEquipamento.getValue()};
         modeloTabelaEquipamento.addRow(linha);
-        equipamento.setQtdContrato(jsQtdEquipamento.getValue());
+        equipamento.setQtdContrato((int)jsQtdEquipamento.getValue());
         equipamentosContrato.add(equipamento);
     }//GEN-LAST:event_btContratoCadastroAdicionarEquipamentoActionPerformed
 
@@ -2385,7 +2394,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Cliente cliente = new Cliente(nomeCliente, identificacao, telefone, endereco);
         cliente.setId(clienteController.cadastrar(cliente));
         Contrato contrato = new Contrato();
-        //PEGAR A DATA INICIO E DATA FIM E CONVERTER PARA LOCALDATE EM dataInicio e dataFim
+        Date dateInicio = dcContratoCadastroDataInicio.getDate();
+        Date dateFim = dcContratoCadastroDataFinal.getDate();
+        LocalDate dataInicio = dateInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate dataFim = dateFim.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         contratoController.cadastrar(new Contrato(cliente, equipamentosContrato, dataInicio, dataFim));
     }//GEN-LAST:event_btContratoRegistrarActionPerformed
 
