@@ -4,6 +4,7 @@ import br.edu.iftm.renthub.control.ClienteController;
 import br.edu.iftm.renthub.control.ContratoController;
 import br.edu.iftm.renthub.control.UsuarioController;
 import br.edu.iftm.renthub.control.Endereco.ConsultaCep;
+import br.edu.iftm.renthub.control.TotalizacaoController;
 import br.edu.iftm.renthub.model.Cliente;
 import br.edu.iftm.renthub.model.Contrato;
 import br.edu.iftm.renthub.model.Endereco;
@@ -42,6 +43,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private ConsultaCep consulta;
     private static UsuarioController usuarioController;
     private static ContratoController contratoController;
+    private static TotalizacaoController totalizacaoController;
     private static ClienteController clienteController;
     private static BuscarContrato buscarContrato;
     private static VerTotalizazao verTotalizazao;
@@ -53,6 +55,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         usuarioController = new UsuarioController(conexao);
         contratoController = new ContratoController(conexao);
         clienteController = new ClienteController(conexao);
+        totalizacaoController = new TotalizacaoController(conexao);
         telaUsuario = new TelaRegistroUsuario(this, true, conexao);
         buscarContrato = new BuscarContrato(this, true, conexao);
         verTotalizazao = new VerTotalizazao(this, true, conexao);
@@ -1399,6 +1402,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btRegistrarEncerrarContratoMouseExited(evt);
             }
         });
+        btRegistrarEncerrarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegistrarEncerrarContratoActionPerformed(evt);
+            }
+        });
 
         btNovoContrato.setBackground(new java.awt.Color(240, 240, 240));
         btNovoContrato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1499,6 +1507,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloEquipamentoValorDiario.setText("Valor Diário");
 
         ffEquipamentoValorDiario.setBackground(new java.awt.Color(215, 215, 215));
+        ffEquipamentoValorDiario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+        ffEquipamentoValorDiario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ffEquipamentoValorDiarioActionPerformed(evt);
+            }
+        });
 
         lbTituloEquipamentoValorMensal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbTituloEquipamentoValorMensal.setForeground(new java.awt.Color(0, 0, 0));
@@ -2450,7 +2464,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             System.out.println("TESTE vlrmensal: "+equipamento.getVlrMensal());
         }
     }//GEN-LAST:event_btRegistrarEquipamentoActionPerformed
-     
+
+    private void btRegistrarEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEncerrarContratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btRegistrarEncerrarContratoActionPerformed
+
+    private void ffEquipamentoValorDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ffEquipamentoValorDiarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ffEquipamentoValorDiarioActionPerformed
+    
     public void resetaEstadoComponentesCadastroContrato(){
         lbTituloContratoCadastroDataEntrega.setVisible(false);
         dcContratoCadastroDataEntrega.setVisible(false);
@@ -2459,6 +2481,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public void preencheTelaContrato(Contrato contrato){
     
+    }
+    
+    public void preencheTelaEncerrarContrato(Contrato contrato){
+        String idContrato = String.valueOf(contrato.getId());
+        tfContratoEncerrarNumeroContrato.setText(idContrato);
+        tfContratoEncerrarTipo.setText(contrato.getTipo().name());
+        tfContratoEncerrarCliente.setText(contrato.getCliente().getNome());
+        ffContratoEncerrarCpf.setText(contrato.getCliente().getDocumento());
+        dtContratoEncerrarDataInicio.setDate(Date.from(contrato.getDataInicio().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        dtContratoEncerrarDataInicio.setDate(Date.from(contrato.getDataFim().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        Double valor = totalizacaoController.calcularValor(contrato, 2);
+        ffContratoEncerraValor.setValue(valor);
+        Double juros = totalizacaoController.calcularJuros(contrato.getTipo().name(), valor, contrato.getDataFim());
+        ffContratoEncerrarJuros.setValue(juros);
+        Double multa = totalizacaoController.calcularMulta(cbContratoEncerrarTipo.getSelectedIndex(), contrato.getTipo().name(), valor);
+        ffContratoEncerraMulta.setValue(multa);
+        ffContratoEncerraValorTotal.setValue(totalizacaoController.calcularTotal(valor, multa, multa));
     }
     
     public void preencheEquipamento(Equipamento equipamento){

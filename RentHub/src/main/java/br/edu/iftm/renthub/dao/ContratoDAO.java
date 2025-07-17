@@ -161,8 +161,7 @@ public class ContratoDAO {
                  "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
                  "JOIN equipamento e ON c.id_equip = e.id_equip " +
                  "WHERE id_contrato = ?";
-        try (Connection conn = ConexaoDAO.conexaoBd();){
-            PreparedStatement stmt = conn.prepareStatement(sql);
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql)){
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -284,19 +283,18 @@ public class ContratoDAO {
     //    return contratos;
     //}
 
-    //public String encerrarContrato (int id, String forma, LocalDate dataAtual) {
-    //    String sql = "UPDATE contrato SET data_entrega = ?, status = ? WHERE id_contrato = ?";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        stmt.setDate(1, Date.valueOf(dataAtual));
-    //        stmt.setString(2, forma);
-    //        stmt.setInt(3, id);
-    //        stmt.executeUpdate();   
-    //        return "Contrato encerrado com sucesso!";
-    //    } catch (SQLException e) {
-    //        return "Erro ao encerrar o Contrato";
-    //    }
-    //}
+    public boolean encerrar(Integer id, String status, LocalDate dataAtual) {
+        String sql = "UPDATE contrato SET data_entrega = ?, status = ? WHERE id = ?";
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql)) {
+            stmt.setDate(1, Date.valueOf(dataAtual));
+            stmt.setString(2, status);
+            stmt.setInt(3, id);
+            stmt.executeUpdate();   
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 
     //public boolean verificarEquipamentoEmContratoAtivo (int idEquip) {
     //    String sql = "SELECT COUNT(*) FROM contrato WHERE id_equip = ? AND status = 'A'";

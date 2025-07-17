@@ -53,13 +53,13 @@ public class TotalizacaoController {
                 total= total + (equipTemp.getVlrDiaria()*diasContratados)*equipTemp.getQtdContrato();
             }
         }
-        if (forma == 1 || forma == 2) {
-            if (forma == 1) { //Calcular o valor na finalização do contrato
+        if (forma == 0 || forma == 1) {
+            if (forma == 0) { //Calcular o valor na finalização do contrato
                 if (dataAtual.isAfter(contrato.getDataFim())) {
                     calcularMulta(forma, contrato.getTipo().toString(), total);
-                    calcularJuros(contrato.getTipo().toString(), total, dataAtual, contrato.getDataFim());
+                    calcularJuros(contrato.getTipo().toString(), total, contrato.getDataFim());
                 }
-            } else if (forma == 2) { //Calcular o valor no cancelamento do contrato
+            } else if (forma == 1) { //Calcular o valor no cancelamento do contrato
                 calcularMulta(forma, contrato.getTipo().toString(), total);
             }    
         }
@@ -68,7 +68,7 @@ public class TotalizacaoController {
 
     public Double calcularMulta (int forma, String tipo, double valor) {
         double total = 0;
-        if (forma == 1) {
+        if (forma == 0) {
             if (tipo.equals("MENSAL")) { // 20% de multa para finalização mensal e 50% para finalização diario
                 total = valor*0.20;
             } else {
@@ -84,7 +84,8 @@ public class TotalizacaoController {
         return total;
     }
                 
-    public Double calcularJuros (String tipo, double valor, LocalDate dataAtual, LocalDate dataFim) {
+    public Double calcularJuros (String tipo, double valor, LocalDate dataFim) {
+        LocalDate dataAtual = LocalDate.now();
         long diasAtrasados = ChronoUnit.DAYS.between(dataFim, dataAtual);
         double total = 0;
         if (tipo.equals("MENSAL")) { // 1% de juros para contrato Mensal e 1% para Diário
