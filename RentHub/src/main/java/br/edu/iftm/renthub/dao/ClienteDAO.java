@@ -44,7 +44,6 @@ public class ClienteDAO {
                 e.printStackTrace();
                 return 0;
             }
-            return true;
         } catch (SQLException e) {
             log.registrarLog(4, "ClienteDAO", "cadastrar", "cliente", "Erro ao cadastrar o cliente no Banco de Dados: " + e.getMessage());
             e.printStackTrace();

@@ -27,10 +27,6 @@ public class ClienteController {
                     log.registrarLog(3, "ClienteController", "cadastrar", "cliente", "Cliente: " + cliente.getNome() + " não cadastrado");
                     return 0;
                 }
-            } else {
-                log.registrarLog(3, "ClienteController", "cadastrar", "cliente", "Falha ao cadastrar o endereço do cliente: " + cliente.getNome() + ". Cadastrado não realizado");
-                return 0;
-            }
         } catch (Exception e) {
             log.registrarLog(4, "ClienteController", "cadastrar", "cliente", "Erro ao cadastrar o cliente: " + e.getMessage());
             e.printStackTrace();
