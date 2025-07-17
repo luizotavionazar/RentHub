@@ -9,27 +9,14 @@ import br.edu.iftm.renthub.model.Contrato;
 import br.edu.iftm.renthub.model.Endereco;
 import br.edu.iftm.renthub.model.Equipamento;
 import br.edu.iftm.renthub.model.Usuario;
-import java.awt.BasicStroke;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import static java.time.temporal.TemporalQueries.localDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -53,11 +40,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         usuarioController = new UsuarioController(conexao);
         contratoController = new ContratoController(conexao);
         clienteController = new ClienteController(conexao);
+        buscarCliente = new BuscarCliente(this, true, conexao);
         telaUsuario = new TelaRegistroUsuario(this, true, conexao);
-        buscarContrato = new BuscarContrato(this, true, conexao);
+        buscarContrato = new BuscarContrato(this, true, conexao, buscarCliente);
         verTotalizazao = new VerTotalizazao(this, true, conexao);
         buscarEquipamento = new BuscarEquipamento(this, true, conexao, this);
-        buscarCliente = new BuscarCliente(this, true, conexao);
         initComponents();
         cdl = (CardLayout) getContentPane().getLayout();
         cdlPn = (CardLayout) pnCdTelas.getLayout();
@@ -100,7 +87,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloContratoCadastro = new javax.swing.JLabel();
         btEncerrarContrato = new RoundedButton("");
         pnContratoCadastro = new javax.swing.JPanel();
-        lbTituloContratoNovo = new javax.swing.JLabel();
         lbTituloContratoCliente = new javax.swing.JLabel();
         tfContratoCadastroCliente = new javax.swing.JTextField();
         lbTituloContratoCpf = new javax.swing.JLabel();
@@ -137,8 +123,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btContratoCadastroTotalizacao = new RoundedButton("");
         tfContratoCadastroEquipamento = new javax.swing.JTextField();
         btContratoBuscarEquipamento = new RoundedButton("");
-        lbTituloContratoValor = new javax.swing.JLabel();
-        ffContratoCadastroValor = new javax.swing.JFormattedTextField();
         tfNumeroDoContrato = new javax.swing.JTextField();
         btContratoRegistrar = new RoundedButton("");
         btContratoCancelar = new RoundedButton("");
@@ -585,10 +569,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pnContratoCadastro.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbTituloContratoNovo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbTituloContratoNovo.setForeground(new java.awt.Color(0, 0, 0));
-        lbTituloContratoNovo.setText("NOVO");
-
         lbTituloContratoCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbTituloContratoCliente.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloContratoCliente.setText("Nome do Cliente");
@@ -772,12 +752,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        lbTituloContratoValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbTituloContratoValor.setForeground(new java.awt.Color(0, 0, 0));
-        lbTituloContratoValor.setText("Valor Parcial");
-
-        ffContratoCadastroValor.setBackground(new java.awt.Color(215, 215, 215));
-
         tfNumeroDoContrato.setBackground(new java.awt.Color(255, 255, 255));
         tfNumeroDoContrato.setForeground(new java.awt.Color(0, 0, 0));
         tfNumeroDoContrato.setBorder(null);
@@ -852,14 +826,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btContratoCadastroAdicionarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbTituloContratoCadastroDataInicio)
-                                    .addComponent(dcContratoCadastroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(70, 70, 70)
-                                .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbTituloContratoValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ffContratoCadastroValor)))
+                            .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbTituloContratoCadastroDataInicio)
+                                .addComponent(dcContratoCadastroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnContratoCadastroLayout.createSequentialGroup()
                                 .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbTituloContratoCadastroDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -872,8 +841,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(btContratoCadastroTotalizacao)))
                         .addGap(105, 105, 105))
                     .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                        .addComponent(lbTituloContratoNovo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(tfNumeroDoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
         );
@@ -881,10 +849,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoCadastroLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbTituloContratoNovo)
-                    .addComponent(tfNumeroDoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfNumeroDoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnContratoCadastroLayout.createSequentialGroup()
                         .addComponent(lbTituloContratoCliente)
@@ -951,13 +917,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                    .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lbTituloContratoCadastroDataInicio)
-                                        .addComponent(lbTituloContratoValor))
+                                    .addComponent(lbTituloContratoCadastroDataInicio)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(dcContratoCadastroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ffContratoCadastroValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(dcContratoCadastroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(lbTituloContratoCadastroDataFinal)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1499,6 +1461,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloEquipamentoValorDiario.setText("Valor Diário");
 
         ffEquipamentoValorDiario.setBackground(new java.awt.Color(215, 215, 215));
+        ffEquipamentoValorDiario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
 
         lbTituloEquipamentoValorMensal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbTituloEquipamentoValorMensal.setForeground(new java.awt.Color(0, 0, 0));
@@ -2555,7 +2518,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ffContratoCadastroCep;
     private javax.swing.JFormattedTextField ffContratoCadastroCpf;
     private javax.swing.JFormattedTextField ffContratoCadastroTelefone;
-    private javax.swing.JFormattedTextField ffContratoCadastroValor;
     private javax.swing.JFormattedTextField ffContratoEncerraMulta;
     private javax.swing.JFormattedTextField ffContratoEncerraValor;
     private javax.swing.JFormattedTextField ffContratoEncerraValorTotal;
@@ -2605,7 +2567,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lbTituloContratoLogradouro;
     private javax.swing.JLabel lbTituloContratoMulta;
     private javax.swing.JLabel lbTituloContratoNomeCliente;
-    private javax.swing.JLabel lbTituloContratoNovo;
     private javax.swing.JLabel lbTituloContratoNumero;
     private javax.swing.JLabel lbTituloContratoNumeroContrato;
     private javax.swing.JLabel lbTituloContratoQuantidade;
@@ -2613,7 +2574,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lbTituloContratoTipo;
     private javax.swing.JLabel lbTituloContratoTipoEncerramento;
     private javax.swing.JLabel lbTituloContratoUf;
-    private javax.swing.JLabel lbTituloContratoValor;
     private javax.swing.JLabel lbTituloContratoValorTotal;
     private javax.swing.JLabel lbTituloEquipamento;
     private javax.swing.JLabel lbTituloEquipamentoNomeEquipamento;

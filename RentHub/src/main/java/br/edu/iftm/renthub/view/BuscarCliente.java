@@ -4,7 +4,11 @@
  */
 package br.edu.iftm.renthub.view;
 
+import br.edu.iftm.renthub.control.ClienteController;
+import br.edu.iftm.renthub.model.Cliente;
 import java.sql.Connection;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,11 +18,17 @@ import javax.swing.table.DefaultTableModel;
 public class BuscarCliente extends javax.swing.JDialog {
     private UtilsComponent estilo;
     private DefaultTableModel modelo;
+    private Cliente cliente;
+    private List<Cliente> clientes;
+    private static ClienteController clienteController;
+    private static BuscarContrato buscarContrato;
     /**
      * Creates new form BuscarCliente
      */
     public BuscarCliente(java.awt.Frame parent, boolean modal, Connection conexao) {
         super(parent, modal);
+        clienteController = new ClienteController(conexao);
+        buscarContrato = new BuscarContrato(parent, modal, conexao, this);
         initComponents();
         estilo = new UtilsComponent();
         modelo = (DefaultTableModel) tbBuscarCliente.getModel();
@@ -116,6 +126,11 @@ public class BuscarCliente extends javax.swing.JDialog {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btSelecionarMouseExited(evt);
+            }
+        });
+        btSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSelecionarActionPerformed(evt);
             }
         });
 
@@ -252,7 +267,17 @@ public class BuscarCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_btSairMouseExited
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        
+        String nome = tfNome.getText();
+        String cpf = tfCpf.getText();
+        Cliente clienteTemp = new Cliente();
+        clienteTemp.setNome(nome);
+        clienteTemp.setDocumento(cpf);
+        clientes = clienteController.listar(clienteTemp);
+        modelo.setRowCount(0);
+        for(Cliente clt : clientes){
+            Object[] linha = {clt.getId(), clt.getNome(), clt.getDocumento()};
+            modelo.addRow(linha);
+        }
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -263,6 +288,23 @@ public class BuscarCliente extends javax.swing.JDialog {
         limpaBuscarCliente();
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
+        int indice = tbBuscarCliente.getSelectedRow();
+        if(indice == -1){
+            JOptionPane.showMessageDialog(rootPane, "Selecione um equipamento!", "Busca de equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else{
+            cliente = clientes.get(indice);
+            buscarContrato.preencheCliente(cliente);
+        }
+        limpaBuscarCliente();
+        dispose();
+    }//GEN-LAST:event_btSelecionarActionPerformed
+    
+    public Cliente getCliente(){
+        return cliente;
+    }
     
     //Metodo para limpeza dos campos da tela
     public void limpaBuscarCliente(){

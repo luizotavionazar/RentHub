@@ -81,7 +81,7 @@ public class ContratoDAO {
 
     public List<Contrato> listar(String filtrosSql, List<Object> filtros) throws SQLException {
         StringBuilder query = new StringBuilder();
-        query.append("SELECT c.id AS id_contrato, cl.nome AS nome_cliente, c.data_inicio, c.data_fim, c.data_entrega, c.status ");
+        query.append("SELECT c.id AS id_contrato, cl.id AS id_cliente, cl.nome AS nome_cliente, c.data_inicio, c.data_fim, c.data_entrega, c.status , c.tipo ");
         query.append("FROM contrato c ");
         query.append("JOIN cliente cl ON cl.id = c.id_cliente ");
         query.append("WHERE 1=1 ");
@@ -102,8 +102,8 @@ public class ContratoDAO {
             while (rs.next()) {
                 Contrato contrato = new Contrato();
                 contrato.setId(rs.getInt("id_contrato"));
-                contrato.setTipo(Tipo.valueOf(rs.getString("tipo")));
-                contrato.setStatus(Status.valueOf(rs.getString("status")));
+                contrato.setTipo(Tipo.fromString(rs.getString("tipo")));
+                contrato.setStatus(Status.fromString(rs.getString("status")));
                 contrato.setDataInicio(rs.getDate("data_inicio").toLocalDate());
                 contrato.setDataFim(rs.getDate("data_fim").toLocalDate());
 
@@ -161,8 +161,7 @@ public class ContratoDAO {
                  "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
                  "JOIN equipamento e ON c.id_equip = e.id_equip " +
                  "WHERE id_contrato = ?";
-        try (Connection conn = ConexaoDAO.conexaoBd();){
-            PreparedStatement stmt = conn.prepareStatement(sql);
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql);){
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {

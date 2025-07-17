@@ -14,9 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import br.edu.iftm.renthub.control.ContratoController;
+import br.edu.iftm.renthub.model.Cliente;
 import br.edu.iftm.renthub.model.Contrato;
 import br.edu.iftm.renthub.model.Contrato.Status;
 import br.edu.iftm.renthub.model.Contrato.Tipo;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -27,13 +30,15 @@ public class BuscarContrato extends javax.swing.JDialog {
     private DefaultTableModel modelo;
     private static BuscarCliente buscarCliente;
     private static ContratoController contratoController;
+    private List<Contrato> contratos = new ArrayList<>();
+    private Contrato contrato;
     /**
      * Creates new form BuscarContrato
      */
-    public BuscarContrato(java.awt.Frame parent, boolean modal, Connection conexao) {
+    public BuscarContrato(java.awt.Frame parent, boolean modal, Connection conexao, BuscarCliente buscarCliente) {
         super(parent, modal);
+        this.buscarCliente = buscarCliente;
         contratoController = new ContratoController(conexao);
-        buscarCliente = new BuscarCliente(parent, modal, conexao);
         initComponents();
         estilo = new UtilsComponent();
         modelo = (DefaultTableModel)  tbBuscarContrato.getModel();
@@ -122,9 +127,9 @@ public class BuscarContrato extends javax.swing.JDialog {
         lbTituloStatus.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloStatus.setText("Status do Contrato");
 
-        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diario", "Mensal" }));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIARIO", "MENSAL" }));
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Cancelado", "Encerrado" }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "CANCELADO", "ENCERRADO" }));
 
         btSelecionar.setBackground(new java.awt.Color(240, 240, 240));
         btSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -375,13 +380,72 @@ public class BuscarContrato extends javax.swing.JDialog {
         buscarCliente.setVisible(true);
     }//GEN-LAST:event_btBuscarClienteActionPerformed
 
-    private void btFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrarActionPerformed
-    }//GEN-LAST:event_btFiltrarActionPerformed
-
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
-        // TODO add your handling code here:
+        int indice = tbBuscarContrato.getSelectedRow();
+        if(indice == -1){
+            JOptionPane.showMessageDialog(rootPane, "Selecione um equipamento!", "Busca de equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else{
+            contrato = contratos.get(indice);
+            //chamar preencheTelaEncerrarContrato
+        }
+        limpaBuscarContrato();
+        dispose();
     }//GEN-LAST:event_btSelecionarActionPerformed
+
+    private void btFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrarActionPerformed
+        Date dateInicio = dtDataInicio.getDate();
+        Date dateFim = dtDataFim.getDate();
+        Date dateEntrega = dtDataEntrega.getDate();
+        LocalDate dataInicio = null;
+        LocalDate dataFim = null;
+        LocalDate dataEntrega = null;
+        if(dateInicio != null){
+            dataInicio = dateInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
+        if(dateFim != null){
+            dataFim = dateFim.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
+        if(dateEntrega != null){
+            dataEntrega = dateEntrega.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
+        String tipo = (String) cbTipo.getSelectedItem();
+        String status = (String) cbStatus.getSelectedItem();
+        Cliente cliente = buscarCliente.getCliente();
+        Contrato contratoFiltro = new Contrato();
+        contratoFiltro.setCliente(cliente);
+        if(tipo.equals("DIARIO")){
+            contratoFiltro.setTipo(Tipo.DIARIO);
+        }else{
+            contratoFiltro.setTipo(Tipo.MENSAL);
+        }
+        if(status.equals("ATIVO")){
+            contratoFiltro.setStatus(Status.ATIVO);
+        }else if(status.equals("CANCELADO")){
+            contratoFiltro.setStatus(Status.CANCELADO);
+        }else {
+            contratoFiltro.setStatus(Status.FINALIZADO);
+        }
+        contratoFiltro.setDataInicio(dataInicio);
+        contratoFiltro.setDataFim(dataFim);
+        contratoFiltro.setDataEntrega(dataEntrega);
+        
+        contratos = contratoController.listar(contratoFiltro);
+        
+        for(Contrato ctr : contratos){
+            modelo.setRowCount(0);
+            Object[] linha = {ctr.getId(), ctr.getCliente().getNome(), ctr.getDataInicio(), ctr.getDataFim(), ctr.getDataEntrega(), ctr.getStatus()};
+            modelo.addRow(linha);
+        }
+    }//GEN-LAST:event_btFiltrarActionPerformed
     
+    public void preencheCliente(Cliente cliente){
+        tfCliente.setText(cliente.getNome());
+    }
+    
+    public Contrato getContrato(){
+        return contrato;
+    }
     
     //Metodo para limpeza dos campos da tela
     public void limpaBuscarContrato(){
