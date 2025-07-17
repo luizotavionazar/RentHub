@@ -57,10 +57,10 @@ public class ContratoDAO {
             Iterator<Equipamento> iter = temp.iterator();
             while (iter.hasNext()) {
                 Equipamento equipTemp = iter.next();
-                query = new StringBuilder();
-                query.append("INSERT INTO equipamento_contrato (id_contrato, id_equipamento, quantidade) ");
-                query.append("VALUES (?, ?, ?)");
-                try (PreparedStatement stmtEquip = conexaoBanco.prepareStatement(query.toString())) {
+                StringBuilder queryRelacao = new StringBuilder();
+                queryRelacao.append("INSERT INTO equipamento_contrato (id_contrato, id_equipamento, quantidade) ");
+                queryRelacao.append("VALUES (?, ?, ?)");
+                try (PreparedStatement stmtEquip = conexaoBanco.prepareStatement(queryRelacao.toString())) {
                     stmtEquip.setInt(1, idContrato);
                     stmtEquip.setInt(2, equipTemp.getId());
                     stmtEquip.setInt(3, equipTemp.getQtdContrato());

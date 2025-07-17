@@ -63,7 +63,7 @@ public class Equipamento {
     }
 
     public void setQtdContrato(Integer qtdContrato) {
-        this.qtdDisponivel = qtdContrato;
+        this.qtdContrato = qtdContrato;
     }
 
     public String getDescricao() {

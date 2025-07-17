@@ -23,7 +23,8 @@ public class ClienteController {
     public Integer cadastrar(Cliente cliente) {
         log.registrarLog(1, "ClienteController", "cadastrar", "cliente", "Cadastrando o cliente: " + cliente.getNome());
         try {
-            if (enderecoController.cadastrar(cliente.getEndereco())) {
+            cliente.getEndereco().setId(enderecoController.cadastrar(cliente.getEndereco()));
+            if (cliente.getEndereco().getId() != null) {
                     return clienteDAO.cadastrar(cliente.getNome(), cliente.getDocumento(), cliente.getTelefone(), cliente.getEndereco().getId());
                 } else {
                     log.registrarLog(3, "ClienteController", "cadastrar", "cliente", "Cliente: " + cliente.getNome() + " não cadastrado");
