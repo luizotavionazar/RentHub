@@ -33,13 +33,8 @@ public class TotalizacaoController {
     //    return totalizacaoDAO.buscarTotalizacao(contrato);
     //}
 
-    public Double obterValor(int forma, int tipo, int idEquip, Contrato contrato, ContratoController contratoController, EquipamentoController equipamentoController, TotalizacaoController totalizacaoController) {
-        Equipamento equipamento = equipamentoController.buscarPorId(idEquip);
+    public Double calcularValor(Contrato contrato, int forma) {
         LocalDate dataAtual = LocalDate.now();
-        return this.calcularValor(contrato, forma, dataAtual);
-    }
-
-    public Double calcularValor(Contrato contrato, int forma, LocalDate dataAtual) {
         double total = 0;
         if (contrato.getTipo() == Tipo.MENSAL) {
             long mesesContratados = ChronoUnit.MONTHS.between(contrato.getDataInicio(), contrato.getDataFim());
@@ -74,13 +69,13 @@ public class TotalizacaoController {
     public Double calcularMulta (int forma, String tipo, double valor) {
         double total = 0;
         if (forma == 1) {
-            if (tipo.equals("DIARIO")) { // 20% de multa para finalização mensal e 50% para finalização diario
+            if (tipo.equals("MENSAL")) { // 20% de multa para finalização mensal e 50% para finalização diario
                 total = valor*0.20;
             } else {
                 total = valor*0.50;
             }
         } else {
-            if (tipo.equals("DIARIO")) { // 50% de multa para cancelamento mensal e 70% para cancelamento diario
+            if (tipo.equals("MENSAL")) { // 50% de multa para cancelamento mensal e 70% para cancelamento diario
                 total = valor*0.50;
             } else {
                 total = valor*0.70;
@@ -92,7 +87,7 @@ public class TotalizacaoController {
     public Double calcularJuros (String tipo, double valor, LocalDate dataAtual, LocalDate dataFim) {
         long diasAtrasados = ChronoUnit.DAYS.between(dataFim, dataAtual);
         double total = 0;
-        if (tipo.equals("DIARIO")) {
+        if (tipo.equals("MENSAL")) { // 1% de juros para contrato Mensal e 1% para Diário
             total = ((diasAtrasados*0.01)*valor);
         } else {
             total = ((diasAtrasados*0.02)*valor);
