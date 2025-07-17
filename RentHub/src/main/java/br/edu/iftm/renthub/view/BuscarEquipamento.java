@@ -234,8 +234,8 @@ public class BuscarEquipamento extends javax.swing.JDialog {
         String descricao = tfBuscaEquipamento.getText();
         equipamentos = equipamentoController.listar(descricao);
         modelo.setRowCount(0);
-        for (Equipamento equipamento : equipamentos){
-            Object[] linha = { equipamento.getId(), equipamento.getDescricao(), equipamento.getQtdDisponivel(), equipamento.getVlrDiaria(), equipamento.getVlrMensal()};
+        for (Equipamento equip : equipamentos){
+            Object[] linha = { equip.getId(), equip.getDescricao(), equip.getQtdDisponivel(), equip.getVlrDiaria(), equip.getVlrMensal()};
             modelo.addRow(linha);
         }
     }//GEN-LAST:event_btBuscarActionPerformed

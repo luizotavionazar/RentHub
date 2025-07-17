@@ -40,7 +40,8 @@ public class ConsultaCep {
                 String bairro = json.getString("bairro");
                 String localidade = json.getString("localidade");
                 String uf = json.getString("uf");
-                return new Endereco(cep, new Cidade(localidade, uf), logradouro, bairro);
+                String idIbge = json.getString("ibge");
+                return new Endereco(cep, new Cidade(idIbge, localidade, uf), logradouro, bairro);
             }
             return null;
         }catch(Exception e){

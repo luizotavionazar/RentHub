@@ -16,25 +16,26 @@ public class EnderecoController {
 
     RegistrosLog log = new RegistrosLog();
 
-    public boolean cadastrar(Endereco endereco){
+    public Integer cadastrar(Endereco endereco){
         log.registrarLog(1, "EnderecoController", "cadastrar", "cidade, endereco", "Iniciando cadastro de endereço");
         try {
             if (cidadeController.cadastrar(endereco.getCidade())) {
-                if (enderecoDAO.cadastrar(endereco.getCep(), endereco.getCidade().getId(), endereco.getLogradouro(), endereco.getBairro(), endereco.getNumero(), endereco.getComplemento())) {
+                Integer idEnd = enderecoDAO.cadastrar(endereco.getCep(), endereco.getCidade().getId(), endereco.getLogradouro(), endereco.getBairro(), endereco.getNumero(), endereco.getComplemento());
+                if (idEnd != null) {
                     log.registrarLog(2, "EnderecoController", "cadastrar", "endereco", "Endereço cadastrado com sucesso");
-                    return true;
+                    return idEnd;
                 } else {
                     log.registrarLog(3, "EnderecoController", "cadastrar", "endereco", "Não foi possivel cadastrar o endereço");
-                    return false;
+                    return idEnd;
                 }
             } else {
                 log.registrarLog(3, "EnderecoController", "cadastrar", "cidade", "Não foi possivel verificar/cadastrar a cidade do endereço");
-                return false;
+                return null;
             }
         } catch (Exception e) {
             log.registrarLog(4, "EnderecoController", "cadastrar", "cidade, endereco", "Erro ao cadastrar o endereço: " + e.getMessage());
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
     
