@@ -80,56 +80,13 @@ public class ContratoController {
         }
     }
 
-    public void encerrarContrato(Contrato contrato, int forma) {
+    public boolean encerrarContrato(Contrato contrato, int forma) {
         LocalDate dataAtual = LocalDate.now();
-        boolean control= true, control1= true;
-
-        //ENQUANTO EU ESTAVA ADAPTANDO ENTENDI QUE AQUI NO ENCERRAR CONTRATO EU NÇAO FAÇO CALCULOS POIS ELES JÁ FORAM REALIZADOS NA TELA
-        //ENTAO PRIMEIRO DEVE SER INTEGRADA A TELA, PARA APENAS CAPTURAR A TOTALIZAÇÃO DO CONTRATO PARA EFETIVAR O ENCERRAMENTO
-
-        //if (control1) {
-        //    if (forma == 1) {
-        //        formaS= "F";
-    //
-        //        if (this.listarContratosAtivos(forma, scanner, contratoController, dataAtual)) {
-        //            scanner.nextLine();
-        //            return;
-        //        }
-        //    } else if (forma == 2) {
-        //        formaS= "C";
-        //        
-        //        if (this.listarContratosAtivos(forma, scanner, contratoController, dataAtual)) {
-        //            scanner.nextLine();
-        //            return;
-        //        }
-        //    }
-    //
-        //    System.out.print("Informe o ID do Contrato que deseja encerrar: ");
-        //    int id= scanner.nextInt();
-    //
-        //    System.out.println("\n"+contratoController.encerrarContrato(id, formaS, dataAtual));
-        //    Contrato contrato = contratoController.buscarContrato(id);
-        //    LocalDate dataFim = LocalDate.parse(contrato.getDataFim().substring(0,10));
-        //    
-        //    double valor = obterValor(forma, 0, contrato.getIdEquip(), contrato, contratoController, equipamentoController, totalizacaoController);
-        //    double multa = 0, juros = 0, total = 0;
-    //
-        //    if (dataFim.isBefore(dataAtual) ) { // Calcula Multa e Juros para contratos vencidos                         
-        //        multa= this.calcularMulta(forma, contrato.getTipo(), valor);
-        //        juros= this.calcularJuros(contrato.getTipo(), valor, dataAtual, dataFim);
-        //    } else if (dataFim.isAfter(dataAtual)) { // Calcula Multa para cancelamento do contrato
-        //        multa= this.calcularMulta(forma, contrato.getTipo(), valor);
-        //    }
-//
-        //    total= this.calcularTotal(valor, multa, juros);
-        //    System.out.println( "   Valor: R$" + valor + "\n" +
-        //                        "   Multa: R$" + multa + "\n" +
-        //                        "   Juros: R$" + juros + "\n" +
-        //                        "----------------------" + "\n" +
-        //                        "   Total: R$" + total);
-        //    scanner.nextLine();
-        //    System.out.println(totalizacaoController.realizarTotalizacao(id, valor, multa, juros, total)); 
-        //}
+        if (contratoDAO.encerrar(contrato.getId(), contrato.getStatus().name(), dataAtual)) {
+            return true;
+        } else {
+            return false;
+        }
         
     }
 
