@@ -44,7 +44,7 @@ public class EquipamentoDAO {
         StringBuilder query = new StringBuilder();
         query.append("UPDATE equipamento ");
         query.append("SET descricao = ?, valor_diaria = ?, valor_mensal = ?, qtd_total = ? ");
-        query.append("WHERE id_equipamento = ?");
+        query.append("WHERE id = ?");
         try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             stmt.setString(1, descricao);
             stmt.setDouble(2, vlrDiaria);
@@ -65,7 +65,7 @@ public class EquipamentoDAO {
         log.registrarLog(1, "EquipamentoDAO", "deletar", "equipamento", "Deletando o Equipamento no Banco de Dados");
         StringBuilder query = new StringBuilder();
         query.append("DELETE FROM equipamento ");
-        query.append("WHERE id_equipamento = ?");
+        query.append("WHERE id = ?");
         try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
@@ -82,13 +82,13 @@ public class EquipamentoDAO {
         log.registrarLog(1, "EquipamentoDAO", "buscarPorId", "equipamento", "Buscando equipamento pelo ID no Banco de Dados");
         StringBuilder query = new StringBuilder();
         query.append("SELECT id, descri FROM equipamento ");
-        query.append("WHERE id_equipamento = ?");
+        query.append("WHERE id = ?");
         try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Equipamento equipamento = new Equipamento(
-                    rs.getInt("id_equipamento"),
+                    rs.getInt("id"),
                     rs.getInt("qtd_total"),
                     rs.getInt("qtd_disponivel"),
                     rs.getString("descricao"),
@@ -107,15 +107,15 @@ public class EquipamentoDAO {
         }
     }
     
-    public List<Equipamento> listar(String sqlFiltro, List<Object> filtros) throws SQLException {
+    public List<Equipamento> listar(String filtroQuery, List<Object> filtros) throws SQLException {
         log.registrarLog(1, "EquipamentoDAO", "listar", "equipamento", "Listando os Equipamentos cadastrados no Banco de Dados");
-        StringBuilder sql = new StringBuilder();
-        sql.append("SELECT id, descricao, valor_diaria, valor_mensal, qtd_total, qtd_disponivel ");
-        sql.append("FROM equipamento ");
-        sql.append("Where 1 = 1 ");
-        sql.append(sqlFiltro);
-        sql.append("ORDER BY descricao ASC");
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql.toString())) {
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT id, descricao, valor_diaria, valor_mensal, qtd_total, qtd_disponivel ");
+        query.append("FROM equipamento ");
+        query.append("WHERE 1 = 1 ");
+        query.append(filtroQuery);
+        query.append("ORDER BY descricao ASC");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             for(int i = 0; i < filtros.size(); i++){
                 stmt.setObject(i+1, filtros.get(i));
             }

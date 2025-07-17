@@ -5,7 +5,18 @@
 package br.edu.iftm.renthub.view;
 
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import br.edu.iftm.renthub.control.ContratoController;
+import br.edu.iftm.renthub.model.Contrato;
+import br.edu.iftm.renthub.model.Contrato.Status;
+import br.edu.iftm.renthub.model.Contrato.Tipo;
 
 /**
  *
@@ -15,11 +26,13 @@ public class BuscarContrato extends javax.swing.JDialog {
     private UtilsComponent estilo;
     private DefaultTableModel modelo;
     private static BuscarCliente buscarCliente;
+    private static ContratoController contratoController;
     /**
      * Creates new form BuscarContrato
      */
     public BuscarContrato(java.awt.Frame parent, boolean modal, Connection conexao) {
         super(parent, modal);
+        contratoController = new ContratoController(conexao);
         buscarCliente = new BuscarCliente(parent, modal, conexao);
         initComponents();
         estilo = new UtilsComponent();
@@ -125,6 +138,11 @@ public class BuscarContrato extends javax.swing.JDialog {
                 btSelecionarMouseExited(evt);
             }
         });
+        btSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSelecionarActionPerformed(evt);
+            }
+        });
 
         btSair.setBackground(new java.awt.Color(240, 240, 240));
         btSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -193,6 +211,11 @@ public class BuscarContrato extends javax.swing.JDialog {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btFiltrarMouseExited(evt);
+            }
+        });
+        btFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFiltrarActionPerformed(evt);
             }
         });
 
@@ -351,6 +374,13 @@ public class BuscarContrato extends javax.swing.JDialog {
         buscarCliente.setLocationRelativeTo(this);
         buscarCliente.setVisible(true);
     }//GEN-LAST:event_btBuscarClienteActionPerformed
+
+    private void btFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrarActionPerformed
+    }//GEN-LAST:event_btFiltrarActionPerformed
+
+    private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btSelecionarActionPerformed
     
     
     //Metodo para limpeza dos campos da tela

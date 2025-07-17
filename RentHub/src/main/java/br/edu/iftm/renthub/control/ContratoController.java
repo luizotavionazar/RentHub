@@ -2,6 +2,8 @@ package br.edu.iftm.renthub.control;
 
 import java.sql.Connection;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.iftm.renthub.dao.ContratoDAO;
 import br.edu.iftm.renthub.model.Contrato;
@@ -40,6 +42,42 @@ public class ContratoController {
             return false;
         }
     }
+
+    public List<Contrato> listar(Contrato contratoFiltro) {
+        log.registrarLog(1, "ContratoController", "listarContratos", "", "Listando contratos com base nos filtros");
+        StringBuilder sqlFiltro = new StringBuilder();
+        List<Object> filtros = new ArrayList<>();
+        if (contratoFiltro.getCliente() != null && contratoFiltro.getCliente().getId() != null) {
+            sqlFiltro.append("AND c.id = ? ");
+            filtros.add(contratoFiltro.getCliente().getId());
+        }
+        if (contratoFiltro.getTipo() != null) {
+            sqlFiltro.append("AND ct.tipo = ? ");
+            filtros.add(contratoFiltro.getTipo().name());
+        }
+        if (contratoFiltro.getStatus() != null) {
+            sqlFiltro.append("AND ct.status = ? ");
+            filtros.add(contratoFiltro.getStatus().name());
+        }
+        if (contratoFiltro.getDataInicio() != null) {
+            sqlFiltro.append("AND ct.data_inicio >= ? ");
+            filtros.add(contratoFiltro.getDataInicio());
+        }
+        if (contratoFiltro.getDataFim() != null) {
+            sqlFiltro.append("AND ct.data_fim <= ? ");
+            filtros.add(contratoFiltro.getDataFim());
+        }
+        if (contratoFiltro.getDataEntrega() != null) {
+            sqlFiltro.append("AND ct.data_entrega = ? ");
+            filtros.add(contratoFiltro.getDataEntrega());
+        }
+        try {
+            return contratoDAO.listar(sqlFiltro.toString(), filtros);    
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 
     //public String encerrarContrato(int id, String forma, LocalDate dataAtual) {
     //    return contratoDAO.encerrarContrato(id, forma, dataAtual);

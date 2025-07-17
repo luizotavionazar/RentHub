@@ -2,6 +2,8 @@ package br.edu.iftm.renthub.control;
 
 import java.sql.Connection;
 //import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.iftm.renthub.dao.ClienteDAO;
 import br.edu.iftm.renthub.model.Cliente;
@@ -25,12 +27,12 @@ public class ClienteController {
                     return clienteDAO.cadastrar(cliente.getNome(), cliente.getDocumento(), cliente.getTelefone(), cliente.getEndereco().getId());
                 } else {
                     log.registrarLog(3, "ClienteController", "cadastrar", "cliente", "Cliente: " + cliente.getNome() + " não cadastrado");
-                    return 0;
+                    return null;
                 }
         } catch (Exception e) {
             log.registrarLog(4, "ClienteController", "cadastrar", "cliente", "Erro ao cadastrar o cliente: " + e.getMessage());
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 
@@ -84,10 +86,19 @@ public class ClienteController {
             return null;
         }
     }
-    // public ArrayList<Cliente> listarClientes () {
-    // return clienteDAO.listar();
-    // }
-    // public Cliente verificarCPF (String cpf) {
-    // return clienteDAO.verificarCPF(cpf);
-    // }
+
+    public List<Cliente> listar(Cliente clienteFiltro) {
+        log.registrarLog(1, "ClienteController", "listarClientes", "cliente", "Iniciando listagem de clientes com filtros");
+        StringBuilder filtroQuery = new StringBuilder();
+        List<Object> filtros = new ArrayList<>();
+        if (clienteFiltro.getNome() != null && !clienteFiltro.getNome().trim().isEmpty()) {
+            filtroQuery.append(" AND c.nome LIKE ?");
+            filtros.add("%" + clienteFiltro.getNome().trim() + "%");
+        }
+        if (clienteFiltro.getDocumento() != null && !clienteFiltro.getDocumento().trim().isEmpty()) {
+            filtroQuery.append(" AND c.documento = ?");
+            filtros.add(clienteFiltro.getDocumento().trim());
+        }
+        return clienteDAO.listar(filtroQuery.toString(), filtros);
+    }
 }
