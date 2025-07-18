@@ -132,68 +132,6 @@ public class ContratoDAO {
             return null;
         }
     }
-
-    //public Contrato buscarUltimoContrato () {
-    //    String sql = "SELECT * " +
-    //                 "FROM contrato "+
-    //                 "ORDER BY id_contrato DESC " + 
-    //                 "LIMIT 1";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        ResultSet rs = stmt.executeQuery();
-    //        if (rs.next()) {
-    //            return new Contrato(rs.getInt("tipo"), rs.getInt("qtd_equip"), rs.getString("data_inicio"), 
-    //            rs.getString("data_fim"), rs.getString("data_entrega"), rs.getString("status"));
-    //        }
-    //        return null;
-    //    } catch (SQLException e) {
-    //        e.printStackTrace();
-    //        System.out.println("Erro ao obter o Último Contrato Cadastrado");
-    //        return null;
-    //    }
-    //}
-
-    public Contrato buscarContrato (int id) {
-        String sql = "SELECT c.id_contrato, c.tipo, c.id_cliente, cl.nome AS nome_cliente, " +
-                "c.id_equip, e.descricao AS descricao_equipamento, " +
-                 "c.qtd_equip, c.data_inicio, c.data_fim, c.data_entrega, c.status " +
-                 "FROM contrato c " +
-                 "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
-                 "JOIN equipamento e ON c.id_equip = e.id_equip " +
-                 "WHERE id_contrato = ?";
-
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql)){
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                List<Equipamento> equipamentos = buscarEquipamentoContrato(id);
-                Cliente cliente = clienteController.buscarPorId(rs.getInt("id_cliente"));
-                Contrato contrato = new Contrato();
-                contrato.setCliente(cliente);
-                contrato.setEquipamentos(equipamentos);
-                if(rs.getString("status").equals("ATIVO")){
-                    contrato.setStatus(Contrato.Status.ATIVO);
-                }else if(rs.getString("status").equals("CANCELADO")){
-                    contrato.setStatus(Contrato.Status.CANCELADO);
-                }else{
-                    contrato.setStatus(Contrato.Status.FINALIZADO);
-                }
-                if(rs.getString("tipo").equals("DIARIO")){
-                    contrato.setTipo(Contrato.Tipo.DIARIO);
-                }else {
-                    contrato.setTipo(Contrato.Tipo.MENSAL);
-                }
-                contrato.setDataInicio(rs.getDate("data_inicio").toLocalDate());
-                contrato.setDataFim(rs.getDate("data_fim").toLocalDate());
-                contrato.setDataEntrega(rs.getDate("data_entrega").toLocalDate());
-                return contrato;
-            }
-            return null;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
     
     public List<Equipamento> buscarEquipamentoContrato(int idContrato){
         List<Equipamento> equipamentos = new ArrayList<>();
@@ -212,77 +150,6 @@ public class ContratoDAO {
         }
         return equipamentos;
     }
-    //public ArrayList<Contrato> listarContratoAtivo () {
-    //    ArrayList<Contrato> contratos = new ArrayList<>();
-    //    String sql = "SELECT c.id_contrato, c.tipo, c.id_cliente, cl.nome AS nome_cliente, " +
-    //            "c.id_equip, e.descricao AS descricao_equipamento, " +
-    //             "c.qtd_equip, c.data_inicio, c.data_fim, c.data_entrega, c.status " +
-    //             "FROM contrato c " +
-    //             "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
-    //             "JOIN equipamento e ON c.id_equip = e.id_equip " +
-    //             "WHERE c.status = 'A'";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        ResultSet rs = stmt.executeQuery();
-    //        while (rs.next()) {
-    //            contratos.add(new Contrato(rs.getInt("id_contrato"), rs.getInt("id_cliente"), 
-    //            rs.getString("nome_cliente"), rs.getInt("id_equip"), rs.getString("descricao_equipamento"), 
-    //            rs.getInt("tipo"), rs.getInt("qtd_equip"), rs.getString("data_inicio"), 
-    //            rs.getString("data_fim"), rs.getString("data_entrega"), rs.getString("status")));
-    //        }
-    //    } catch (SQLException e) {
-    //        e.printStackTrace();
-    //    }
-    //    return contratos;
-    //}
-
-    //public ArrayList<Contrato> listarContratoEncerrado () {
-    //    ArrayList<Contrato> contratos = new ArrayList<>();
-    //    String sql = "SELECT c.id_contrato, c.tipo, c.id_cliente, cl.nome AS nome_cliente, " +
-    //            "c.id_equip, e.descricao AS descricao_equipamento, " +
-    //             "c.qtd_equip, c.data_inicio, c.data_fim, c.data_entrega, c.status " +
-    //             "FROM contrato c " +
-    //             "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
-    //             "JOIN equipamento e ON c.id_equip = e.id_equip " +
-    //             "WHERE c.status = 'F' or c.status = 'C'" + 
-    //             "ORDER BY c.id_contrato ASC";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        ResultSet rs = stmt.executeQuery();
-    //        while (rs.next()) {
-    //            contratos.add(new Contrato(rs.getInt("id_contrato"), rs.getInt("id_cliente"), 
-    //            rs.getString("nome_cliente"), rs.getInt("id_equip"), rs.getString("descricao_equipamento"), 
-    //            rs.getInt("tipo"), rs.getInt("qtd_equip"), rs.getString("data_inicio"), 
-    //            rs.getString("data_fim"), rs.getString("data_entrega"), rs.getString("status")));
-    //        }
-    //    } catch (SQLException e) {
-    //        e.printStackTrace();
-    //    }
-    //    return contratos;
-    //}
-
-    //public ArrayList<Contrato> listarContrato () {
-    //    ArrayList<Contrato> contratos = new ArrayList<>();
-    //    String sql = "SELECT c.id_contrato, c.tipo, c.id_cliente, cl.nome AS nome_cliente, " +
-    //            "c.id_equip, e.descricao AS descricao_equipamento, " +
-    //             "c.qtd_equip, c.data_inicio, c.data_fim, c.data_entrega, c.status " +
-    //             "FROM contrato c " +
-    //             "JOIN cliente cl ON c.id_cliente = cl.id_cliente " +
-    //             "JOIN equipamento e ON c.id_equip = e.id_equip ";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        ResultSet rs = stmt.executeQuery();
-    //        while (rs.next()) {
-    //            contratos.add(new Contrato(rs.getInt("id_contrato"), rs.getInt("id_cliente"), 
-    //            rs.getString("nome_cliente"), rs.getInt("id_equip"), rs.getString("descricao_equipamento"), 
-    //            rs.getInt("tipo"), rs.getInt("qtd_equip"), rs.getString("data_inicio"), 
-    //            rs.getString("data_fim"), rs.getString("data_entrega"), rs.getString("status")));
-    //        }
-    //    } catch (SQLException e) {
-    //        e.printStackTrace();
-    //    }
-    //    return contratos;
-    //}
 
     public boolean encerrar(Integer id, String status, LocalDate dataAtual) {
         String sql = "UPDATE contrato SET data_entrega = ?, status = ? WHERE id = ?";
@@ -296,34 +163,4 @@ public class ContratoDAO {
             return false;
         }
     }
-
-    //public boolean verificarEquipamentoEmContratoAtivo (int idEquip) {
-    //    String sql = "SELECT COUNT(*) FROM contrato WHERE id_equip = ? AND status = 'A'";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        stmt.setInt(1, idEquip);
-    //        ResultSet rs = stmt.executeQuery();   
-    //        if (rs.next() && rs.getInt(1) > 0) {
-    //            return true;
-    //        }
-    //    } catch (SQLException e) {
-    //        e.printStackTrace();
-    //    } 
-    //    return false;
-    //}
-
-    //public boolean verificarClienteEmContratoAtivo (int id) {
-    //    String sql = "SELECT COUNT(*) FROM contrato WHERE id_cliente = ? AND status = 'A'";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        stmt.setInt(1, id);
-    //        ResultSet rs = stmt.executeQuery();   
-    //        if (rs.next() && rs.getInt(1) > 0) {
-    //            return true;
-    //        }
-  //    } catch (SQLException e) {
-  //        e.printStackTrace();
-  //    } 
-  //    return false;
-  //}
 }

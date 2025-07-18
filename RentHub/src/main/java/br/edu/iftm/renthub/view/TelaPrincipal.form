@@ -2,8 +2,6 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="btgTipo">
-    </Component>
     <Container class="javax.swing.JPopupMenu" name="popupPerfil">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -1204,6 +1202,9 @@
                         <Property name="text" type="java.lang.String" value="Sem N&#xfa;mero"/>
                         <Property name="focusPainted" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbContratoCadastroSemNumeroActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbTituloContratoCadastroDataFinal">
                       <Properties>
