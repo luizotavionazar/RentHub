@@ -740,10 +740,8 @@
                                               </Group>
                                           </Group>
                                           <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                              <Component id="lbTituloContratoCadastroDataInicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="dcContratoCadastroDataInicio" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="lbTituloContratoCadastroDataInicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dcContratoCadastroDataInicio" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lbTituloContratoCadastroDataFinal" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
@@ -1106,6 +1104,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="jsQtdEquipamento">
+                      <Properties>
+                        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                          <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btContratoCadastroAdicionarEquipamento">
                       <Properties>
@@ -2038,6 +2041,7 @@
                   <Events>
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btLimparEncerrarContratoMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btLimparEncerrarContratoMouseExited"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLimparEncerrarContratoActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>

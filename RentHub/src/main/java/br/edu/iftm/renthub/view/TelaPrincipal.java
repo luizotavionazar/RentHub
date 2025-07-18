@@ -37,6 +37,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private static BuscarEquipamento buscarEquipamento;
     private static BuscarCliente buscarCliente;
     private List<Equipamento> equipamentosContrato = new ArrayList<>();
+    private DefaultTableModel modeloTabelaEquipamentosContrato;
 
     public TelaPrincipal(Connection conexao) throws SQLException {
         usuarioController = new UsuarioController(conexao);
@@ -49,6 +50,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         verTotalizazao = new VerTotalizazao(this, true, conexao);
         buscarEquipamento = new BuscarEquipamento(this, true, conexao, this);
         initComponents();
+        tbContratoEncerrarEquipamentos.getModel();
         cdl = (CardLayout) getContentPane().getLayout();
         cdlPn = (CardLayout) pnCdTelas.getLayout();
         estilo = new UtilsComponent();
@@ -643,6 +645,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloContratoQuantidade.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloContratoQuantidade.setText("Quantidade");
 
+        jsQtdEquipamento.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
         btContratoCadastroAdicionarEquipamento.setBackground(new java.awt.Color(240, 240, 240));
         btContratoCadastroAdicionarEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plus.png"))); // NOI18N
         btContratoCadastroAdicionarEquipamento.setBorderPainted(false);
@@ -829,9 +833,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btContratoCadastroAdicionarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbTituloContratoCadastroDataInicio)
-                                .addComponent(dcContratoCadastroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbTituloContratoCadastroDataInicio)
+                            .addComponent(dcContratoCadastroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnContratoCadastroLayout.createSequentialGroup()
                                 .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbTituloContratoCadastroDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1348,6 +1351,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btLimparEncerrarContratoMouseExited(evt);
+            }
+        });
+        btLimparEncerrarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparEncerrarContratoActionPerformed(evt);
             }
         });
 
@@ -2423,12 +2431,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btRegistrarEquipamentoActionPerformed
 
     private void btRegistrarEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEncerrarContratoActionPerformed
-        // TODO add your handling code here:
+        if (totalizacaoController.totalizar(idContrato, valor, juros, multa)) {
+            JOptionPane.showMessageDialog(rootPane, "Contrato Encerrado com Sucesso!", "Encerramento", JOptionPane.INFORMATION_MESSAGE);
+            limparTelaEncerramento();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao encerrar o contrato!", "Encerramento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_btRegistrarEncerrarContratoActionPerformed
 
+    private void limparTelaEncerramento(){
+        tfContratoEncerrarNumeroContrato.setText("");
+        tfContratoEncerrarTipo.setText("");
+        tfContratoEncerrarCliente.setText("");
+        ffContratoEncerrarCpf.setText("");
+        dtContratoEncerrarDataInicio.setDate(null);
+        dtContratoEncerrarDataInicio.setDate(null);
+        ffContratoEncerraValor.setText("");
+        ffContratoEncerrarJuros.setText("");
+        ffContratoEncerraMulta.setText("");
+        ffContratoEncerraValorTotal.setValue(totalizacaoController.calcularTotal(valor, multa, multa));
+        modeloTabelaEquipamentosContrato.setRowCount(0);
+    }
+    
     private void ffEquipamentoValorDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ffEquipamentoValorDiarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ffEquipamentoValorDiarioActionPerformed
+
+    private void btLimparEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparEncerrarContratoActionPerformed
+        limparTelaEncerramento();
+    }//GEN-LAST:event_btLimparEncerrarContratoActionPerformed
     
     public void resetaEstadoComponentesCadastroContrato(){
         lbTituloContratoCadastroDataEntrega.setVisible(false);
@@ -2440,21 +2472,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     }
     
+    Integer idContrato;
+    Double valor;
+    Double juros;
+    Double multa;
     public void preencheTelaEncerrarContrato(Contrato contrato){
-        String idContrato = String.valueOf(contrato.getId());
-        tfContratoEncerrarNumeroContrato.setText(idContrato);
+        idContrato = contrato.getId();
+        String idContratoCampo = String.valueOf(contrato.getId());
+        tfContratoEncerrarNumeroContrato.setText(idContratoCampo);
         tfContratoEncerrarTipo.setText(contrato.getTipo().name());
         tfContratoEncerrarCliente.setText(contrato.getCliente().getNome());
         ffContratoEncerrarCpf.setText(contrato.getCliente().getDocumento());
         dtContratoEncerrarDataInicio.setDate(Date.from(contrato.getDataInicio().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         dtContratoEncerrarDataInicio.setDate(Date.from(contrato.getDataFim().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        Double valor = totalizacaoController.calcularValor(contrato, 2);
-        ffContratoEncerraValor.setValue(valor);
-        Double juros = totalizacaoController.calcularJuros(contrato.getTipo().name(), valor, contrato.getDataFim());
-        ffContratoEncerrarJuros.setValue(juros);
-        Double multa = totalizacaoController.calcularMulta(cbContratoEncerrarTipo.getSelectedIndex(), contrato.getTipo().name(), valor);
-        ffContratoEncerraMulta.setValue(multa);
+        Double valorCampo = totalizacaoController.calcularValor(contrato, 2);
+        valor = valorCampo;
+        ffContratoEncerraValor.setValue(valorCampo);
+        Double jurosCampo = totalizacaoController.calcularJuros(contrato.getTipo().name(), valor, contrato.getDataFim());
+        juros = jurosCampo;
+        ffContratoEncerrarJuros.setValue(jurosCampo);
+        Double multaCampo = totalizacaoController.calcularMulta(cbContratoEncerrarTipo.getSelectedIndex(), contrato.getTipo().name(), valor);
+        ffContratoEncerraMulta.setValue(multaCampo);
+        multa = multaCampo;
         ffContratoEncerraValorTotal.setValue(totalizacaoController.calcularTotal(valor, multa, multa));
+        modeloTabelaEquipamentosContrato.setRowCount(0);
+        for (Equipamento equipamento : contrato.getEquipamentos()) {
+            Object[] linha = {equipamento.getId(), equipamento.getDescricao(), equipamento.getQtdContrato()};
+            modeloTabelaEquipamentosContrato.addRow(linha);
+        }
     }
     
     public void preencheEquipamento(Equipamento equipamento){
