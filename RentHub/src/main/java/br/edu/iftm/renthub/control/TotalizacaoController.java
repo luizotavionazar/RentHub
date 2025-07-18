@@ -17,21 +17,21 @@ import br.edu.iftm.renthub.model.Contrato.Tipo;
 import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class TotalizacaoController {
-    private TotalizacaoDAO totalizaoDAO;
+    private TotalizacaoDAO totalizacaoDAO;
 
     public TotalizacaoController(Connection conexao) {
-        this.totalizaoDAO = new TotalizacaoDAO(conexao);
+        this.totalizacaoDAO = new TotalizacaoDAO(conexao);
     }
 
     RegistrosLog log = new RegistrosLog();
 
-    //public String realizarTotalizacao (int contrato, double valor, double multa, double juros, double total) {
-    //    return totalizacaoDAO.Cadastrartotalizacao(contrato, valor, multa, juros, total);
-    //}
-    //
-    //public Totalizacao buscarTotalizacao (int contrato) {
-    //    return totalizacaoDAO.buscarTotalizacao(contrato);
-    //}
+    public boolean totalizar (Integer idContrato, double valor, double juros, double multa) {
+        return totalizacaoDAO.totalizar(idContrato, valor, juros, multa);
+    }
+    
+    public Totalizacao buscarTotalizacao (Integer idContrato) {
+        return totalizacaoDAO.buscarPorContrato(idContrato);
+    }
 
     public Double calcularValor(Contrato contrato, int forma) {
         LocalDate dataAtual = LocalDate.now();

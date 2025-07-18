@@ -2,11 +2,12 @@ package br.edu.iftm.renthub.model;
 
 public class Totalizacao {
     private Integer id;
-    private Contrato contrato;
+    private Integer idContrato;
     private double valor, juros, multa, total;
 
-    public Totalizacao(Contrato contrato, double valor, double juros, double multa, double total) {
-        this.contrato = contrato;
+    public Totalizacao(Integer id, Integer idContrato, double valor, double juros, double multa, double total) {
+        this.id = id;
+        this.idContrato = idContrato;
         this.valor = valor;
         this.juros = juros;
         this.multa = multa;
@@ -21,12 +22,12 @@ public class Totalizacao {
         this.id = id;
     }
 
-    public Contrato getContrato() {
-        return contrato;
+    public Integer getIdContrato() {
+        return idContrato;
     }
 
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
+    public void setContrato(Integer idContrato) {
+        this.idContrato = idContrato;
     }
 
     public double getValor() {

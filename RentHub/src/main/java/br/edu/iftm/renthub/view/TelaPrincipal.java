@@ -38,6 +38,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private static BuscarCliente buscarCliente;
     private List<Equipamento> equipamentosContrato = new ArrayList<>();
     private DefaultTableModel modeloTabelaEquipCadastroContrato;
+    private DefaultTableModel modeloTabelaEquipamentosContrato;
 
     public TelaPrincipal(Connection conexao) throws SQLException {
         usuarioController = new UsuarioController(conexao);
@@ -50,6 +51,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         verTotalizazao = new VerTotalizazao(this, true, conexao);
         buscarEquipamento = new BuscarEquipamento(this, true, conexao, this);
         initComponents();
+        modeloTabelaEquipamentosContrato = (DefaultTableModel) tbContratoEncerrarEquipamentos.getModel();
         cdl = (CardLayout) getContentPane().getLayout();
         cdlPn = (CardLayout) pnCdTelas.getLayout();
         estilo = new UtilsComponent();
@@ -643,6 +645,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloContratoQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbTituloContratoQuantidade.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloContratoQuantidade.setText("Quantidade");
+
+        jsQtdEquipamento.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         btContratoCadastroAdicionarEquipamento.setBackground(new java.awt.Color(240, 240, 240));
         btContratoCadastroAdicionarEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plus.png"))); // NOI18N
@@ -1355,6 +1359,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btLimparEncerrarContratoMouseExited(evt);
             }
         });
+        btLimparEncerrarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparEncerrarContratoActionPerformed(evt);
+            }
+        });
 
         btRegistrarEncerrarContrato.setBackground(new java.awt.Color(240, 240, 240));
         btRegistrarEncerrarContrato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -2039,6 +2048,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cdlPn.show(pnCdTelas, "cdTelaHome");
         resetaEstadoComponentesCadastroContrato();
         limpaTelaContratoCadastro();
+        limparTelaEncerramento();
     }//GEN-LAST:event_lbTituloRentHubMouseClicked
 
     private void btEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEntrarMouseEntered
@@ -2108,6 +2118,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cdlPn.show(pnCdTelas, "cdTelaHome");
         resetaEstadoComponentesCadastroContrato();
         limpaTelaContratoCadastro();
+        limparTelaEncerramento();
     }//GEN-LAST:event_btContratoCancelarActionPerformed
 
     private void btContratoRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btContratoRegistrarMouseEntered
@@ -2140,6 +2151,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(opcao == 0){
             cdl.show(getContentPane(), "cdTelaLogin");
             limpaTelaContratoCadastro();
+            limparTelaEncerramento();
         }
     }//GEN-LAST:event_lbPerfilMouseClicked
 
@@ -2158,6 +2170,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btMenuEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuEquipamentoActionPerformed
         cdlPn.show(pnCdTelas, "cdTelaEquipamento");
         limpaTelaContratoCadastro();
+        limparTelaEncerramento();
     }//GEN-LAST:event_btMenuEquipamentoActionPerformed
 
     private void btBuscarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarContratoActionPerformed
@@ -2241,6 +2254,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEncerrarContratoActionPerformed
         cdlPn.show(pnCdTelas, "cdTelaEncerrarContrato");
         limpaTelaContratoCadastro();
+        limparTelaEncerramento();
     }//GEN-LAST:event_btEncerrarContratoActionPerformed
 
     private void btNovoContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoContratoActionPerformed
@@ -2366,6 +2380,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuClienteActionPerformed
         cdlPn.show(pnCdTelas, "cdTelaCliente");
         limpaTelaContratoCadastro();
+        limparTelaEncerramento();
     }//GEN-LAST:event_btMenuClienteActionPerformed
 
     private void btContratoRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContratoRegistrarActionPerformed
@@ -2435,7 +2450,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btRegistrarEquipamentoActionPerformed
 
     private void btRegistrarEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEncerrarContratoActionPerformed
-        // TODO add your handling code here:
+        if (totalizacaoController.totalizar(idContrato, valor, juros, multa)) {
+            JOptionPane.showMessageDialog(rootPane, "Contrato Encerrado com Sucesso!", "Encerramento", JOptionPane.INFORMATION_MESSAGE);
+            limparTelaEncerramento();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao encerrar o contrato!", "Encerramento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_btRegistrarEncerrarContratoActionPerformed
 
     private void ckbContratoCadastroSemNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbContratoCadastroSemNumeroActionPerformed
@@ -2445,6 +2466,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tfContratoCadastroNumero.setEnabled(true);
         }
     }//GEN-LAST:event_ckbContratoCadastroSemNumeroActionPerformed
+
+    private void limparTelaEncerramento(){
+        tfContratoEncerrarNumeroContrato.setText("");
+        tfContratoEncerrarTipo.setText("");
+        tfContratoEncerrarCliente.setText("");
+        ffContratoEncerrarCpf.setText("");
+        dtContratoEncerrarDataInicio.setDate(null);
+        dtContratoEncerrarDataInicio.setDate(null);
+        ffContratoEncerraValor.setText("");
+        ffContratoEncerrarJuros.setText("");
+        ffContratoEncerraMulta.setText("");
+        ffContratoEncerraValorTotal.setText("");
+        modeloTabelaEquipamentosContrato.setRowCount(0);
+    }
+    
+    private void ffEquipamentoValorDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ffEquipamentoValorDiarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ffEquipamentoValorDiarioActionPerformed
+
+    private void btLimparEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparEncerrarContratoActionPerformed
+        limparTelaEncerramento();
+    }//GEN-LAST:event_btLimparEncerrarContratoActionPerformed
     
     public void resetaEstadoComponentesCadastroContrato(){
         lbTituloContratoCadastroDataEntrega.setVisible(false);
@@ -2478,21 +2521,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
    }
     
+    Integer idContrato;
+    Double valor;
+    Double juros;
+    Double multa;
     public void preencheTelaEncerrarContrato(Contrato contrato){
-        String idContrato = String.valueOf(contrato.getId());
-        tfContratoEncerrarNumeroContrato.setText(idContrato);
+        idContrato = contrato.getId();
+        String idContratoCampo = String.valueOf(contrato.getId());
+        tfContratoEncerrarNumeroContrato.setText(idContratoCampo);
         tfContratoEncerrarTipo.setText(contrato.getTipo().name());
         tfContratoEncerrarCliente.setText(contrato.getCliente().getNome());
         ffContratoEncerrarCpf.setText(contrato.getCliente().getDocumento());
         dtContratoEncerrarDataInicio.setDate(Date.from(contrato.getDataInicio().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         dtContratoEncerrarDataInicio.setDate(Date.from(contrato.getDataFim().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        Double valor = totalizacaoController.calcularValor(contrato, 2);
-        ffContratoEncerraValor.setValue(valor);
-        Double juros = totalizacaoController.calcularJuros(contrato.getTipo().name(), valor, contrato.getDataFim());
-        ffContratoEncerrarJuros.setValue(juros);
-        Double multa = totalizacaoController.calcularMulta(cbContratoEncerrarTipo.getSelectedIndex(), contrato.getTipo().name(), valor);
-        ffContratoEncerraMulta.setValue(multa);
+        Double valorCampo = totalizacaoController.calcularValor(contrato, 2);
+        valor = valorCampo;
+        ffContratoEncerraValor.setValue(valorCampo);
+        Double jurosCampo = totalizacaoController.calcularJuros(contrato.getTipo().name(), valor, contrato.getDataFim());
+        juros = jurosCampo;
+        ffContratoEncerrarJuros.setValue(jurosCampo);
+        Double multaCampo = totalizacaoController.calcularMulta(cbContratoEncerrarTipo.getSelectedIndex(), contrato.getTipo().name(), valor);
+        ffContratoEncerraMulta.setValue(multaCampo);
+        multa = multaCampo;
         ffContratoEncerraValorTotal.setValue(totalizacaoController.calcularTotal(valor, multa, multa));
+        modeloTabelaEquipamentosContrato.setRowCount(0);
+        for (Equipamento equipamento : contrato.getEquipamentos()) {
+            Object[] linha = {equipamento.getId(), equipamento.getDescricao(), equipamento.getQtdContrato()};
+            modeloTabelaEquipamentosContrato.addRow(linha);
+        }
     }
     
     public void preencheEquipamento(Equipamento equipamento){
@@ -2564,10 +2620,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tfContratoCadastroNumero.setEnabled(true);
         }
         modeloTabelaEquipCadastroContrato.setRowCount(0);
-    }
-    
-    public void limpaTelaContratoEncerrar(){
-        
     }
     
     public void limpaTelaEquipamento(){
