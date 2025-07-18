@@ -170,32 +170,4 @@ public class ClienteDAO {
         }
     }
 
-    //public ArrayList<Cliente> listarClientes () {
-    //    ArrayList<Cliente> clientes = new ArrayList<>();
-    //    String sql = "SELECT * FROM cliente order by id_cliente ASC";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        ResultSet rs = stmt.executeQuery();
-    //        while (rs.next()) {
-    //            clientes.add(new Cliente(rs.getInt("id_cliente"), rs.getString("nome"), rs.getString("cpf"), rs.getString("telefone"), rs.getString("endereco")));
-    //        }
-    //    } catch (SQLException e) {
-    //        e.printStackTrace();
-    //    }
-    //    return clientes;
-    //}
-    //public Cliente verificarCPF (String cpf) {
-    //    String sql = "SELECT * FROM cliente WHERE cpf = ?";
-    //    try (Connection conn = ConexaoDAO.conexaoBd();){
-    //        PreparedStatement stmt = conn.prepareStatement(sql);
-    //        stmt.setString(1, cpf);
-    //        ResultSet rs = stmt.executeQuery();
-    //        if (rs.next()) {
-    //            return new Cliente(rs.getInt("id_cliente"), rs.getString("nome"), rs.getString("cpf"), rs.getString("telefone"), rs.getString("endereco"));
-    //        }
-    //        return null;
-    //    } catch (SQLException e) {
-    //        return null;
-    //    }
-    //}
 }

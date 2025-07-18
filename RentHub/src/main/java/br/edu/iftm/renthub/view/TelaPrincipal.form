@@ -2,8 +2,6 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="btgTipo">
-    </Component>
     <Container class="javax.swing.JPopupMenu" name="popupPerfil">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -740,10 +738,8 @@
                                               </Group>
                                           </Group>
                                           <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                              <Component id="lbTituloContratoCadastroDataInicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="dcContratoCadastroDataInicio" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="lbTituloContratoCadastroDataInicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dcContratoCadastroDataInicio" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lbTituloContratoCadastroDataFinal" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
@@ -1201,6 +1197,9 @@
                         <Property name="text" type="java.lang.String" value="Sem N&#xfa;mero"/>
                         <Property name="focusPainted" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbContratoCadastroSemNumeroActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbTituloContratoCadastroDataFinal">
                       <Properties>
