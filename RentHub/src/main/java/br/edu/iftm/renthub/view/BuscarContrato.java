@@ -30,15 +30,18 @@ public class BuscarContrato extends javax.swing.JDialog {
     private DefaultTableModel modelo;
     private static BuscarCliente buscarCliente;
     private static ContratoController contratoController;
+    private static TelaPrincipal tela;
     private List<Contrato> contratos = new ArrayList<>();
     private Contrato contrato;
+    private int identificador;
     /**
      * Creates new form BuscarContrato
      */
-    public BuscarContrato(java.awt.Frame parent, boolean modal, Connection conexao, BuscarCliente buscarCliente) {
+    public BuscarContrato(java.awt.Frame parent, boolean modal, Connection conexao, BuscarCliente buscarCliente, TelaPrincipal tela) {
         super(parent, modal);
         this.buscarCliente = buscarCliente;
         contratoController = new ContratoController(conexao);
+        this.tela = tela;
         initComponents();
         estilo = new UtilsComponent();
         modelo = (DefaultTableModel)  tbBuscarContrato.getModel();
@@ -386,13 +389,22 @@ public class BuscarContrato extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Selecione um equipamento!", "Busca de equipamento", JOptionPane.WARNING_MESSAGE);
             return;
         }else{
+            System.out.println(indice);
             contrato = contratos.get(indice);
-            //chamar preencheTelaEncerrarContrato
+            if (identificador == 1) {
+                tela.preencheTelaContrato(contrato);
+            } else if(identificador == 2){
+                tela.preencheTelaEncerrarContrato(contrato);
+            }
         }
         limpaBuscarContrato();
         dispose();
     }//GEN-LAST:event_btSelecionarActionPerformed
 
+    public void identificarTela(int identificador){
+        this.identificador = identificador;
+    }
+    
     private void btFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrarActionPerformed
         Date dateInicio = dtDataInicio.getDate();
         Date dateFim = dtDataFim.getDate();
@@ -431,9 +443,8 @@ public class BuscarContrato extends javax.swing.JDialog {
         contratoFiltro.setDataEntrega(dataEntrega);
         
         contratos = contratoController.listar(contratoFiltro);
-        
+        modelo.setRowCount(0);
         for(Contrato ctr : contratos){
-            modelo.setRowCount(0);
             Object[] linha = {ctr.getId(), ctr.getCliente().getNome(), ctr.getDataInicio(), ctr.getDataFim(), ctr.getDataEntrega(), ctr.getStatus()};
             modelo.addRow(linha);
         }

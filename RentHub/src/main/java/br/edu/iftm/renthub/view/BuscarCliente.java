@@ -22,13 +22,15 @@ public class BuscarCliente extends javax.swing.JDialog {
     private List<Cliente> clientes;
     private static ClienteController clienteController;
     private static BuscarContrato buscarContrato;
+    private static TelaPrincipal tela;
     /**
      * Creates new form BuscarCliente
      */
-    public BuscarCliente(java.awt.Frame parent, boolean modal, Connection conexao) {
+    public BuscarCliente(java.awt.Frame parent, boolean modal, Connection conexao, TelaPrincipal tela) {
         super(parent, modal);
+        this.tela = tela;
         clienteController = new ClienteController(conexao);
-        buscarContrato = new BuscarContrato(parent, modal, conexao, this);
+        buscarContrato = new BuscarContrato(parent, modal, conexao, this, tela);
         initComponents();
         estilo = new UtilsComponent();
         modelo = (DefaultTableModel) tbBuscarCliente.getModel();
