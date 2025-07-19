@@ -19,7 +19,10 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 // Criado por Jhonnie em 08/07/2023
@@ -604,6 +607,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloContratoCep.setText("CEP");
 
         ffContratoCadastroCep.setBackground(new java.awt.Color(215, 215, 215));
+        try {
+            ffContratoCadastroCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         ffContratoCadastroCep.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 ffContratoCadastroCepFocusLost(evt);
@@ -2231,6 +2239,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (equipamentoController.verificarSaldo((int)linha[0], (int)linha[2])) {
             equipamentosContrato.add(equipamento);
             modeloTabelaEquipamento.addRow(linha);
+            tfContratoCadastroEquipamento.setText("");
+            jsQtdEquipamento.setValue(0);
         } else {
             int saldoTotal = equipamento.getQtdDisponivel()-(int)jsQtdEquipamento.getValue();
             JOptionPane.showMessageDialog(rootPane, linha[1]+" não possui saldo suficiente no Estoque!\nEm estoque: "+ equipamento.getQtdDisponivel() +
@@ -2432,6 +2442,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         String telefone = ffContratoCadastroTelefone.getText();
         String cep = ffContratoCadastroCep.getText();
         Endereco endereco = ConsultaCep.buscarCep(cep);
+
+        if (endereco.getLogradouro().equals("")) {
+            endereco.setLogradouro(tfContratoCadastroLogradouro.getText());
+        }
+        if (endereco.getBairro().equals("")) {
+            endereco.setBairro(tfContratoCadastroBairro.getText());
+        }
         if(!ckbClienteSemNumero.isSelected()){
             String numero = tfContratoCadastroNumero.getText();
             endereco.setNumero(Integer.parseInt(numero));
@@ -2441,24 +2458,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         Cliente cliente = new Cliente(nomeCliente, identificacao, telefone, endereco);
         cliente.setId(clienteController.cadastrar(cliente));
-        Contrato contrato = new Contrato();
         Date dateInicio = dcContratoCadastroDataInicio.getDate();
         Date dateFim = dcContratoCadastroDataFinal.getDate();
         LocalDate dataInicio = dateInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate dataFim = dateFim.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         if(contratoController.cadastrar(new Contrato(cliente, equipamentosContrato, dataInicio, dataFim))){
-            JOptionPane.showMessageDialog(rootPane, "COntrato Cadastrado com Sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Contrato cadastrado com Sucesso!", "Cadastro de Contrato", JOptionPane.INFORMATION_MESSAGE);
             limpaTelaContratoCadastro();
         }
     }//GEN-LAST:event_btContratoRegistrarActionPerformed
 
     private void ffContratoCadastroCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ffContratoCadastroCepFocusLost
-        String cep = ffContratoCadastroCep.getText();
-        Endereco endereco = ConsultaCep.buscarCep(cep);
-        tfContratoCadastroBairro.setText(endereco.getBairro());
-        tfContratoCadastroCidade.setText(endereco.getCidade().getNome());
-        tfContratoCadastroLogradouro.setText(endereco.getLogradouro());
-        cbContratoCadastroUf.setSelectedItem(endereco.getCidade().getUf());
+        String cep = ffContratoCadastroCep.getText().replaceAll("[-]", "");
+        if (cep.equals("") || cep.trim().length() < 8) {
+            JOptionPane.showMessageDialog(rootPane, "Preencha o CEP por completo!", "Cadastro de Endereço", JOptionPane.WARNING_MESSAGE);
+            ffContratoCadastroCep.requestFocus();
+        } else {
+            Endereco endereco = ConsultaCep.buscarCep(cep);
+            tfContratoCadastroBairro.setText(endereco.getBairro());
+            tfContratoCadastroCidade.setText(endereco.getCidade().getNome());
+            tfContratoCadastroLogradouro.setText(endereco.getLogradouro());
+            cbContratoCadastroUf.setSelectedItem(endereco.getCidade().getUf());   
+        }
     }//GEN-LAST:event_ffContratoCadastroCepFocusLost
 
     private void btRegistrarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEquipamentoActionPerformed
@@ -2668,7 +2689,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tfContratoCadastroComplemento.setText("");
         tfContratoCadastroCidade.setText("");
         cbContratoCadastroUf.setSelectedIndex(0);
-        dcContratoCadastroDataInicio.setDate(null);
+        LocalDate dataAgora = LocalDate.now();
+        Date date = Date.from(dataAgora.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        dcContratoCadastroDataInicio.setDate(date);
         dcContratoCadastroDataFinal.setDate(null);
         dcContratoCadastroDataEntrega.setDate(null);
         tfContratoCadastroEquipamento.setText("");
