@@ -111,9 +111,8 @@ public class ContratoDAO {
                 if (dataEntregaSql != null) {
                     contrato.setDataEntrega(dataEntregaSql.toLocalDate());
                 }
-                Cliente cliente = new Cliente();
-                cliente.setId(rs.getInt("id_cliente"));
-                cliente.setNome(rs.getString("nome_cliente"));
+                int idcliente = rs.getInt("id_cliente");
+                Cliente cliente = clienteController.buscarPorId(idcliente);
                 contrato.setCliente(cliente);
                 contratos.add(contrato);
                 qtdContratos++;

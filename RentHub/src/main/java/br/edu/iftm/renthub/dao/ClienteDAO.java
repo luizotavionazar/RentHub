@@ -96,7 +96,7 @@ public class ClienteDAO {
     public Cliente buscarPorId(Integer id) {
         log.registrarLog(1, "ClienteDAO", "buscarPorId", "cliente", "Buscando cliente pelo ID no Banco de Dados");
         StringBuilder query = new StringBuilder();
-        query.append("SELECT c.id, c.nome, c.cpf, c.telefone, e.id AS id_endereco, e.cep, e.logradouro, e.bairro, e.numero, e.complemento, ci.id AS id_cidade, ci.nome AS nome_cidade, ci.uf ");
+        query.append("SELECT c.id, c.nome, c.documento, c.telefone, e.id AS id_endereco, e.cep, e.logradouro, e.bairro, e.numero, e.complemento, ci.id_ibge AS id_cidade, ci.nome AS nome_cidade, ci.uf ");
         query.append("FROM cliente c ");
         query.append("JOIN endereco e ON c.id_endereco = e.id ");
         query.append("JOIN cidade ci ON e.id_ibge = ci.id_ibge ");
@@ -119,7 +119,7 @@ public class ClienteDAO {
                 endereco.setComplemento(rs.getString("complemento"));
                 Cliente cliente = new Cliente(
                     rs.getString("nome"),
-                    rs.getString("cpf"),
+                    rs.getString("documento"),
                     rs.getString("telefone"),
                     endereco);
                 cliente.setId(rs.getInt("id"));

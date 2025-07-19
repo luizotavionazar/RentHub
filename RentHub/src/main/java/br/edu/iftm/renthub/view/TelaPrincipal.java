@@ -44,10 +44,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         usuarioController = new UsuarioController(conexao);
         contratoController = new ContratoController(conexao);
         clienteController = new ClienteController(conexao);
-        buscarCliente = new BuscarCliente(this, true, conexao);
+        buscarCliente = new BuscarCliente(this, true, conexao, this);
         totalizacaoController = new TotalizacaoController(conexao);
         telaUsuario = new TelaRegistroUsuario(this, true, conexao);
-        buscarContrato = new BuscarContrato(this, true, conexao, buscarCliente);
+        buscarContrato = new BuscarContrato(this, true, conexao, buscarCliente, this);
         verTotalizazao = new VerTotalizazao(this, true, conexao);
         buscarEquipamento = new BuscarEquipamento(this, true, conexao, this);
         initComponents();
@@ -2032,6 +2032,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     lbUsuarioLogado.setText(nomeUsuario);
                     tfUsuario.setText("");
                     pfSenha.setText("");
+                    LocalDate dataAgora = LocalDate.now();
+                    Date date = Date.from(dataAgora.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                    dcContratoCadastroDataInicio.setDate(date);
                 }else {
                     JOptionPane.showMessageDialog(rootPane, "Usuário ou Senha incorretos!", "Falha no Login", JOptionPane.ERROR_MESSAGE);
                 }
@@ -2174,6 +2177,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btMenuEquipamentoActionPerformed
 
     private void btBuscarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarContratoActionPerformed
+        buscarContrato.identificarTela(1);
         buscarContrato.setLocationRelativeTo(this);
         buscarContrato.setVisible(true);
         if(!tfNumeroDoContrato.getText().isEmpty() || !tfNumeroDoContrato.getText().equals("")){
@@ -2181,6 +2185,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             dcContratoCadastroDataEntrega.setVisible(true);
             btContratoCadastroTotalizacao.setVisible(true);
         }
+        
     }//GEN-LAST:event_btBuscarContratoActionPerformed
 
     private void btContratoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContratoLimparActionPerformed
@@ -2215,6 +2220,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btContratoCadastroAdicionarEquipamentoMouseExited
 
     private void btContratoEncerrarBuscarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContratoEncerrarBuscarContratoActionPerformed
+        buscarContrato.identificarTela(2);
         buscarContrato.setLocationRelativeTo(this);
         buscarContrato.setVisible(true);
     }//GEN-LAST:event_btContratoEncerrarBuscarContratoActionPerformed
@@ -2403,7 +2409,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Date dateFim = dcContratoCadastroDataFinal.getDate();
         LocalDate dataInicio = dateInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate dataFim = dateFim.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        contratoController.cadastrar(new Contrato(cliente, equipamentosContrato, dataInicio, dataFim));
+        if(contratoController.cadastrar(new Contrato(cliente, equipamentosContrato, dataInicio, dataFim))){
+            JOptionPane.showMessageDialog(rootPane, "COntrato Cadastrado com Sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            limpaTelaContratoCadastro();
+        }
     }//GEN-LAST:event_btContratoRegistrarActionPerformed
 
     private void ffContratoCadastroCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ffContratoCadastroCepFocusLost

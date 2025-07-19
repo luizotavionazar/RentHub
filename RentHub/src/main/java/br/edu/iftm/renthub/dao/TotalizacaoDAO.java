@@ -14,11 +14,11 @@ import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class TotalizacaoDAO {
     private final Connection conexaoBanco;
-    private TotalizacaoController totalizacaoController;
+    //private TotalizacaoController totalizacaoController;
 
     public TotalizacaoDAO(Connection conexao) {
         this.conexaoBanco = conexao;
-        this.totalizacaoController = new TotalizacaoController(conexao);
+        //this.totalizacaoController = new TotalizacaoController(conexao);
     }
 
     RegistrosLog log = new RegistrosLog();
@@ -37,25 +37,25 @@ public class TotalizacaoDAO {
         }
     }
 
-    public Totalizacao buscarPorContrato(Integer idContrato) {
-        String sql = "SELECT id, valor, juros, multa FROM totalizacao where id_contrato = ?";
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql)){
-            stmt.setInt(1, idContrato);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                Totalizacao totalizacao = new Totalizacao(rs.getInt("id"), 
-                                                          idContrato,
-                                                          rs.getDouble("valor"),
-                                                          rs.getDouble("juros"),
-                                                          rs.getDouble("multa"),
-                                                          totalizacaoController.calcularTotal(rs.getDouble("valor"), rs.getDouble("multa"), rs.getDouble("juros")));
-            return totalizacao;
-            } else {
-                return null;
-            }            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+    //public Totalizacao buscarPorContrato(Integer idContrato) {
+    //    String sql = "SELECT id, valor, juros, multa FROM totalizacao where id_contrato = ?";
+    //    try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql)){
+    //        stmt.setInt(1, idContrato);
+    //        ResultSet rs = stmt.executeQuery();
+    //        if (rs.next()) {
+    //            Totalizacao totalizacao = new Totalizacao(rs.getInt("id"), 
+    //                                                      idContrato,
+    //                                                      rs.getDouble("valor"),
+    //                                                      rs.getDouble("juros"),
+    //                                                      rs.getDouble("multa"),
+    //                                                      totalizacaoController.calcularTotal(rs.getDouble("valor"), rs.getDouble("multa"), rs.getDouble("juros")));
+    //        return totalizacao;
+    //        } else {
+    //            return null;
+    //        }            
+    //    } catch (SQLException e) {
+    //        e.printStackTrace();
+    //        return null;
+    //    }
+    //}
 }
