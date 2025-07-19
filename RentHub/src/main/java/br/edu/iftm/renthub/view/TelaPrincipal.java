@@ -4,6 +4,7 @@ import br.edu.iftm.renthub.control.ClienteController;
 import br.edu.iftm.renthub.control.ContratoController;
 import br.edu.iftm.renthub.control.UsuarioController;
 import br.edu.iftm.renthub.control.Endereco.ConsultaCep;
+import br.edu.iftm.renthub.control.EquipamentoController;
 import br.edu.iftm.renthub.control.TotalizacaoController;
 import br.edu.iftm.renthub.model.Cliente;
 import br.edu.iftm.renthub.model.Contrato;
@@ -31,6 +32,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private static UsuarioController usuarioController;
     private static ContratoController contratoController;
     private static TotalizacaoController totalizacaoController;
+    private static EquipamentoController equipamentoController;
     private static ClienteController clienteController;
     private static BuscarContrato buscarContrato;
     private static VerTotalizazao verTotalizazao;
@@ -46,6 +48,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         clienteController = new ClienteController(conexao);
         buscarCliente = new BuscarCliente(this, true, conexao, this);
         totalizacaoController = new TotalizacaoController(conexao);
+        equipamentoController = new EquipamentoController(conexao);
         telaUsuario = new TelaRegistroUsuario(this, true, conexao);
         buscarContrato = new BuscarContrato(this, true, conexao, buscarCliente, this);
         verTotalizazao = new VerTotalizazao(this, true, conexao);
@@ -130,6 +133,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tfContratoCadastroEquipamento = new javax.swing.JTextField();
         btContratoBuscarEquipamento = new RoundedButton("");
         tfNumeroDoContrato = new javax.swing.JTextField();
+        btContratoBuscarCliente = new RoundedButton("");
         btContratoRegistrar = new RoundedButton("");
         btContratoCancelar = new RoundedButton("");
         btContratoLimpar = new RoundedButton("");
@@ -769,6 +773,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tfNumeroDoContrato.setForeground(new java.awt.Color(0, 0, 0));
         tfNumeroDoContrato.setBorder(null);
 
+        btContratoBuscarCliente.setBackground(new java.awt.Color(240, 240, 240));
+        btContratoBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/loupe.png"))); // NOI18N
+        btContratoBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btContratoBuscarClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btContratoBuscarClienteMouseExited(evt);
+            }
+        });
+        btContratoBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btContratoBuscarClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnContratoCadastroLayout = new javax.swing.GroupLayout(pnContratoCadastro);
         pnContratoCadastro.setLayout(pnContratoCadastroLayout);
         pnContratoCadastroLayout.setHorizontalGroup(
@@ -821,7 +841,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                         .addComponent(ckbContratoCadastroSemNumero))
                                     .addComponent(lbTituloContratoNumero)
                                     .addComponent(ffContratoCadastroTelefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(tfContratoCadastroCliente))
+                            .addGroup(pnContratoCadastroLayout.createSequentialGroup()
+                                .addComponent(tfContratoCadastroCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btContratoBuscarCliente)))
                         .addGap(149, 149, 149)
                         .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnContratoCadastroLayout.createSequentialGroup()
@@ -867,7 +890,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(pnContratoCadastroLayout.createSequentialGroup()
                         .addComponent(lbTituloContratoCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfContratoCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfContratoCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btContratoBuscarCliente))
                         .addGap(18, 18, 18)
                         .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnContratoCadastroLayout.createSequentialGroup()
@@ -1062,7 +1087,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(btContratoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btContratoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btContratoRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pnCdTelas.add(pnTelaCadastroCt, "cdTelaCadastroContrato");
@@ -2197,10 +2222,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         DefaultTableModel modeloTabelaEquipamento = (DefaultTableModel) tbContratoCadastroEquipamento.getModel();
         Equipamento equipamento = buscarEquipamento.getEquipamento();
         Object[] linha = {equipamento.getId(), equipamento.getDescricao(), jsQtdEquipamento.getValue()};
-        modeloTabelaEquipamento.addRow(linha);
         Integer qtd = (Integer)jsQtdEquipamento.getValue();
         equipamento.setQtdContrato(qtd);
-        equipamentosContrato.add(equipamento);
+        if (!equipamentoController.buscarInclusaoTabela(modeloTabelaEquipamento, equipamento)) {
+            JOptionPane.showMessageDialog(rootPane, "Equipamento já incluído no contrato!", "Inclusão de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (equipamentoController.verificarSaldo((int)linha[0], (int)linha[2])) {
+            equipamentosContrato.add(equipamento);
+            modeloTabelaEquipamento.addRow(linha);
+        } else {
+            int saldoTotal = equipamento.getQtdDisponivel()-(int)jsQtdEquipamento.getValue();
+            JOptionPane.showMessageDialog(rootPane, linha[1]+" não possui saldo suficiente no Estoque!\nEm estoque: "+ equipamento.getQtdDisponivel() +
+                                                                                                     "\nSolicitado: "+ linha[2] +
+                                                                                                     "\nTotal: "+ saldoTotal, "Inclusão de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_btContratoCadastroAdicionarEquipamentoActionPerformed
 
     private void btBuscarContratoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btBuscarContratoMouseEntered
@@ -2497,6 +2534,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btLimparEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparEncerrarContratoActionPerformed
         limparTelaEncerramento();
     }//GEN-LAST:event_btLimparEncerrarContratoActionPerformed
+
+    private void btContratoBuscarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btContratoBuscarClienteMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btContratoBuscarClienteMouseEntered
+
+    private void btContratoBuscarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btContratoBuscarClienteMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btContratoBuscarClienteMouseExited
+
+    private void btContratoBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContratoBuscarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btContratoBuscarClienteActionPerformed
     
     public void resetaEstadoComponentesCadastroContrato(){
         lbTituloContratoCadastroDataEntrega.setVisible(false);
@@ -2675,6 +2724,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btClienteCancelar;
     private javax.swing.JButton btClienteDeletar;
     private javax.swing.JButton btClienteSalvar;
+    private javax.swing.JButton btContratoBuscarCliente;
     private javax.swing.JButton btContratoBuscarEquipamento;
     private javax.swing.JButton btContratoCadastroAdicionarEquipamento;
     private javax.swing.JButton btContratoCadastroTotalizacao;

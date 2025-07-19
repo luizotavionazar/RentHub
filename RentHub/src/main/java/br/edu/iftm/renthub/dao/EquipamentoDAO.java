@@ -145,4 +145,26 @@ public class EquipamentoDAO {
             return null;
         }
     }
+
+    public Integer buscarQtdDisponivel(Integer id) {
+        //log.registrarLog(1, "EquipamentoDAO", "buscarPorId", "equipamento", "Buscando equipamento pelo ID no Banco de Dados");
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT qtd_disponivel FROM equipamento ");
+        query.append("WHERE id = ?");
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                //log.registrarLog(2, "EquipamentoDAO", "buscarPorId", "equipamento", "Equipamento encontrado com sucesso no Banco de Dados");
+                return rs.getInt("qtd_disponivel");
+            } else {
+                //log.registrarLog(3, "EquipamentoDAO", "buscarPorId", "equipamento", "Equipamento encontrado no Banco de Dados");
+                return null;
+            }
+        } catch (SQLException e) {
+            //log.registrarLog(4, "EquipamentoDAO", "buscarPorId", "equipamento", "Erro ao buscar o equipamento no Banco de Dados: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
