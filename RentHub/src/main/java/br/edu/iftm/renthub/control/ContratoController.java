@@ -10,6 +10,7 @@ import java.util.List;
 import br.edu.iftm.renthub.dao.ContratoDAO;
 import br.edu.iftm.renthub.model.Contrato;
 import br.edu.iftm.renthub.model.Contrato.Tipo;
+import br.edu.iftm.renthub.model.Contrato.Status;
 import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class ContratoController {
@@ -53,11 +54,11 @@ public class ContratoController {
             sqlFiltro.append("AND c.id = ? ");
             filtros.add(contratoFiltro.getCliente().getId());
         }
-        if (contratoFiltro.getTipo() != null) {
+        if (contratoFiltro.getTipo() == Tipo.DIARIO || contratoFiltro.getTipo() == Tipo.MENSAL) {
             sqlFiltro.append("AND c.tipo = ? ");
             filtros.add(contratoFiltro.getTipo().name());
         }
-        if (contratoFiltro.getStatus() != null) {
+        if (contratoFiltro.getStatus() == Status.ATIVO || contratoFiltro.getStatus() == Status.FINALIZADO || contratoFiltro.getStatus() == Status.CANCELADO) {
             sqlFiltro.append("AND c.status = ? ");
             filtros.add(contratoFiltro.getStatus().name());
         }
