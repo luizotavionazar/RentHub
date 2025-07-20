@@ -114,6 +114,7 @@ public class ContratoDAO {
                 int idcliente = rs.getInt("id_cliente");
                 Cliente cliente = clienteController.buscarPorId(idcliente);
                 contrato.setCliente(cliente);
+                contrato.setEquipamentos(buscarEquipamentoContrato(rs.getInt("id_contrato")));
                 contratos.add(contrato);
                 qtdContratos++;
             }
@@ -136,10 +137,10 @@ public class ContratoDAO {
         List<Equipamento> equipamentos = new ArrayList<>();
         String sql = "SELECT e.id, e.descricao, e.valor_diaria, e.valor_mensal, ec.quantidade " +
                 "FROM equipamento e " +
-                "JOIN equipamento_contrato ec ON ec.id_equipamento = e.id" +
+                "JOIN equipamento_contrato ec ON ec.id_equipamento = e.id " +
                 "WHERE ec.id_contrato = ?";
-        try(Connection conn = ConexaoDAO.conexaoBd()){
-            PreparedStatement stmt = conn.prepareStatement(sql);
+        try(PreparedStatement stmt = conexaoBanco.prepareStatement(sql)){
+            stmt.setInt(1, idContrato);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 equipamentos.add(new Equipamento(rs.getInt("id"), rs.getString("descricao"), rs.getDouble("valor_diaria"), rs.getDouble("valor_mensal"), rs.getInt("quantidade")));
