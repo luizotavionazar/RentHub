@@ -29,7 +29,7 @@ public class ConsultaCep {
             
             JSONObject resultado = new JSONObject(conteudo.toString());
             if(resultado.has("erro")){
-                JOptionPane.showMessageDialog(null, "CEP não encontrado.");
+                JOptionPane.showMessageDialog(null, "Não foram encontrado dados para o CEP informado!", "Busca CEP", JOptionPane.WARNING_MESSAGE);
             }else{
                 String logradouro = resultado.getString("logradouro");
                 String bairro = resultado.getString("bairro");

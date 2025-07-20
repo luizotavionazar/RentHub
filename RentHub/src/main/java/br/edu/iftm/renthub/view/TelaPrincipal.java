@@ -25,7 +25,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-// Criado por Jhonnie em 08/07/2023
 public class TelaPrincipal extends javax.swing.JFrame {
     private static TelaRegistroUsuario telaUsuario;
     private CardLayout cdl;
@@ -44,6 +43,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private List<Equipamento> equipamentosContrato = new ArrayList<>();
     private DefaultTableModel modeloTabelaEquipCadastroContrato;
     private DefaultTableModel modeloTabelaEquipamentosContrato;
+    private int identificador;
 
     public TelaPrincipal(Connection conexao) throws SQLException {
         usuarioController = new UsuarioController(conexao);
@@ -635,8 +635,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloContratoUf.setText("UF");
 
         cbContratoCadastroUf.setBackground(new java.awt.Color(215, 215, 215));
-        cbContratoCadastroUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        cbContratoCadastroUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "     ", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbContratoCadastroUf.setFocusable(false);
+        cbContratoCadastroUf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbContratoCadastroUfActionPerformed(evt);
+            }
+        });
 
         tfContratoCadastroBairro.setBackground(new java.awt.Color(215, 215, 215));
 
@@ -2195,6 +2200,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cdl.show(getContentPane(), "cdTelaLogin");
     }//GEN-LAST:event_menuSairActionPerformed
 
+    
+
     private void lbPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPerfilMouseEntered
         lbPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login.png"))); // NOI18N
     }//GEN-LAST:event_lbPerfilMouseEntered
@@ -2232,6 +2239,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Object[] linha = {equipamento.getId(), equipamento.getDescricao(), jsQtdEquipamento.getValue()};
         Integer qtd = (Integer)jsQtdEquipamento.getValue();
         equipamento.setQtdContrato(qtd);
+        equipamentosContrato.removeAll(equipamentosContrato);
         if (!equipamentoController.buscarInclusaoTabela(modeloTabelaEquipamento, equipamento)) {
             JOptionPane.showMessageDialog(rootPane, "Equipamento já incluído no contrato!", "Inclusão de Equipamento", JOptionPane.WARNING_MESSAGE);
             return;
@@ -2426,6 +2434,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btClienteCancelarMouseExited
 
     private void btClienteBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteBuscarClienteActionPerformed
+        buscarCliente.identificarTela(3);
         buscarCliente.setLocationRelativeTo(this);
         buscarCliente.setVisible(true);
     }//GEN-LAST:event_btClienteBuscarClienteActionPerformed
@@ -2440,7 +2449,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         String nomeCliente = tfContratoCadastroCliente.getText();
         String identificacao = ffContratoCadastroCpf.getText();
         String telefone = ffContratoCadastroTelefone.getText();
-        String cep = ffContratoCadastroCep.getText();
+        String cep = ffContratoCadastroCep.getText().replace("-", "");
         Endereco endereco = ConsultaCep.buscarCep(cep);
 
         if (endereco.getLogradouro().equals("")) {
@@ -2456,12 +2465,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(!tfContratoCadastroComplemento.getText().isEmpty()||!tfContratoCadastroComplemento.getText().equals("")){
             endereco.setComplemento(tfContratoCadastroComplemento.getText());
         }
-        Cliente cliente = new Cliente(nomeCliente, identificacao, telefone, endereco);
-        cliente.setId(clienteController.cadastrar(cliente));
+
         Date dateInicio = dcContratoCadastroDataInicio.getDate();
         Date dateFim = dcContratoCadastroDataFinal.getDate();
         LocalDate dataInicio = dateInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate dataFim = dateFim.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        Cliente cliente = new Cliente(nomeCliente, identificacao, telefone, endereco);
+        
+        Cliente clienteSelecionado = buscarCliente.selecionarCliente();
+        if (clienteSelecionado == null) {
+            cliente.setId(clienteController.cadastrar(cliente));
+        } else {
+            cliente.setId(clienteSelecionado.getId());
+            clienteSelecionado = null;
+        }
         if(contratoController.cadastrar(new Contrato(cliente, equipamentosContrato, dataInicio, dataFim))){
             JOptionPane.showMessageDialog(rootPane, "Contrato cadastrado com Sucesso!", "Cadastro de Contrato", JOptionPane.INFORMATION_MESSAGE);
             limpaTelaContratoCadastro();
@@ -2475,12 +2493,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
             ffContratoCadastroCep.requestFocus();
         } else {
             Endereco endereco = ConsultaCep.buscarCep(cep);
-            tfContratoCadastroBairro.setText(endereco.getBairro());
-            tfContratoCadastroCidade.setText(endereco.getCidade().getNome());
-            tfContratoCadastroLogradouro.setText(endereco.getLogradouro());
-            cbContratoCadastroUf.setSelectedItem(endereco.getCidade().getUf());   
+            if (endereco != null) {
+                tfContratoCadastroBairro.setText(endereco.getBairro());
+                tfContratoCadastroCidade.setText(endereco.getCidade().getNome());
+                tfContratoCadastroLogradouro.setText(endereco.getLogradouro());
+                cbContratoCadastroUf.setSelectedItem(endereco.getCidade().getUf()); 
+            }
         }
     }//GEN-LAST:event_ffContratoCadastroCepFocusLost
+
+    public void validarCamposObrigatoriosCadastroContrato() {
+        //CHAMAR ESSE METODO NO BOTAO DE REGISTRAR CONTRATO
+        //Luiz: Jhonnie, implementa pra nos aquela mesma validação utilizada no cadastro de usuario, para mudar a cor dos campos obrigatorios para vermelho, assim evitar ficar aparecendo dialog na tela de aviso
+        //Luiz: Jhonnie, acredito que os campos que deva validar sejam: Nome do Cliente, CPF, Telefone, CEP, Numero, Logradouro, Bairro, Tabela de Equipamento, Data Final
+        //Luiz: Jhonnie, para validar o Numero, considere o preenchimento do checkbox 'Sem Número' (se marcado o checkbox e campo vazio, permitir cadastrar)
+        //Luiz: Jhonnie, na Data Final, valide também se foi informada uma data anterior a Data Inicio
+    }
 
     private void btRegistrarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEquipamentoActionPerformed
         Equipamento equipamento = new Equipamento();
@@ -2557,21 +2585,55 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparEncerrarContratoActionPerformed
 
     private void btContratoBuscarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btContratoBuscarClienteMouseEntered
-        // TODO add your handling code here:
+        estilo.aplicaHoverEntered(btContratoBuscarCliente);
     }//GEN-LAST:event_btContratoBuscarClienteMouseEntered
 
     private void btContratoBuscarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btContratoBuscarClienteMouseExited
-        // TODO add your handling code here:
+        estilo.aplicaHoverExited(btContratoBuscarCliente);
     }//GEN-LAST:event_btContratoBuscarClienteMouseExited
 
     private void btContratoBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContratoBuscarClienteActionPerformed
-        // TODO add your handling code here:
+        buscarCliente.identificarTela(1);
+        buscarCliente.setLocationRelativeTo(this);
+        buscarCliente.setVisible(true);
+        Cliente cliente = buscarCliente.selecionarCliente();
     }//GEN-LAST:event_btContratoBuscarClienteActionPerformed
+
+    private void cbContratoCadastroUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbContratoCadastroUfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbContratoCadastroUfActionPerformed
     
     public void resetaEstadoComponentesCadastroContrato(){
         lbTituloContratoCadastroDataEntrega.setVisible(false);
         dcContratoCadastroDataEntrega.setVisible(false);
         btContratoCadastroTotalizacao.setVisible(false);
+    }
+    
+    public void preencheCliente(int idCliente) {
+        Cliente cliente = new Cliente();
+        cliente = clienteController.buscarPorId(idCliente);
+        tfContratoCadastroCliente.setText(cliente.getNome());
+        ffContratoCadastroCpf.setText(cliente.getDocumento());
+        ffContratoCadastroTelefone.setText(cliente.getTelefone());
+        ffContratoCadastroCep.setText(cliente.getEndereco().getCep());
+        tfContratoCadastroNumero.setText((cliente.getEndereco().getNumero()).toString());
+        tfContratoCadastroBairro.setText(cliente.getEndereco().getBairro());
+        tfContratoCadastroLogradouro.setText(cliente.getEndereco().getLogradouro());
+        tfContratoCadastroComplemento.setText(cliente.getEndereco().getComplemento());
+        tfContratoCadastroCidade.setText(cliente.getEndereco().getCidade().getNome());
+        cbContratoCadastroUf.setSelectedItem(cliente.getEndereco().getCidade().getUf());
+        
+        tfContratoCadastroCliente.setEnabled(false);
+        ffContratoCadastroCpf.setEnabled(false);
+        ffContratoCadastroTelefone.setEnabled(false);
+        ffContratoCadastroCep.setEnabled(false);
+        tfContratoCadastroNumero.setEnabled(false);
+        tfContratoCadastroBairro.setEnabled(false);
+        tfContratoCadastroLogradouro.setEnabled(false);
+        tfContratoCadastroComplemento.setEnabled(false);
+        tfContratoCadastroCidade.setEnabled(false);
+        cbContratoCadastroUf.setEnabled(false);
+        
     }
     
     public void preencheTelaContrato(Contrato contrato){
@@ -2701,6 +2763,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tfContratoCadastroNumero.setEnabled(true);
         }
         modeloTabelaEquipCadastroContrato.setRowCount(0);
+        
+        tfContratoCadastroCliente.setEnabled(true);
+        ffContratoCadastroCpf.setEnabled(true);
+        ffContratoCadastroTelefone.setEnabled(true);
+        ffContratoCadastroCep.setEnabled(true);
+        tfContratoCadastroNumero.setEnabled(true);
+        tfContratoCadastroBairro.setEnabled(true);
+        tfContratoCadastroLogradouro.setEnabled(true);
+        tfContratoCadastroComplemento.setEnabled(true);
+        tfContratoCadastroCidade.setEnabled(true);
+        cbContratoCadastroUf.setEnabled(true);
     }
     
     public void limpaTelaEquipamento(){

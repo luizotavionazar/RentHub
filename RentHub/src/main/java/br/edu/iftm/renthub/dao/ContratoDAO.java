@@ -65,7 +65,7 @@ public class ContratoDAO {
                     stmtEquip.setInt(2, equipTemp.getId());
                     stmtEquip.setInt(3, equipTemp.getQtdContrato());
                     stmtEquip.executeUpdate();
-                    log.registrarLog(2, "ContratoDAO", "cadastrar", "equipamento_contrato", "Relação de equipamento com  ocontrato cadastrada no banco de dados");
+                    log.registrarLog(2, "ContratoDAO", "cadastrar", "equipamento_contrato", "Relação de equipamento com o contrato cadastrada no banco de dados");
                 } catch (SQLException e) {
                     log.registrarLog(4, "ContratoDAO", "cadastrar", "equipamento_contrato", "Erro ao cadastrar a relação do equipamento com o contrato no banco de dados: "+ e.getMessage());
                     e.printStackTrace();
