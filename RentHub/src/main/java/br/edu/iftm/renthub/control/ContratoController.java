@@ -26,9 +26,11 @@ public class ContratoController {
 
     public boolean cadastrar(Contrato contrato) {
         log.registrarLog(1, "ContratoController", "cadastrar", "contrato, equipamento_contrato", "Cadastrando o contrato do cliente: " + contrato.getCliente().getNome());
-        if (ChronoUnit.DAYS.between(contrato.getDataInicio(), contrato.getDataFim()) >= 30) {
+        long mesesContratados = ChronoUnit.MONTHS.between(contrato.getDataInicio(), contrato.getDataFim());
+        long diasContratados = ChronoUnit.DAYS.between(contrato.getDataInicio(), contrato.getDataFim());
+        if (mesesContratados > 0) {
             contrato.setTipo(Tipo.MENSAL);
-        } else {
+        } else if (diasContratados >= 0) {
             contrato.setTipo(Tipo.DIARIO);
         }
         try {
@@ -81,9 +83,9 @@ public class ContratoController {
         }
     }
 
-    public boolean encerrarContrato(Contrato contrato, int forma) {
+    public boolean encerrarContrato(Integer idContrato, String status) {
         LocalDate dataAtual = LocalDate.now();
-        if (contratoDAO.encerrar(contrato.getId(), contrato.getStatus().name(), dataAtual)) {
+        if (contratoDAO.encerrar(idContrato, status, dataAtual)) {
             return true;
         } else {
             return false;

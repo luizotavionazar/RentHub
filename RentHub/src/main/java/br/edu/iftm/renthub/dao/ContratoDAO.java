@@ -87,6 +87,7 @@ public class ContratoDAO {
         query.append("WHERE 1=1 ");
         query.append(filtrosSql);
         query.append(" ORDER BY c.data_inicio ASC");
+        System.out.println(query.toString());
         try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             for (int i = 0; i < filtros.size(); i++) {
                 Object campo = filtros.get(i);
@@ -135,11 +136,12 @@ public class ContratoDAO {
     
     public List<Equipamento> buscarEquipamentoContrato(int idContrato){
         List<Equipamento> equipamentos = new ArrayList<>();
-        String sql = "SELECT e.id, e.descricao, e.valor_diaria, e.valor_mensal, ec.quantidade " +
-                "FROM equipamento e " +
-                "JOIN equipamento_contrato ec ON ec.id_equipamento = e.id " +
-                "WHERE ec.id_contrato = ?";
-        try(PreparedStatement stmt = conexaoBanco.prepareStatement(sql)){
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT e.id, e.descricao, e.valor_diaria, e.valor_mensal, ec.quantidade ");
+        query.append("FROM equipamento e ");
+        query.append("JOIN equipamento_contrato ec ON ec.id_equipamento = e.id ");
+        query.append("WHERE ec.id_contrato = ?");
+        try(PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())){
             stmt.setInt(1, idContrato);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
@@ -152,8 +154,8 @@ public class ContratoDAO {
     }
 
     public boolean encerrar(Integer id, String status, LocalDate dataAtual) {
-        String sql = "UPDATE contrato SET data_entrega = ?, status = ? WHERE id = ?";
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql)) {
+        String query = "UPDATE contrato SET data_entrega = ?, status = ? WHERE id = ?";
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query)) {
             stmt.setDate(1, Date.valueOf(dataAtual));
             stmt.setString(2, status);
             stmt.setInt(3, id);

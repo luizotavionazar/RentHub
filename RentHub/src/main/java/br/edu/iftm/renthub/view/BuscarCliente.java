@@ -312,9 +312,8 @@ public class BuscarCliente extends javax.swing.JDialog {
                 clienteSelecionado = cliente;
                 tela.preencheCliente(cliente.getId());
             } else if (identificador == 2) {
-                System.out.println("teste to aqui");
                 cliente = clientes.get(indice);
-                buscarContrato.preencheCliente(cliente);
+                buscarContrato.preencheCliente(cliente.getNome());
             } else if (identificador == 3) {
                 //QUANDO CHAMADA PELA TELA DE CADASTRO DE CLIENTE
             }

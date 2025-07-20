@@ -24,8 +24,8 @@ public class TotalizacaoDAO {
     RegistrosLog log = new RegistrosLog();
 
     public boolean totalizar(Integer idContrato, double valor, double juros, double multa) {
-        String sql = "INSERT INTO totalizacao (id_contrato, valor, juros, multa) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement stmt = conexaoBanco.prepareStatement(sql)) {
+        String query = "INSERT INTO totalizacao (id_contrato, valor, juros, multa) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement stmt = conexaoBanco.prepareStatement(query)) {
             stmt.setInt(1, idContrato);
             stmt.setDouble(2, valor);
             stmt.setDouble(3, multa);

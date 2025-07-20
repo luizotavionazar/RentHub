@@ -80,7 +80,7 @@
                                           <Component id="btFiltrar" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="tfCliente" max="32767" attributes="0"/>
+                                          <Component id="tfNomeCliente" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btBuscarCliente" min="-2" pref="26" max="-2" attributes="0"/>
                                       </Group>
@@ -137,7 +137,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cbTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfCliente" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="tfNomeCliente" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -381,16 +381,6 @@
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfCliente">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d7" green="d7" red="d7" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="lbTituloCliente">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -435,6 +425,16 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedButton(&quot;&quot;)"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfNomeCliente">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d7" green="d7" red="d7" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

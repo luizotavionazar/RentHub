@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,6 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         verTotalizazao = new VerTotalizazao(this, true, conexao);
         buscarEquipamento = new BuscarEquipamento(this, true, conexao, this);
         initComponents();
+        cbContratoEncerrarTipo.setEnabled(false);
         modeloTabelaEquipamentosContrato = (DefaultTableModel) tbContratoEncerrarEquipamentos.getModel();
         cdl = (CardLayout) getContentPane().getLayout();
         cdlPn = (CardLayout) pnCdTelas.getLayout();
@@ -1181,11 +1183,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cód.", "Equipamento", "Qtd."
+                "Cód.", "Equipamento", "Valor", "Qtd."
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1263,9 +1265,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(lbTituloContratoEncerrarCpf)
                             .addComponent(ffContratoEncerrarCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoEncerrarLayout.createSequentialGroup()
                         .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbTituloContratoEncerraValor)
                             .addComponent(ffContratoEncerraValor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1281,89 +1283,86 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbTituloContratoValorTotal)
                             .addComponent(ffContratoEncerraValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                        .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbTituloContratoEncerrarDataInicio)
-                            .addComponent(dtContratoEncerrarDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbTituloContratoEncerrarDataFinal)
-                            .addComponent(dtContratoEncerrarDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbTituloContratoEncerrarDataEntrega)
-                            .addComponent(dtContratoEncerrarDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoEncerrarLayout.createSequentialGroup()
+                        .addComponent(lbTituloContratoEncerrarDataInicio)
+                        .addGap(80, 80, 80)
+                        .addComponent(lbTituloContratoEncerrarDataFinal)
+                        .addGap(86, 86, 86)
+                        .addComponent(lbTituloContratoEncerrarDataEntrega)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoEncerrarLayout.createSequentialGroup()
+                        .addComponent(dtContratoEncerrarDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dtContratoEncerrarDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dtContratoEncerrarDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         pnContratoEncerrarLayout.setVerticalGroup(
             pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoEncerrarLayout.createSequentialGroup()
-                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(20, 20, 20)
+                .addComponent(lbTituloContratoEncerramento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lbTituloContratoEncerramento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(tfContratoEncerrarNumeroContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(lbTituloContratoTipo)
-                                                    .addComponent(lbTituloContratoNumeroContrato)
-                                                    .addComponent(lbTituloContratoTipoEncerramento))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(tfContratoEncerrarTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cbContratoEncerrarTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(btContratoEncerrarBuscarContrato)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoEncerrarLayout.createSequentialGroup()
-                                        .addComponent(lbTituloContratoEncerrarDataEntrega)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dtContratoEncerrarDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                        .addComponent(lbTituloContratoEncerrarDataFinal)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dtContratoEncerrarDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(1, 1, 1)
                                 .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tfContratoEncerrarNumeroContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                        .addComponent(lbTituloContratoNomeCliente)
+                                        .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lbTituloContratoTipo)
+                                            .addComponent(lbTituloContratoNumeroContrato)
+                                            .addComponent(lbTituloContratoTipoEncerramento))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfContratoEncerrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                        .addComponent(lbTituloContratoEncerrarCpf)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ffContratoEncerrarCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                .addComponent(lbTituloContratoEncerrarDataInicio)
+                                        .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(tfContratoEncerrarTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbContratoEncerrarTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btContratoEncerrarBuscarContrato)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoEncerrarLayout.createSequentialGroup()
+                                .addComponent(lbTituloContratoEncerrarDataEntrega)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dtContratoEncerrarDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                        .addComponent(lbTituloContratoJuros)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ffContratoEncerrarJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                        .addComponent(lbTituloContratoEncerraValor)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ffContratoEncerraValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                                    .addComponent(lbTituloContratoMulta)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(ffContratoEncerraMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(dtContratoEncerrarDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
+                                .addComponent(lbTituloContratoEncerrarDataFinal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dtContratoEncerrarDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
+                                .addComponent(lbTituloContratoNomeCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfContratoEncerrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
+                                .addComponent(lbTituloContratoEncerrarCpf)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ffContratoEncerrarCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbTituloContratoValorTotal)
+                        .addComponent(lbTituloContratoEncerrarDataInicio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ffContratoEncerraValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dtContratoEncerrarDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
+                            .addComponent(lbTituloContratoJuros)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ffContratoEncerrarJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
+                            .addComponent(lbTituloContratoEncerraValor)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ffContratoEncerraValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
+                            .addComponent(lbTituloContratoMulta)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ffContratoEncerraMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnContratoEncerrarLayout.createSequentialGroup()
+                            .addComponent(lbTituloContratoValorTotal)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ffContratoEncerraValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(54, 54, 54))
         );
 
@@ -1476,7 +1475,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(btCancelarEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimparEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btRegistrarEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pnCdTelas.add(pnTelaEncerrarCt, "cdTelaEncerrarContrato");
@@ -2553,14 +2552,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             return;
         } else {
             equipamento.setDescricao(tfEquipamentoNomeEquipamento.getText());
-            System.out.println("TESTE nome: "+equipamento.getDescricao());
         }
         if ((Integer)jsEquipamentoQtdEstoque.getValue() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Informe a quantidade do Equipamento!", "Cadastro de Equipamento", JOptionPane.WARNING_MESSAGE);
             return;
         } else {
             equipamento.setQtdTotal((Integer)jsEquipamentoQtdEstoque.getValue());
-            System.out.println("TESTE qtdtotal: "+equipamento.getQtdTotal());
         }
 
         if (ffEquipamentoValorDiario.getValue() == null || ffEquipamentoValorDiario.getText().trim().isEmpty()) {
@@ -2568,14 +2565,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             return;
         } else {
             equipamento.setVlrDiaria(((Number) ffEquipamentoValorDiario.getValue()).doubleValue());
-            System.out.println("TESTE vlrdiaria: "+equipamento.getVlrDiaria());
         }
         if (ffEquipamentoValorMensal.getValue() == null || ffEquipamentoValorMensal.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Informe o valor mensal do Equipamento!", "Cadastro de Equipamento", JOptionPane.WARNING_MESSAGE);
             return;
         } else {
             equipamento.setVlrMensal(((Number) ffEquipamentoValorMensal.getValue()).doubleValue());
-            System.out.println("TESTE vlrmensal: "+equipamento.getVlrMensal());
         }
         if(equipamentoController.cadastrar(equipamento)){
             JOptionPane.showMessageDialog(rootPane, "Equipamento Cadastrado!", "Cadastro de Equipamento", JOptionPane.INFORMATION_MESSAGE);
@@ -2586,28 +2581,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btRegistrarEquipamentoActionPerformed
 
-    private void btRegistrarEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEncerrarContratoActionPerformed
-        if (totalizacaoController.totalizar(idContrato, valor, juros, multa)) {
-            JOptionPane.showMessageDialog(rootPane, "Contrato Encerrado com Sucesso!", "Encerramento", JOptionPane.INFORMATION_MESSAGE);
-            limparTelaEncerramento();
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao encerrar o contrato!", "Encerramento", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-    }//GEN-LAST:event_btRegistrarEncerrarContratoActionPerformed
-
     private void limparTelaEncerramento(){
         tfContratoEncerrarNumeroContrato.setText("");
         tfContratoEncerrarTipo.setText("");
         tfContratoEncerrarCliente.setText("");
         ffContratoEncerrarCpf.setText("");
         dtContratoEncerrarDataInicio.setDate(null);
-        dtContratoEncerrarDataInicio.setDate(null);
+        dtContratoEncerrarDataFinal.setDate(null);
+        dtContratoEncerrarDataEntrega.setDate(null);
         ffContratoEncerraValor.setText("");
         ffContratoEncerrarJuros.setText("");
         ffContratoEncerraMulta.setText("");
         ffContratoEncerraValorTotal.setText("");
         modeloTabelaEquipamentosContrato.setRowCount(0);
+        cbContratoEncerrarTipo.setSelectedIndex(0);
     }
     
     public void preencheTelaEquipamento(Equipamento equipamento){
@@ -2668,14 +2655,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             return;
         } else {
             equipamento.setDescricao(tfEquipamentoNomeEquipamento.getText());
-            System.out.println("TESTE nome: "+equipamento.getDescricao());
         }
         if ((Integer)jsEquipamentoQtdEstoque.getValue() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Informe a quantidade do Equipamento!", "Alteração de Equipamento", JOptionPane.WARNING_MESSAGE);
             return;
         } else {
             equipamento.setQtdTotal((Integer)jsEquipamentoQtdEstoque.getValue());
-            System.out.println("TESTE qtdtotal: "+equipamento.getQtdTotal());
         }
 
         if (ffEquipamentoValorDiario.getValue() == null || ffEquipamentoValorDiario.getText().trim().isEmpty()) {
@@ -2683,14 +2668,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             return;
         } else {
             equipamento.setVlrDiaria(((Number) ffEquipamentoValorDiario.getValue()).doubleValue());
-            System.out.println("TESTE vlrdiaria: "+equipamento.getVlrDiaria());
         }
         if (ffEquipamentoValorMensal.getValue() == null || ffEquipamentoValorMensal.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Informe o valor mensal do Equipamento!", "Alteração de Equipamento", JOptionPane.WARNING_MESSAGE);
             return;
         } else {
             equipamento.setVlrMensal(((Number) ffEquipamentoValorMensal.getValue()).doubleValue());
-            System.out.println("TESTE vlrmensal: "+equipamento.getVlrMensal());
         }
         if(equipamentoController.alterar(buscarEquipamento.getEquipamento().getId(), equipamento)){
             JOptionPane.showMessageDialog(rootPane, "Equipamento Alterado!", "Alteração de Equipamento", JOptionPane.INFORMATION_MESSAGE);
@@ -2742,16 +2725,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tfContratoCadastroCidade.setText(cliente.getEndereco().getCidade().getNome());
         cbContratoCadastroUf.setSelectedItem(cliente.getEndereco().getCidade().getUf());
         
-        tfContratoCadastroCliente.setEnabled(false);
-        ffContratoCadastroCpf.setEnabled(false);
-        ffContratoCadastroTelefone.setEnabled(false);
-        ffContratoCadastroCep.setEnabled(false);
-        tfContratoCadastroNumero.setEnabled(false);
-        tfContratoCadastroBairro.setEnabled(false);
-        tfContratoCadastroLogradouro.setEnabled(false);
-        tfContratoCadastroComplemento.setEnabled(false);
-        tfContratoCadastroCidade.setEnabled(false);
-        cbContratoCadastroUf.setEnabled(false);
+        tfContratoCadastroCliente.setEditable(false);
+        ffContratoCadastroCpf.setEditable(false);
+        ffContratoCadastroTelefone.setEditable(false);
+        ffContratoCadastroCep.setEditable(false);
+        tfContratoCadastroNumero.setEditable(false);
+        tfContratoCadastroBairro.setEditable(false);
+        tfContratoCadastroLogradouro.setEditable(false);
+        tfContratoCadastroComplemento.setEditable(false);
+        tfContratoCadastroCidade.setEditable(false);
+        cbContratoCadastroUf.setEditable(false);
         
     }
     
@@ -2781,10 +2764,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
    }
     
-    Integer idContrato;
-    Double valor;
-    Double juros;
-    Double multa;
+    
     public void preencheTelaEncerrarContrato(Contrato contrato){
         idContrato = contrato.getId();
         String idContratoCampo = String.valueOf(contrato.getId());
@@ -2793,23 +2773,94 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tfContratoEncerrarCliente.setText(contrato.getCliente().getNome());
         ffContratoEncerrarCpf.setText(contrato.getCliente().getDocumento());
         dtContratoEncerrarDataInicio.setDate(Date.from(contrato.getDataInicio().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        dtContratoEncerrarDataInicio.setDate(Date.from(contrato.getDataFim().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        Double valorCampo = totalizacaoController.calcularValor(contrato, 2);
-        valor = valorCampo;
-        ffContratoEncerraValor.setValue(valorCampo);
-        Double jurosCampo = totalizacaoController.calcularJuros(contrato.getTipo().name(), valor, contrato.getDataFim());
-        juros = jurosCampo;
-        ffContratoEncerrarJuros.setValue(jurosCampo);
-        Double multaCampo = totalizacaoController.calcularMulta(cbContratoEncerrarTipo.getSelectedIndex(), contrato.getTipo().name(), valor);
-        ffContratoEncerraMulta.setValue(multaCampo);
-        multa = multaCampo;
-        ffContratoEncerraValorTotal.setValue(totalizacaoController.calcularTotal(valor, multa, multa));
+        dtContratoEncerrarDataFinal.setDate(Date.from(contrato.getDataFim().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        LocalDate dataAgora = LocalDate.now();
+
+        long diasAtrasados = ChronoUnit.DAYS.between(contrato.getDataFim(), dataAgora);
+        if (diasAtrasados < 0) {
+            cbContratoEncerrarTipo.setSelectedIndex(1);
+        } else {
+            cbContratoEncerrarTipo.setSelectedIndex(0);
+        }
+
+        Date agora = Date.from(dataAgora.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        dtContratoEncerrarDataEntrega.setDate(agora);
+        preencheValoresEncerramento(contrato);
         modeloTabelaEquipamentosContrato.setRowCount(0);
         for (Equipamento equipamento : contrato.getEquipamentos()) {
-            Object[] linha = {equipamento.getId(), equipamento.getDescricao(), equipamento.getQtdContrato()};
+            double valorEquipamento = 0;
+            if (contrato.getTipo().name().equals("DIARIO")) {
+                long diasContratados = ChronoUnit.DAYS.between(contrato.getDataInicio(), contrato.getDataFim());
+                valorEquipamento = (equipamento.getVlrDiaria()*diasContratados)*equipamento.getQtdContrato();
+            } else {
+                long mesesContratados = ChronoUnit.MONTHS.between(contrato.getDataInicio(), contrato.getDataFim());
+                valorEquipamento = (equipamento.getVlrMensal()*mesesContratados)*equipamento.getQtdContrato();
+            }
+            Object[] linha = {equipamento.getId(), equipamento.getDescricao(), "R$ "+valorEquipamento, equipamento.getQtdContrato()};
             modeloTabelaEquipamentosContrato.addRow(linha);
         }
+        
+        tfContratoEncerrarNumeroContrato.setEditable(false);
+        tfContratoEncerrarTipo.setEditable(false);
+        tfContratoEncerrarCliente.setEditable(false);
+        ffContratoEncerrarCpf.setEditable(false);
+        dtContratoEncerrarDataInicio.setEnabled(false);
+        dtContratoEncerrarDataFinal.setEnabled(false);
+        dtContratoEncerrarDataEntrega.setEnabled(false);
+        ffContratoEncerraValor.setEditable(false);
+        ffContratoEncerrarJuros.setEditable(false);
+        ffContratoEncerraMulta.setEditable(false);
+        ffContratoEncerraValorTotal.setEditable(false);
     }
+
+    Integer idContrato;
+    String status;
+    Double valor;
+    Double juros;
+    Double multa;
+
+    public void preencheValoresEncerramento(Contrato contrato) {
+        LocalDate dataAgora = LocalDate.now();
+        Double jurosCampo = 0.00, multaCampo = 0.00;
+        Double valorCampo = 0.00, totalCampo = 0.00;
+
+        if (cbContratoEncerrarTipo.getSelectedIndex() == 0) { //ENCERRAMENTO
+            valorCampo = totalizacaoController.calcularValorBase(contrato);
+            long diasAtrasados = ChronoUnit.DAYS.between(contrato.getDataFim(), dataAgora);
+            if (diasAtrasados > 0) {
+               jurosCampo = totalizacaoController.calcularJuros(contrato.getTipo().name(), valorCampo, diasAtrasados);
+               multaCampo = totalizacaoController.calcularMulta(cbContratoEncerrarTipo.getSelectedIndex(), contrato.getTipo().name(), valorCampo);
+            }
+            totalCampo = totalizacaoController.calcularTotal(valorCampo, multaCampo, jurosCampo);
+            status = "FINALIZADO";
+        } else if (cbContratoEncerrarTipo.getSelectedIndex() == 1) { //CANCELAMENTO
+            valorCampo = totalizacaoController.calcularValorBase(contrato);
+            multaCampo = totalizacaoController.calcularMulta(cbContratoEncerrarTipo.getSelectedIndex(), contrato.getTipo().name(), valorCampo);
+            totalCampo = totalizacaoController.calcularTotal(valorCampo, multaCampo, jurosCampo);
+            status = "CANCELADO";
+        }
+        
+        ffContratoEncerraValor.setText("R$ "+valorCampo);
+        ffContratoEncerrarJuros.setValue("R$ "+jurosCampo);
+        ffContratoEncerraMulta.setValue("R$ "+multaCampo);
+        ffContratoEncerraValorTotal.setValue("R$ "+totalCampo);
+
+        valor = valorCampo;
+        juros = jurosCampo;
+        multa = multaCampo;
+    }
+
+    private void btRegistrarEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEncerrarContratoActionPerformed
+        if (totalizacaoController.totalizar(idContrato, valor, juros, multa)) {
+            if (contratoController.encerrarContrato(idContrato, status)) {
+                JOptionPane.showMessageDialog(rootPane, "Contrato Encerrado com Sucesso!", "Encerramento", JOptionPane.INFORMATION_MESSAGE);
+                limparTelaEncerramento();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao encerrar o contrato!", "Encerramento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_btRegistrarEncerrarContratoActionPerformed
     
     public void preencheEquipamento(Equipamento equipamento){
         tfContratoCadastroEquipamento.setText(equipamento.getDescricao());
@@ -2871,8 +2922,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tfContratoCadastroCidade.setText("");
         cbContratoCadastroUf.setSelectedIndex(0);
         LocalDate dataAgora = LocalDate.now();
-        Date date = Date.from(dataAgora.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        dcContratoCadastroDataInicio.setDate(date);
+        Date agora = Date.from(dataAgora.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        dcContratoCadastroDataInicio.setDate(agora);
         dcContratoCadastroDataFinal.setDate(null);
         dcContratoCadastroDataEntrega.setDate(null);
         tfContratoCadastroEquipamento.setText("");
@@ -2900,6 +2951,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jsEquipamentoQtdEstoque.setValue(0);
         ffEquipamentoValorDiario.setValue(0.00);
         ffEquipamentoValorMensal.setValue(0.00);
+        btRegistrarEquipamento.setVisible(true);
     }
     
     public void limpaTelaCliente(){
