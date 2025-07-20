@@ -71,9 +71,9 @@ br\edu\iftm\renthub\view\RegistrosLog.class
 br\edu\iftm\renthub\view\BuscarContrato$9.class
 br\edu\iftm\renthub\view\TelaPrincipal$23.class
 br\edu\iftm\renthub\view\TelaPrincipal$43.class
+br\edu\iftm\renthub\view\TelaPrincipal$56.class
 br\edu\iftm\renthub\view\TelaPrincipal$46.class
 br\edu\iftm\renthub\view\TelaRegistroUsuario$4.class
-br\edu\iftm\renthub\control\Endereco\EnderecoController.class
 br\edu\iftm\renthub\dao\UsuarioDAO.class
 br\edu\iftm\renthub\view\TelaPrincipal$36.class
 br\edu\iftm\renthub\view\BuscarContrato$6.class
@@ -99,6 +99,7 @@ br\edu\iftm\renthub\view\TelaPrincipal$8.class
 br\edu\iftm\renthub\view\BuscarCliente$9.class
 br\edu\iftm\renthub\view\TelaPrincipal$44.class
 br\edu\iftm\renthub\view\TelaPrincipal$14.class
+br\edu\iftm\renthub\view\TelaPrincipal$54.class
 br\edu\iftm\renthub\view\BuscarContrato$8.class
 br\edu\iftm\renthub\view\TelaPrincipal$4.class
 br\edu\iftm\renthub\view\TelaPrincipal$38.class
@@ -115,6 +116,7 @@ br\edu\iftm\renthub\view\BuscarCliente$8.class
 br\edu\iftm\renthub\dao\CidadeDAO.class
 br\edu\iftm\renthub\dao\ClienteDAO.class
 br\edu\iftm\renthub\view\TelaPrincipal$15.class
+br\edu\iftm\renthub\view\TelaPrincipal$55.class
 br\edu\iftm\renthub\control\UsuarioController.class
 br\edu\iftm\renthub\view\TelaPrincipal$9.class
 br\edu\iftm\renthub\view\TelaPrincipal$20.class
