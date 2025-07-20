@@ -309,9 +309,10 @@ public class BuscarCliente extends javax.swing.JDialog {
         }else{
             if (identificador == 1) {
                 cliente = clientes.get(indice);
+                clienteSelecionado = cliente;
                 tela.preencheCliente(cliente.getId());
-                clienteSelecionado = clientes.get(indice);
             } else if (identificador == 2) {
+                System.out.println("teste to aqui");
                 cliente = clientes.get(indice);
                 buscarContrato.preencheCliente(cliente);
             } else if (identificador == 3) {

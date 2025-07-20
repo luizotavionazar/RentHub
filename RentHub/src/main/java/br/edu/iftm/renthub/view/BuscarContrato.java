@@ -43,6 +43,7 @@ public class BuscarContrato extends javax.swing.JDialog {
         contratoController = new ContratoController(conexao);
         this.tela = tela;
         initComponents();
+        tfCliente.setEnabled(false);
         estilo = new UtilsComponent();
         modelo = (DefaultTableModel)  tbBuscarContrato.getModel();
     }
@@ -130,9 +131,14 @@ public class BuscarContrato extends javax.swing.JDialog {
         lbTituloStatus.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloStatus.setText("Status do Contrato");
 
-        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIARIO", "MENSAL" }));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "DIARIO", "MENSAL" }));
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "CANCELADO", "ENCERRADO" }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ATIVO", "CANCELADO", "FINALIZADO" }));
+        cbStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbStatusActionPerformed(evt);
+            }
+        });
 
         btSelecionar.setBackground(new java.awt.Color(240, 240, 240));
         btSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -428,18 +434,23 @@ public class BuscarContrato extends javax.swing.JDialog {
         Cliente cliente = buscarCliente.getCliente();
         Contrato contratoFiltro = new Contrato();
         contratoFiltro.setCliente(cliente);
-        if(tipo.equals("DIARIO")){
+        
+        if (tipo.equals("DIARIO")){
             contratoFiltro.setTipo(Tipo.DIARIO);
-        }else{
+        } else if (tipo.equals("MENSAL")){
             contratoFiltro.setTipo(Tipo.MENSAL);
         }
+        
         if(status.equals("ATIVO")){
             contratoFiltro.setStatus(Status.ATIVO);
-        }else if(status.equals("CANCELADO")){
+        } else if (status.equals("CANCELADO")){
             contratoFiltro.setStatus(Status.CANCELADO);
-        }else {
+        } else if (status.equals("FINALIZADO")){
             contratoFiltro.setStatus(Status.FINALIZADO);
+        } else {
+            contratoFiltro.setStatus(null);
         }
+        
         contratoFiltro.setDataInicio(dataInicio);
         contratoFiltro.setDataFim(dataFim);
         contratoFiltro.setDataEntrega(dataEntrega);
@@ -452,8 +463,14 @@ public class BuscarContrato extends javax.swing.JDialog {
             modelo.addRow(linha);
         }
     }//GEN-LAST:event_btFiltrarActionPerformed
+
+    private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbStatusActionPerformed
     
     public void preencheCliente(Cliente cliente){
+        System.out.println("teste to aqui também");
+        tfCliente.setText("antedegmon");
         tfCliente.setText(cliente.getNome());
         //não ta funcionando o comando aqui, se usado set text em outro local, o campo é preenchido
     }

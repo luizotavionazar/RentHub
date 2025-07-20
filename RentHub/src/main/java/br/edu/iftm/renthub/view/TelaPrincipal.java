@@ -2266,6 +2266,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Object[] linha = {equipamento.getId(), equipamento.getDescricao(), jsQtdEquipamento.getValue()};
         Integer qtd = (Integer)jsQtdEquipamento.getValue();
         equipamento.setQtdContrato(qtd);
+
+        if ((int)jsQtdEquipamento.getValue() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Informe a quantidade do equipamento!", "Inclusão de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         if (!equipamentoController.buscarInclusaoTabela(modeloTabelaEquipamento, equipamento)) {
             JOptionPane.showMessageDialog(rootPane, "Equipamento já incluído no contrato!", "Inclusão de Equipamento", JOptionPane.WARNING_MESSAGE);
             return;
@@ -2480,7 +2486,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         String telefone = ffContratoCadastroTelefone.getText();
         String cep = ffContratoCadastroCep.getText().replace("-", "");
         Endereco endereco = ConsultaCep.buscarCep(cep);
-
         if (endereco.getLogradouro().equals("")) {
             endereco.setLogradouro(tfContratoCadastroLogradouro.getText());
         }
