@@ -29,9 +29,9 @@ public class TotalizacaoController {
         return totalizacaoDAO.totalizar(idContrato, valor, juros, multa);
     }
     
-    //public Totalizacao buscarTotalizacao (Integer idContrato) {
-    //    return totalizacaoDAO.buscarPorContrato(idContrato);
-    //}
+    public Totalizacao buscarTotalizacao (Integer idContrato) {
+        return totalizacaoDAO.buscarPorContrato(idContrato);
+    }
 
     public Double calcularValorBase(Contrato contrato) {
         double total = 0;

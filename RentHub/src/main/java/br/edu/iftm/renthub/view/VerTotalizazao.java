@@ -4,6 +4,7 @@
  */
 package br.edu.iftm.renthub.view;
 
+import br.edu.iftm.renthub.model.Totalizacao;
 import java.sql.Connection;
 
 /**
@@ -110,16 +111,17 @@ public class VerTotalizazao extends javax.swing.JDialog {
                             .addComponent(lbTituloTotal)
                             .addComponent(lbTituloJuros)
                             .addComponent(lbTituloMulta)
-                            .addComponent(ffValor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbTituloValor)
-                            .addComponent(ffMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ffJuros, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbTituloValor))
+                        .addContainerGap(290, Short.MAX_VALUE))
                     .addGroup(pnTelaTotalizacaoLayout.createSequentialGroup()
-                        .addComponent(ffTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addGroup(pnTelaTotalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(ffValor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(ffMulta, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ffJuros, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ffTotal, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btSair)
-                        .addGap(43, 43, 43))))
+                        .addGap(25, 25, 25))))
         );
         pnTelaTotalizacaoLayout.setVerticalGroup(
             pnTelaTotalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,6 +179,13 @@ public class VerTotalizazao extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
+    public void preencheCampos(Totalizacao totalizacao) {
+        ffJuros.setText("R$ "+totalizacao.getJuros());
+        ffMulta.setText("R$ "+totalizacao.getMulta());
+        ffValor.setText("R$ "+totalizacao.getValor());
+        ffTotal.setText("R$ "+totalizacao.getTotal());
+    }
+    
     /**
      * @param args the command line arguments
      */

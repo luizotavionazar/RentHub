@@ -316,6 +316,8 @@ public class BuscarCliente extends javax.swing.JDialog {
                 buscarContrato.preencheCliente(cliente.getNome());
             } else if (identificador == 3) {
                 //QUANDO CHAMADA PELA TELA DE CADASTRO DE CLIENTE
+                cliente = clientes.get(indice);
+                tela.preencheTelaCadastroCliente(cliente.getId());
             }
         }
         limpaBuscarCliente();

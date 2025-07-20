@@ -5,13 +5,12 @@ public class Totalizacao {
     private Integer idContrato;
     private double valor, juros, multa, total;
 
-    public Totalizacao(Integer id, Integer idContrato, double valor, double juros, double multa, double total) {
+    public Totalizacao(Integer id, Integer idContrato, double valor, double juros, double multa) {
         this.id = id;
         this.idContrato = idContrato;
         this.valor = valor;
         this.juros = juros;
         this.multa = multa;
-        this.total = total;
     }
 
     public Integer getId() {
