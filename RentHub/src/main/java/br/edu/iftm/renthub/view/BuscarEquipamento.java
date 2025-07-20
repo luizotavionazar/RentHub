@@ -23,6 +23,7 @@ public class BuscarEquipamento extends javax.swing.JDialog {
     private List<Equipamento> equipamentos;
     private Equipamento equipamento;
     private TelaPrincipal tela;
+    private int identificador;
     /**
      * Creates new form BuscarEquipamento
      */
@@ -280,7 +281,11 @@ public class BuscarEquipamento extends javax.swing.JDialog {
             return;
         }else{
             equipamento = equipamentos.get(indiceTabela);
-            tela.preencheEquipamento(equipamento);
+            if(identificador == 1){
+                tela.preencheEquipamento(equipamento);
+            }else {
+                tela.preencheTelaEquipamento(equipamento);
+            }
         }
         limpaBuscarEquipamento();
         dispose();
@@ -294,6 +299,10 @@ public class BuscarEquipamento extends javax.swing.JDialog {
     public void limpaBuscarEquipamento(){
         tfBuscaEquipamento.setText("");
         modelo.setRowCount(0);
+    }
+    
+    public void indentificaTela(int identificador){
+        this.identificador = identificador;
     }
     
     /**

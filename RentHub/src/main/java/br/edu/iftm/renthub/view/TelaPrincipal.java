@@ -14,15 +14,14 @@ import br.edu.iftm.renthub.model.Usuario;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.InputVerifier;
-import javax.swing.JComponent;
+import java.util.Locale;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -43,7 +42,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private List<Equipamento> equipamentosContrato = new ArrayList<>();
     private DefaultTableModel modeloTabelaEquipCadastroContrato;
     private DefaultTableModel modeloTabelaEquipamentosContrato;
-    private int identificador;
+    private boolean validaCliente = true;
 
     public TelaPrincipal(Connection conexao) throws SQLException {
         usuarioController = new UsuarioController(conexao);
@@ -185,9 +184,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloEquipamentoQtd = new javax.swing.JLabel();
         jsEquipamentoQtdEstoque = new javax.swing.JSpinner();
         lbTituloEquipamentoValorDiario = new javax.swing.JLabel();
-        ffEquipamentoValorDiario = new javax.swing.JFormattedTextField();
+        NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        ffEquipamentoValorDiario = new javax.swing.JFormattedTextField(nf);
         lbTituloEquipamentoValorMensal = new javax.swing.JLabel();
-        ffEquipamentoValorMensal = new javax.swing.JFormattedTextField();
+        NumberFormat nfM = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        ffEquipamentoValorMensal = new javax.swing.JFormattedTextField(nfM);
         btAlterarEquipamento = new RoundedButton("");
         btDeletarEquipamento = new RoundedButton("");
         lbTituloEquipamento = new javax.swing.JLabel();
@@ -1514,12 +1515,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloEquipamentoQtd.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloEquipamentoQtd.setText("Quantidade de Estoque");
 
-        jsEquipamentoQtdEstoque.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jsEquipamentoQtdEstoque.setModel(new javax.swing.SpinnerNumberModel());
 
         lbTituloEquipamentoValorDiario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbTituloEquipamentoValorDiario.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloEquipamentoValorDiario.setText("Valor Diário");
 
+        ffEquipamentoValorDiario.setColumns(10);
+        ffEquipamentoValorDiario.setValue(0.00);
         ffEquipamentoValorDiario.setBackground(new java.awt.Color(215, 215, 215));
         ffEquipamentoValorDiario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
 
@@ -1527,7 +1530,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbTituloEquipamentoValorMensal.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloEquipamentoValorMensal.setText("Valor Mensal");
 
+        ffEquipamentoValorMensal.setColumns(10);
+        ffEquipamentoValorMensal.setValue(0.00);
         ffEquipamentoValorMensal.setBackground(new java.awt.Color(215, 215, 215));
+        ffEquipamentoValorMensal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
 
         btAlterarEquipamento.setBackground(new java.awt.Color(240, 240, 240));
         btAlterarEquipamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1542,6 +1548,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btAlterarEquipamentoMouseExited(evt);
             }
         });
+        btAlterarEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlterarEquipamentoActionPerformed(evt);
+            }
+        });
 
         btDeletarEquipamento.setBackground(new java.awt.Color(240, 240, 240));
         btDeletarEquipamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1554,6 +1565,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btDeletarEquipamentoMouseExited(evt);
+            }
+        });
+        btDeletarEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeletarEquipamentoActionPerformed(evt);
             }
         });
 
@@ -1632,6 +1648,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btLimparEquipamentoMouseExited(evt);
             }
         });
+        btLimparEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparEquipamentoActionPerformed(evt);
+            }
+        });
 
         btRegistrarEquipamento.setBackground(new java.awt.Color(240, 240, 240));
         btRegistrarEquipamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1663,6 +1684,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btCancelarEquipamentoMouseExited(evt);
+            }
+        });
+        btCancelarEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarEquipamentoActionPerformed(evt);
             }
         });
 
@@ -2231,6 +2257,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btContratoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContratoLimparActionPerformed
         resetaEstadoComponentesCadastroContrato();
         limpaTelaContratoCadastro();
+        validaCliente = true;
     }//GEN-LAST:event_btContratoLimparActionPerformed
 
     private void btContratoCadastroAdicionarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContratoCadastroAdicionarEquipamentoActionPerformed
@@ -2239,7 +2266,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Object[] linha = {equipamento.getId(), equipamento.getDescricao(), jsQtdEquipamento.getValue()};
         Integer qtd = (Integer)jsQtdEquipamento.getValue();
         equipamento.setQtdContrato(qtd);
-        equipamentosContrato.removeAll(equipamentosContrato);
         if (!equipamentoController.buscarInclusaoTabela(modeloTabelaEquipamento, equipamento)) {
             JOptionPane.showMessageDialog(rootPane, "Equipamento já incluído no contrato!", "Inclusão de Equipamento", JOptionPane.WARNING_MESSAGE);
             return;
@@ -2384,8 +2410,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btBuscarEquipamentoMouseExited
 
     private void btBuscarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarEquipamentoActionPerformed
+        buscarEquipamento.indentificaTela(2);
         buscarEquipamento.setLocationRelativeTo(this);
         buscarEquipamento.setVisible(true);
+        btRegistrarEquipamento.setVisible(false);
     }//GEN-LAST:event_btBuscarEquipamentoActionPerformed
 
     private void btClienteAlterarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btClienteAlterarMouseEntered
@@ -2413,6 +2441,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btContratoBuscarEquipamentoMouseExited
 
     private void btContratoBuscarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContratoBuscarEquipamentoActionPerformed
+        buscarEquipamento.indentificaTela(1);
         buscarEquipamento.setLocationRelativeTo(this);
         buscarEquipamento.setVisible(true);
     }//GEN-LAST:event_btContratoBuscarEquipamentoActionPerformed
@@ -2458,7 +2487,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (endereco.getBairro().equals("")) {
             endereco.setBairro(tfContratoCadastroBairro.getText());
         }
-        if(!ckbClienteSemNumero.isSelected()){
+        if(!ckbContratoCadastroSemNumero.isSelected()){
             String numero = tfContratoCadastroNumero.getText();
             endereco.setNumero(Integer.parseInt(numero));
         }
@@ -2474,7 +2503,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Cliente cliente = new Cliente(nomeCliente, identificacao, telefone, endereco);
         
         Cliente clienteSelecionado = buscarCliente.selecionarCliente();
-        if (clienteSelecionado == null) {
+        if (validaCliente) {
             cliente.setId(clienteController.cadastrar(cliente));
         } else {
             cliente.setId(clienteSelecionado.getId());
@@ -2482,6 +2511,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         if(contratoController.cadastrar(new Contrato(cliente, equipamentosContrato, dataInicio, dataFim))){
             JOptionPane.showMessageDialog(rootPane, "Contrato cadastrado com Sucesso!", "Cadastro de Contrato", JOptionPane.INFORMATION_MESSAGE);
+            equipamentosContrato.removeAll(equipamentosContrato);
             limpaTelaContratoCadastro();
         }
     }//GEN-LAST:event_btContratoRegistrarActionPerformed
@@ -2542,6 +2572,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             equipamento.setVlrMensal(((Number) ffEquipamentoValorMensal.getValue()).doubleValue());
             System.out.println("TESTE vlrmensal: "+equipamento.getVlrMensal());
         }
+        if(equipamentoController.cadastrar(equipamento)){
+            JOptionPane.showMessageDialog(rootPane, "Equipamento Cadastrado!", "Cadastro de Equipamento", JOptionPane.INFORMATION_MESSAGE);
+            limpaTelaEquipamento();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar o Equipamento!", "Cadastro de Equipamento", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btRegistrarEquipamentoActionPerformed
 
     private void btRegistrarEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEncerrarContratoActionPerformed
@@ -2553,14 +2590,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             return;
         }
     }//GEN-LAST:event_btRegistrarEncerrarContratoActionPerformed
-
-    private void ckbContratoCadastroSemNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbContratoCadastroSemNumeroActionPerformed
-        if (ckbClienteSemNumero.isSelected()){
-            tfContratoCadastroNumero.setEnabled(false);
-        } else {
-            tfContratoCadastroNumero.setEnabled(true);
-        }
-    }//GEN-LAST:event_ckbContratoCadastroSemNumeroActionPerformed
 
     private void limparTelaEncerramento(){
         tfContratoEncerrarNumeroContrato.setText("");
@@ -2576,6 +2605,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         modeloTabelaEquipamentosContrato.setRowCount(0);
     }
     
+    public void preencheTelaEquipamento(Equipamento equipamento){
+        tfEquipamentoNomeEquipamento.setText(equipamento.getDescricao());
+        jsEquipamentoQtdEstoque.setValue(equipamento.getQtdTotal());
+        ffEquipamentoValorDiario.setValue(equipamento.getVlrDiaria());
+        ffEquipamentoValorMensal.setValue(equipamento.getVlrMensal());
+    }
     private void ffEquipamentoValorDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ffEquipamentoValorDiarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ffEquipamentoValorDiarioActionPerformed
@@ -2596,12 +2631,90 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buscarCliente.identificarTela(1);
         buscarCliente.setLocationRelativeTo(this);
         buscarCliente.setVisible(true);
-        Cliente cliente = buscarCliente.selecionarCliente();
     }//GEN-LAST:event_btContratoBuscarClienteActionPerformed
 
     private void cbContratoCadastroUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbContratoCadastroUfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbContratoCadastroUfActionPerformed
+
+    private void ckbContratoCadastroSemNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbContratoCadastroSemNumeroActionPerformed
+        if (ckbContratoCadastroSemNumero.isSelected()){
+            tfContratoCadastroNumero.setEditable(false);
+            tfContratoCadastroNumero.setText("");
+        } else {
+            tfContratoCadastroNumero.setEditable(true);
+        }
+    }//GEN-LAST:event_ckbContratoCadastroSemNumeroActionPerformed
+
+    private void btLimparEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparEquipamentoActionPerformed
+        limpaTelaEquipamento();
+    }//GEN-LAST:event_btLimparEquipamentoActionPerformed
+
+    private void btCancelarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarEquipamentoActionPerformed
+        limpaTelaEquipamento();
+        cdlPn.show(pnCdTelas, "cdTelaHome");
+    }//GEN-LAST:event_btCancelarEquipamentoActionPerformed
+
+    private void btAlterarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarEquipamentoActionPerformed
+        Equipamento equipamento = new Equipamento();
+
+        if (tfEquipamentoNomeEquipamento.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um Equipamento!", "Alteração de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            equipamento.setDescricao(tfEquipamentoNomeEquipamento.getText());
+            System.out.println("TESTE nome: "+equipamento.getDescricao());
+        }
+        if ((Integer)jsEquipamentoQtdEstoque.getValue() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Informe a quantidade do Equipamento!", "Alteração de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            equipamento.setQtdTotal((Integer)jsEquipamentoQtdEstoque.getValue());
+            System.out.println("TESTE qtdtotal: "+equipamento.getQtdTotal());
+        }
+
+        if (ffEquipamentoValorDiario.getValue() == null || ffEquipamentoValorDiario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Informe o valor diário do Equipamento!", "Alteração de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            equipamento.setVlrDiaria(((Number) ffEquipamentoValorDiario.getValue()).doubleValue());
+            System.out.println("TESTE vlrdiaria: "+equipamento.getVlrDiaria());
+        }
+        if (ffEquipamentoValorMensal.getValue() == null || ffEquipamentoValorMensal.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Informe o valor mensal do Equipamento!", "Alteração de Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            equipamento.setVlrMensal(((Number) ffEquipamentoValorMensal.getValue()).doubleValue());
+            System.out.println("TESTE vlrmensal: "+equipamento.getVlrMensal());
+        }
+        if(equipamentoController.alterar(buscarEquipamento.getEquipamento().getId(), equipamento)){
+            JOptionPane.showMessageDialog(rootPane, "Equipamento Alterado!", "Alteração de Equipamento", JOptionPane.INFORMATION_MESSAGE);
+            limpaTelaEquipamento();
+            btRegistrarEquipamento.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Erro ao alterar o Equipamento!", "Alteração de Equipamento", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btAlterarEquipamentoActionPerformed
+
+    private void btDeletarEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarEquipamentoActionPerformed
+        if (tfEquipamentoNomeEquipamento.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um Equipamento!", "Deletar Equipamento", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else{
+            Equipamento equipamento = buscarEquipamento.getEquipamento();
+            String[] opcoes = {"Sim", "Não"};
+            int opcao = JOptionPane.showOptionDialog(rootPane, "Deletar:\n" + equipamento.getDescricao() + "?", "Confirmação", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+            if(opcao == 0){
+                if(equipamentoController.deletar(equipamento.getId())){
+                    JOptionPane.showMessageDialog(rootPane, "Equipamento Deletado!", "Deletar Equipamento", JOptionPane.INFORMATION_MESSAGE);
+                    limpaTelaEquipamento();
+                    btRegistrarEquipamento.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Erro ao deletar o Equipamento!", "Deletar Equipamento", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_btDeletarEquipamentoActionPerformed
     
     public void resetaEstadoComponentesCadastroContrato(){
         lbTituloContratoCadastroDataEntrega.setVisible(false);
@@ -2610,6 +2723,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     public void preencheCliente(int idCliente) {
+        validaCliente = false;
         Cliente cliente = new Cliente();
         cliente = clienteController.buscarPorId(idCliente);
         tfContratoCadastroCliente.setText(cliente.getNome());
@@ -2777,7 +2891,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     public void limpaTelaEquipamento(){
-        
+        tfEquipamentoNomeEquipamento.setText("");
+        jsEquipamentoQtdEstoque.setValue(0);
+        ffEquipamentoValorDiario.setValue(0.00);
+        ffEquipamentoValorMensal.setValue(0.00);
     }
     
     public void limpaTelaCliente(){
