@@ -195,6 +195,7 @@ public class BuscarContrato extends javax.swing.JDialog {
         });
 
         tfCliente.setBackground(new java.awt.Color(215, 215, 215));
+        tfCliente.setForeground(new java.awt.Color(0, 0, 0));
 
         lbTituloCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbTituloCliente.setForeground(new java.awt.Color(0, 0, 0));
@@ -393,7 +394,7 @@ public class BuscarContrato extends javax.swing.JDialog {
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         int indice = tbBuscarContrato.getSelectedRow();
         if(indice == -1){
-            JOptionPane.showMessageDialog(rootPane, "Selecione um equipamento!", "Busca de equipamento", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um contrato!", "Busca de equipamento", JOptionPane.WARNING_MESSAGE);
             return;
         }else{
             System.out.println(indice);
@@ -455,6 +456,7 @@ public class BuscarContrato extends javax.swing.JDialog {
         contratoFiltro.setDataEntrega(dataEntrega);
         
         contratos = contratoController.listar(contratoFiltro);
+        
         modelo.setRowCount(0);
         for(Contrato ctr : contratos){
             Object[] linha = {ctr.getId(), ctr.getCliente().getNome(), ctr.getDataInicio(), ctr.getDataFim(), ctr.getDataEntrega(), ctr.getStatus()};
@@ -470,6 +472,7 @@ public class BuscarContrato extends javax.swing.JDialog {
         System.out.println("teste to aqui também");
         tfCliente.setText("antedegmon");
         tfCliente.setText(cliente.getNome());
+        //não ta funcionando o comando aqui, se usado set text em outro local, o campo é preenchido
     }
     
     public Contrato getContrato(){
