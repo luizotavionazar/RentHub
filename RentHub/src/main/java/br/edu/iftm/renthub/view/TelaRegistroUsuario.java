@@ -182,12 +182,19 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
             boolean valida = Arrays.equals(senha, confSenha);
             if(valida){
                 usuario = new Usuario(nomeUsuario, senha);
-                if (usuarioController.cadastrar(usuario)) { // Chama o método de registro do usuário no controlador
-                    JOptionPane.showMessageDialog(rootPane, "Usuário cadastrado com sucesso!", "Cadastro de Usuário", JOptionPane.INFORMATION_MESSAGE);
-                    pfConfSenha.setBorder(UIManager.getBorder("TextField.border"));
-                    limpaCampos();
-                    dispose();    
+                if (!usuarioController.buscar(usuario)) {
+                    if (usuarioController.cadastrar(usuario)) {
+                        JOptionPane.showMessageDialog(rootPane, "Usuário cadastrado com sucesso!", "Cadastro de Usuário", JOptionPane.INFORMATION_MESSAGE);
+                        pfConfSenha.setBorder(UIManager.getBorder("TextField.border"));
+                        limpaCampos();
+                        dispose();    
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Não foi possivel cadastrar o usuário!", "Cadastro de Usuário", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "O usuário "+ nomeUsuario +" já existe!", "Cadastro de Usuário", JOptionPane.WARNING_MESSAGE);
                 }
+                
             }else{
                 JOptionPane.showMessageDialog(rootPane, "As senhas não coincidem!", "Cadastro de Usuário", JOptionPane.ERROR_MESSAGE);
             }

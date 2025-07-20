@@ -379,6 +379,7 @@ public class BuscarContrato extends javax.swing.JDialog {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarClienteActionPerformed
+        buscarCliente.identificarTela(2);
         buscarCliente.setLocationRelativeTo(this);
         buscarCliente.setVisible(true);
     }//GEN-LAST:event_btBuscarClienteActionPerformed

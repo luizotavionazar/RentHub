@@ -23,6 +23,8 @@ public class BuscarCliente extends javax.swing.JDialog {
     private static ClienteController clienteController;
     private static BuscarContrato buscarContrato;
     private static TelaPrincipal tela;
+    private int identificador;
+    private Cliente clienteSelecionado;
     /**
      * Creates new form BuscarCliente
      */
@@ -291,14 +293,30 @@ public class BuscarCliente extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
+    public void identificarTela(int identificador){
+        this.identificador = identificador;
+    }
+
+    public Cliente selecionarCliente(){
+        return clienteSelecionado;
+    }
+
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         int indice = tbBuscarCliente.getSelectedRow();
         if(indice == -1){
             JOptionPane.showMessageDialog(rootPane, "Selecione um equipamento!", "Busca de equipamento", JOptionPane.WARNING_MESSAGE);
             return;
         }else{
-            cliente = clientes.get(indice);
-            buscarContrato.preencheCliente(cliente);
+            if (identificador == 1) {
+                cliente = clientes.get(indice);
+                tela.preencheCliente(cliente.getId());
+                clienteSelecionado = clientes.get(indice);
+            } else if (identificador == 2) {
+                cliente = clientes.get(indice);
+                buscarContrato.preencheCliente(cliente);
+            } else if (identificador == 3) {
+                //QUANDO CHAMADA PELA TELA DE CADASTRO DE CLIENTE
+            }
         }
         limpaBuscarCliente();
         dispose();

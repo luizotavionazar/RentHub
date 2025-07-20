@@ -18,42 +18,58 @@ public class UsuarioController {
     RegistrosLog log = new RegistrosLog();
 
     public boolean cadastrar(Usuario usuario) {
-        log.registrarLog(1, "UsuarioController", "cadastrar", "", "Cadastrando o usuário: " + usuario.getNome());
+        log.registrarLog(1, "UsuarioController", "cadastrar", "usuario", "Cadastrando o usuário: " + usuario.getNome());
         String senhaCripto = BCrypt.hashpw(new String(usuario.getSenha()), BCrypt.gensalt());
         try {
             if (usuarioDAO.cadastrar(usuario.getNome(), senhaCripto)) {
-                log.registrarLog(2, "UsuarioController", "cadastrar", "", "Usuário: "+ usuario.getNome() +" cadastrado com sucesso");
+                log.registrarLog(2, "UsuarioController", "cadastrar", "usuario", "Usuário: "+ usuario.getNome() +" cadastrado com sucesso");
                 return true;
             } else {
-                log.registrarLog(3, "UsuarioController", "cadastrar", "", "Não foi possivel cadastrar o usuário: " + usuario.getNome());
+                log.registrarLog(3, "UsuarioController", "cadastrar", "usuario", "Não foi possivel cadastrar o usuário: " + usuario.getNome());
                 return false;
-            }    
+            }
         } catch (Exception e) {
-            log.registrarLog(4, "UsuarioController", "cadastrar", "", "Erro ao tentar cadastrar o usuário: " + e.getMessage());
+            log.registrarLog(4, "UsuarioController", "cadastrar", "usuario", "Erro ao tentar cadastrar o usuário: " + e.getMessage());
             e.printStackTrace();
             return false;
         }   
     }
 
+    public boolean buscar(Usuario usuario) {
+        log.registrarLog(1, "UsuarioController", "buscar", "usuario", "Buscando o usuario: " + usuario.getNome());
+        try {
+            if (usuarioDAO.buscarNome(usuario.getNome()) != null) {
+                log.registrarLog(2, "UsuarioController", "buscar", "usuario", "Usuario: "+ usuario.getNome() +" localizado com sucesso");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            log.registrarLog(4, "UsuarioController", "buscar", "usuario", "Erro ao tentar buscar o usuário: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean autenticar(Usuario usuario) {
-        log.registrarLog(1, "UsuarioController", "autenticar", "", "Autenticando o usuário "+ usuario.getNome());
+        log.registrarLog(1, "UsuarioController", "autenticar", "usuario", "Autenticando o usuário "+ usuario.getNome());
         try {
             String senhaUsuarioBd = usuarioDAO.buscarSenha(usuario.getNome());
             if (senhaUsuarioBd != null) {
                 String senhaCripto = new String(usuario.getSenha());
                 if (BCrypt.checkpw(senhaCripto, new String(senhaUsuarioBd))) {
-                    log.registrarLog(2, "UsuarioController", "autenticar", "", "Usuário: "+ usuario.getNome() +" autenticado com sucesso");
+                    log.registrarLog(2, "UsuarioController", "autenticar", "usuario", "Usuário: "+ usuario.getNome() +" autenticado com sucesso");
                     return true;
                 } else {
-                    log.registrarLog(3, "UsuarioController", "autenticar", "", "Usuário: "+ usuario.getNome() +" não autenticado");
+                    log.registrarLog(3, "UsuarioController", "autenticar", "usuario", "Usuário: "+ usuario.getNome() +" não autenticado");
                     return false;
                 }
             } else {
-                log.registrarLog(3, "UsuarioController", "autenticar", "", "Usuário: "+ usuario.getNome() +" não encontrado");
+                log.registrarLog(3, "UsuarioController", "autenticar", "usuario", "Usuário: "+ usuario.getNome() +" não encontrado");
                 return false;
             }
         } catch (Exception e) {
-            log.registrarLog(4, "UsuarioController", "autenticar", "", "Erro ao tentar autenticar o usuário: " + e.getMessage());
+            log.registrarLog(4, "UsuarioController", "autenticar", "usuario", "Erro ao tentar autenticar o usuário: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
