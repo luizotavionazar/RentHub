@@ -496,6 +496,13 @@ public class BuscarContrato extends javax.swing.JDialog {
 
     public void identificarTela(int identificador) {
         this.identificador = identificador;
+        if (identificador == 2) {
+            cbStatus.setSelectedIndex(1);
+            cbStatus.setEnabled(false);
+        } else {
+            cbStatus.setSelectedIndex(0);
+            cbStatus.setEnabled(true);
+        }
     }
 
     private void btFiltrarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btFiltrarActionPerformed
@@ -555,20 +562,24 @@ public class BuscarContrato extends javax.swing.JDialog {
     }// GEN-LAST:event_cbStatusActionPerformed
 
     public void preencheCliente(String nomeCliente) {
-        tfNomeCliente.setText(nomeCliente); //DESCOBRIR POR QUE CARALHOS ISSO AQUI NAO TA ACONTECENDO QUANDO PASSA POR AQ
+        tfNomeCliente.setText(nomeCliente); // DESCOBRIR POR QUE CARALHOS ISSO AQUI NAO TA ACONTECENDO QUANDO PASSA POR
+                                            // AQ
     }
 
     public Contrato getContrato() {
         return contrato;
     }
 
-    // Metodo para limpeza dos campos da tela
     public void limpaBuscarContrato() {
         dtDataInicio.setDate(null);
         dtDataFim.setDate(null);
         dtDataEntrega.setDate(null);
         cbTipo.setSelectedIndex(0);
-        cbStatus.setSelectedIndex(0);
+        if (identificador == 2) {
+            cbStatus.setSelectedIndex(1);
+        } else {
+            cbStatus.setSelectedIndex(0);
+        }
         tfNomeCliente.setText("");
         modelo.setRowCount(0);
     }

@@ -53,6 +53,7 @@ public class ContratoController {
         StringBuilder sqlFiltro = new StringBuilder();
         List<Object> filtros = new ArrayList<>();
         if (contratoFiltro.getCliente() != null && contratoFiltro.getCliente().getId() != null) {
+            System.out.println("ID CLIENTE SELECIONADO: "+contratoFiltro.getCliente().getId());
             sqlFiltro.append("AND c.id = ? ");
             filtros.add(contratoFiltro.getCliente().getId());
         }

@@ -1383,6 +1383,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btCancelarEncerrarContratoMouseExited(evt);
             }
         });
+        btCancelarEncerrarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarEncerrarContratoActionPerformed(evt);
+            }
+        });
 
         btLimparEncerrarContrato.setBackground(new java.awt.Color(240, 240, 240));
         btLimparEncerrarContrato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -2861,6 +2866,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             return;
         }
     }//GEN-LAST:event_btRegistrarEncerrarContratoActionPerformed
+
+    private void btCancelarEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarEncerrarContratoActionPerformed
+        limparTelaEncerramento();
+        //cdlPn.show(pnTela, "cdTelaEncerrarContrato");
+    }//GEN-LAST:event_btCancelarEncerrarContratoActionPerformed
     
     public void preencheEquipamento(Equipamento equipamento){
         tfContratoCadastroEquipamento.setText(equipamento.getDescricao());

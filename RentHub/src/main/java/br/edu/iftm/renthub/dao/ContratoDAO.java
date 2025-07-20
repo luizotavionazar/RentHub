@@ -86,7 +86,7 @@ public class ContratoDAO {
         query.append("JOIN cliente cl ON cl.id = c.id_cliente ");
         query.append("WHERE 1=1 ");
         query.append(filtrosSql);
-        query.append(" ORDER BY c.data_inicio ASC");
+        query.append("ORDER BY c.data_inicio ASC");
         System.out.println(query.toString());
         try (PreparedStatement stmt = conexaoBanco.prepareStatement(query.toString())) {
             for (int i = 0; i < filtros.size(); i++) {
