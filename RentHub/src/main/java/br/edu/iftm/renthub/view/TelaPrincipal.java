@@ -118,6 +118,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ffContratoCadastroCpf = new javax.swing.JFormattedTextField();
         ffContratoCadastroTelefone = new javax.swing.JFormattedTextField();
         lbTituloContratoTelefone = new javax.swing.JLabel();
+        lbTituloContratoTelefone1 = new javax.swing.JLabel();
         lbTituloContratoEquipamento = new javax.swing.JLabel();
         lbTituloContratoQuantidade = new javax.swing.JLabel();
         jsQtdEquipamento = new javax.swing.JSpinner();
@@ -254,6 +255,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setTitle("RentHub");
         setBackground(new java.awt.Color(117, 117, 117));
         setName("janelaRentHub"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1350, 735));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -274,7 +276,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             pnLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnLogoLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(lbLogoLg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbLogoLg, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                 .addGap(70, 70, 70))
         );
         pnLogoLayout.setVerticalGroup(
@@ -384,21 +386,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnTelaLogin.setLayout(pnTelaLoginLayout);
         pnTelaLoginLayout.setHorizontalGroup(
             pnTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTelaLoginLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
+            .addGroup(pnTelaLoginLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
                 .addComponent(pnLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(pnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(125, 125, 125))
+                .addGap(126, 126, 126))
         );
         pnTelaLoginLayout.setVerticalGroup(
             pnTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTelaLoginLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(47, 47, 47)
                 .addGroup(pnTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(70, 70, 70))
+                .addGap(93, 93, 93))
         );
 
         getContentPane().add(pnTelaLogin, "cdTelaLogin");
@@ -448,7 +450,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(pnTopLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(lbTituloRentHub)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 828, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 858, Short.MAX_VALUE)
                 .addComponent(lbUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -545,7 +547,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(btMenuEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btMenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addContainerGap(483, Short.MAX_VALUE))
         );
 
         pnTela.add(pnMenu, java.awt.BorderLayout.WEST);
@@ -561,21 +563,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnTelaHome.setLayout(pnTelaHomeLayout);
         pnTelaHomeLayout.setHorizontalGroup(
             pnTelaHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
+            .addGap(0, 1150, Short.MAX_VALUE)
             .addGroup(pnTelaHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnTelaHomeLayout.createSequentialGroup()
                     .addGap(284, 284, 284)
                     .addComponent(lbLogoHm)
-                    .addContainerGap(324, Short.MAX_VALUE)))
+                    .addContainerGap(354, Short.MAX_VALUE)))
         );
         pnTelaHomeLayout.setVerticalGroup(
             pnTelaHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addGap(0, 675, Short.MAX_VALUE)
             .addGroup(pnTelaHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnTelaHomeLayout.createSequentialGroup()
                     .addGap(74, 74, 74)
                     .addComponent(lbLogoHm)
-                    .addContainerGap(74, Short.MAX_VALUE)))
+                    .addContainerGap(89, Short.MAX_VALUE)))
         );
 
         pnCdTelas.add(pnTelaHome, "cdTelaHome");
@@ -633,10 +635,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         ffContratoCadastroTelefone.setBackground(new java.awt.Color(215, 215, 215));
         ffContratoCadastroTelefone.setToolTipText("");
+        ffContratoCadastroTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ffContratoCadastroTelefoneKeyTyped(evt);
+            }
+        });
 
-        lbTituloContratoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbTituloContratoTelefone.setForeground(new java.awt.Color(0, 0, 0));
-        lbTituloContratoTelefone.setText("Telefone:");
+        lbTituloContratoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        lbTituloContratoTelefone1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbTituloContratoTelefone1.setForeground(new java.awt.Color(0, 0, 0));
+        lbTituloContratoTelefone1.setText("Telefone:");
 
         lbTituloContratoEquipamento.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloContratoEquipamento.setForeground(new java.awt.Color(0, 0, 0));
@@ -692,26 +701,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tbContratoCadastroEquipamento.getColumnModel().getColumn(1).setPreferredWidth(300);
             tbContratoCadastroEquipamento.getColumnModel().getColumn(2).setPreferredWidth(30);
         }
-
-        tfContratoCadastroNumero.setBackground(new java.awt.Color(215, 215, 215));
-        tfContratoCadastroNumero.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfContratoCadastroNumeroKeyTyped(evt);
-            }
-        });
-
-        lbTituloContratoNumero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbTituloContratoNumero.setForeground(new java.awt.Color(0, 0, 0));
-        lbTituloContratoNumero.setText("Número");
-
-        ckbContratoCadastroSemNumero.setForeground(new java.awt.Color(0, 0, 0));
-        ckbContratoCadastroSemNumero.setText("Sem Número");
-        ckbContratoCadastroSemNumero.setFocusPainted(false);
-        ckbContratoCadastroSemNumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckbContratoCadastroSemNumeroActionPerformed(evt);
-            }
-        });
 
         lbTituloContratoCadastroDataFinal.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloContratoCadastroDataFinal.setForeground(new java.awt.Color(0, 0, 0));
@@ -858,6 +847,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         tfContratoCadastroNumero.setBackground(new java.awt.Color(215, 215, 215));
         tfContratoCadastroNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfContratoCadastroNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfContratoCadastroNumeroKeyTyped(evt);
+            }
+        });
 
         lbTituloContratoNumero.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloContratoNumero.setForeground(new java.awt.Color(0, 0, 0));
@@ -986,9 +980,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                     .addComponent(ffContratoCadastroCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnContratoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnContratoCadastroLayout.createSequentialGroup()
-                                        .addComponent(lbTituloContratoTelefone)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lbTituloContratoTelefone)
                                     .addComponent(ffContratoCadastroTelefone)))
                             .addGroup(pnContratoCadastroLayout.createSequentialGroup()
                                 .addComponent(tfContratoCadastroCliente)
@@ -1086,7 +1078,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(ffContratoCadastroTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 31, Short.MAX_VALUE))))
+                        .addGap(0, 19, Short.MAX_VALUE))))
         );
 
         btContratoRegistrar.setBackground(new java.awt.Color(240, 240, 240));
@@ -1182,7 +1174,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(667, 667, 667))
                     .addGroup(pnTelaCadastroCtLayout.createSequentialGroup()
                         .addGroup(pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(pnContratoCadastro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnContratoCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnTelaCadastroCtLayout.createSequentialGroup()
                                 .addComponent(lbTituloContratoCadastro)
                                 .addGap(587, 587, 587)
@@ -1194,22 +1186,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnTelaCadastroCtLayout.setVerticalGroup(
             pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTelaCadastroCtLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btBuscarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnTelaCadastroCtLayout.createSequentialGroup()
-                        .addComponent(lbTituloContratoCadastro)
-                        .addGap(2, 2, 2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(17, 17, 17)
+                        .addComponent(lbTituloContratoCadastro))
+                    .addGroup(pnTelaCadastroCtLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btBuscarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(2, 2, 2)
                 .addComponent(pnContratoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnTelaCadastroCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btContratoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btContratoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btContratoRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pnCdTelas.add(pnTelaCadastroCt, "cdTelaCadastroContrato");
@@ -1386,7 +1379,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lbTituloContratoEncerrarCpf, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(ffContratoEncerrarCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(18, 97, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContratoEncerrarLayout.createSequentialGroup()
                         .addGroup(pnContratoEncerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1491,7 +1484,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(ffContratoEncerrarCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         lbTituloContratoEncerrar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -1585,14 +1578,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btLimparEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btSairEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnTelaEncerrarCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(pnTelaEncerrarCtLayout.createSequentialGroup()
-                            .addComponent(lbTituloContratoEncerrar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btNovoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(pnContratoEncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btSairEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(760, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTelaEncerrarCtLayout.createSequentialGroup()
+                        .addGroup(pnTelaEncerrarCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pnContratoEncerrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnTelaEncerrarCtLayout.createSequentialGroup()
+                                .addComponent(lbTituloContratoEncerrar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btNovoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(42, 42, 42))))
         );
         pnTelaEncerrarCtLayout.setVerticalGroup(
             pnTelaEncerrarCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1603,12 +1598,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(lbTituloContratoEncerrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnContratoEncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnTelaEncerrarCtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSairEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimparEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btRegistrarEncerrarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pnCdTelas.add(pnTelaEncerrarCt, "cdTelaEncerrarContrato");
@@ -1704,7 +1699,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                     .addComponent(lbTituloEquipamentoValorMensal)
                                     .addComponent(lbTituloEquipamentoQtd1)
                                     .addComponent(jsEquipamentoQtdDisponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 70, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnEquipamentoLayout.createSequentialGroup()
                                 .addComponent(ffEquipamentoValorDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -1741,7 +1736,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(pnEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ffEquipamentoValorDiario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ffEquipamentoValorMensal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
         lbTituloEquipamento.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -1875,14 +1870,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(lbTituloEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(pnTelaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btRegistrarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimparEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCancelarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btAlterarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDeletarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pnCdTelas.add(pnTelaEquipamento, "cdTelaEquipamento");
@@ -2021,13 +2016,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jpPanelEnderecoCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpPanelEnderecoCadClienteLayout.createSequentialGroup()
                         .addComponent(lbTituloClienteUf)
-                        .addGap(0, 186, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPanelEnderecoCadClienteLayout.createSequentialGroup()
                         .addGroup(jpPanelEnderecoCadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbClienteUf, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpPanelEnderecoCadClienteLayout.createSequentialGroup()
                                 .addComponent(lbTituloClienteNumero)
-                                .addGap(0, 25, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(tfClienteNumero, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ckbClienteSemNumero)))
@@ -2108,7 +2103,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(pnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbTituloClienteTelefone)
-                                    .addComponent(ffClienteTelefone)))
+                                    .addComponent(ffClienteTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)))
                             .addComponent(jpPanelEnderecoCadCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(35, 35, 35))))
         );
@@ -2134,7 +2129,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(btClienteBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jpPanelEnderecoCadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         lbTituloClientes.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -2191,28 +2186,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btClienteSair, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbTituloClientes))
-                .addContainerGap(855, Short.MAX_VALUE))
+                .addContainerGap(885, Short.MAX_VALUE))
             .addGroup(pnTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnTelaClienteLayout.createSequentialGroup()
                     .addGap(29, 29, 29)
                     .addComponent(pnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(102, Short.MAX_VALUE)))
+                    .addContainerGap(81, Short.MAX_VALUE)))
         );
         pnTelaClienteLayout.setVerticalGroup(
             pnTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTelaClienteLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(lbTituloClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 546, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 567, Short.MAX_VALUE)
                 .addGroup(pnTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btClienteCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btClienteSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addGap(16, 16, 16))
             .addGroup(pnTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnTelaClienteLayout.createSequentialGroup()
                     .addGap(87, 87, 87)
                     .addComponent(pnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(66, Short.MAX_VALUE)))
+                    .addContainerGap(108, Short.MAX_VALUE)))
         );
 
         pnCdTelas.add(pnTelaCliente, "cdTelaCliente");
@@ -2286,6 +2281,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         LocalDate dataAgora = LocalDate.now();
         Date date = Date.from(dataAgora.atStartOfDay(ZoneId.systemDefault()).toInstant());
         dcContratoCadastroDataInicio.setDate(date);
+        limparTelaCadCliente();
+        limpaTelaEquipamento();
+        limparTelaEncerramento();
     }//GEN-LAST:event_btMenuContratoActionPerformed
 
     private void btMenuClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btMenuClienteMouseEntered
@@ -2387,6 +2385,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cdlPn.show(pnCdTelas, "cdTelaEquipamento");
         limpaTelaContratoCadastro();
         limparTelaEncerramento();
+        limparTelaCadCliente();
     }//GEN-LAST:event_btMenuEquipamentoActionPerformed
 
     private void btBuscarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarContratoActionPerformed
@@ -3053,7 +3052,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btSairEncerrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairEncerrarContratoActionPerformed
         limparTelaEncerramento();
-        //cdlPn.show(pnTela, "cdTelaEncerrarContrato");
+        cdlPn.show(pnTela, "cdTelaCadastroContrato");
     }//GEN-LAST:event_btSairEncerrarContratoActionPerformed
 
     private void btClienteSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btClienteSairMouseEntered
@@ -3070,7 +3069,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btClienteSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteSairActionPerformed
         limparTelaCadCliente();
-        //VOLTAR PARA A TELA HOME
+        cdlPn.show(pnCdTelas, "cdTelaHome");
     }//GEN-LAST:event_btClienteSairActionPerformed
     
     public void limparTelaCadCliente() {
@@ -3240,17 +3239,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jspContratoCadastroEquipamento.setBorder(UIManager.getBorder("ScrollPane.border"));
         dcContratoCadastroDataFinal.setBorder(UIManager.getBorder("DateChooser.border"));
         
-        
-        tfContratoCadastroCliente.setEnabled(true);
-        ffContratoCadastroCpf.setEnabled(true);
-        ffContratoCadastroTelefone.setEnabled(true);
-        ffContratoCadastroCep.setEnabled(true);
-        tfContratoCadastroNumero.setEnabled(true);
-        tfContratoCadastroBairro.setEnabled(true);
-        tfContratoCadastroLogradouro.setEnabled(true);
-        tfContratoCadastroComplemento.setEnabled(true);
-        tfContratoCadastroCidade.setEnabled(true);
-        cbContratoCadastroUf.setEnabled(true);
+        tfContratoCadastroCliente.setEditable(true);
+        ffContratoCadastroCpf.setEditable(true);
+        ffContratoCadastroTelefone.setEditable(true);
+        ffContratoCadastroCep.setEditable(true);
+        tfContratoCadastroNumero.setEditable(true);
+        tfContratoCadastroBairro.setEditable(true);
+        tfContratoCadastroLogradouro.setEditable(true);
+        tfContratoCadastroComplemento.setEditable(true);
+        tfContratoCadastroCidade.setEditable(true);
+        cbContratoCadastroUf.setEditable(true);
     }
     
     public void limpaTelaEquipamento(){
@@ -3353,10 +3351,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner jsEquipamentoQtdDisponivel;
     private javax.swing.JSpinner jsEquipamentoQtdEstoque;
     private javax.swing.JSpinner jsQtdEquipamento;
+    private javax.swing.JScrollPane jspContratoCadastroEquipamento;
     private javax.swing.JLabel lbClienteNum;
     private javax.swing.JLabel lbContratoNum;
     private javax.swing.JLabel lbEquipamentoNum;
-    private javax.swing.JScrollPane jspContratoCadastroEquipamento;
     private javax.swing.JLabel lbLogoHm;
     private javax.swing.JLabel lbLogoLg;
     private javax.swing.JLabel lbPerfil;
@@ -3397,6 +3395,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lbTituloContratoNumeroContrato;
     private javax.swing.JLabel lbTituloContratoQuantidade;
     private javax.swing.JLabel lbTituloContratoTelefone;
+    private javax.swing.JLabel lbTituloContratoTelefone1;
     private javax.swing.JLabel lbTituloContratoTipo;
     private javax.swing.JLabel lbTituloContratoTipoEncerramento;
     private javax.swing.JLabel lbTituloContratoUf;
