@@ -38,7 +38,6 @@ public class BuscarContrato extends javax.swing.JDialog {
         contratoController = new ContratoController(conexao);
         this.tela = tela;
         initComponents();
-        tfNomeCliente.setEnabled(false);
         estilo = new UtilsComponent();
         modelo = (DefaultTableModel) tbBuscarContrato.getModel();
     }
@@ -64,10 +63,7 @@ public class BuscarContrato extends javax.swing.JDialog {
         btSelecionar = new RoundedButton("");
         btSair = new RoundedButton("");
         btLimpar = new RoundedButton("");
-        lbTituloCliente = new javax.swing.JLabel();
-        btBuscarCliente = new javax.swing.JButton();
         btFiltrar = new RoundedButton("");
-        tfNomeCliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("RentHub - Busca de Contrato");
@@ -194,26 +190,6 @@ public class BuscarContrato extends javax.swing.JDialog {
             }
         });
 
-        lbTituloCliente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbTituloCliente.setForeground(new java.awt.Color(0, 0, 0));
-        lbTituloCliente.setText("Cliente:");
-
-        btBuscarCliente.setBackground(new java.awt.Color(240, 240, 240));
-        btBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/loupe.png"))); // NOI18N
-        btBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btBuscarClienteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btBuscarClienteMouseExited(evt);
-            }
-        });
-        btBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBuscarClienteActionPerformed(evt);
-            }
-        });
-
         btFiltrar.setBackground(new java.awt.Color(240, 240, 240));
         btFiltrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btFiltrar.setForeground(new java.awt.Color(0, 0, 0));
@@ -231,10 +207,6 @@ public class BuscarContrato extends javax.swing.JDialog {
                 btFiltrarActionPerformed(evt);
             }
         });
-
-        tfNomeCliente.setBackground(new java.awt.Color(215, 215, 215));
-        tfNomeCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tfNomeCliente.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout pnTelaBuscarContratoLayout = new javax.swing.GroupLayout(pnTelaBuscarContrato);
         pnTelaBuscarContrato.setLayout(pnTelaBuscarContratoLayout);
@@ -260,18 +232,12 @@ public class BuscarContrato extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
-                                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbTituloDataEntrega)
-                                    .addComponent(lbTituloCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbTituloDataEntrega)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
                                 .addComponent(dtDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
-                                .addComponent(tfNomeCliente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(pnTelaBuscarContratoLayout.createSequentialGroup()
                         .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -299,16 +265,11 @@ public class BuscarContrato extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbTituloTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbTituloStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbTituloCliente)))
+                    .addComponent(lbTituloStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tfNomeCliente)))
+                .addGroup(pnTelaBuscarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -369,24 +330,11 @@ public class BuscarContrato extends javax.swing.JDialog {
         estilo.aplicaHoverExited(btFiltrar);
     }// GEN-LAST:event_btFiltrarMouseExited
 
-    private void btBuscarClienteMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btBuscarClienteMouseEntered
-        estilo.aplicaHoverEntered(btBuscarCliente);
-    }// GEN-LAST:event_btBuscarClienteMouseEntered
-
-    private void btBuscarClienteMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btBuscarClienteMouseExited
-        estilo.aplicaHoverExited(btBuscarCliente);
-    }// GEN-LAST:event_btBuscarClienteMouseExited
-
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btSairActionPerformed
         limpaBuscarContrato();
         dispose();
     }// GEN-LAST:event_btSairActionPerformed
 
-    private void btBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btBuscarClienteActionPerformed
-        buscarCliente.identificarTela(2);
-        buscarCliente.setLocationRelativeTo(this);
-        buscarCliente.setVisible(true);
-    }// GEN-LAST:event_btBuscarClienteActionPerformed
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btSelecionarActionPerformed
         int indice = tbBuscarContrato.getSelectedRow();
@@ -436,9 +384,7 @@ public class BuscarContrato extends javax.swing.JDialog {
         }
         String tipo = (String) cbTipo.getSelectedItem();
         String status = (String) cbStatus.getSelectedItem();
-        Cliente cliente = buscarCliente.getCliente();
         Contrato contratoFiltro = new Contrato();
-        contratoFiltro.setCliente(cliente);
 
         if (tipo.equals("DIARIO")) {
             contratoFiltro.setTipo(Tipo.DIARIO);
@@ -474,10 +420,6 @@ public class BuscarContrato extends javax.swing.JDialog {
         // TODO add your handling code here:
     }// GEN-LAST:event_cbStatusActionPerformed
 
-    public void preencheCliente(String nomeCliente) {
-        tfNomeCliente.setText(nomeCliente); // DESCOBRIR POR QUE CARALHOS ISSO AQUI NAO TA ACONTECENDO QUANDO PASSA POR
-                                            // AQ
-    }
 
     public Contrato getContrato() {
         return contrato;
@@ -493,7 +435,6 @@ public class BuscarContrato extends javax.swing.JDialog {
         } else {
             cbStatus.setSelectedIndex(0);
         }
-        tfNomeCliente.setText("");
         modelo.setRowCount(0);
     }
 
@@ -505,7 +446,6 @@ public class BuscarContrato extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarCliente;
     private javax.swing.JButton btFiltrar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
@@ -516,7 +456,6 @@ public class BuscarContrato extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser dtDataFim;
     private com.toedter.calendar.JDateChooser dtDataInicio;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbTituloCliente;
     private javax.swing.JLabel lbTituloDataEntrega;
     private javax.swing.JLabel lbTituloDataFim;
     private javax.swing.JLabel lbTituloDataInicio;
@@ -524,6 +463,5 @@ public class BuscarContrato extends javax.swing.JDialog {
     private javax.swing.JLabel lbTituloTipo;
     private javax.swing.JPanel pnTelaBuscarContrato;
     private javax.swing.JTable tbBuscarContrato;
-    private javax.swing.JTextField tfNomeCliente;
     // End of variables declaration//GEN-END:variables
 }
