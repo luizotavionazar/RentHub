@@ -59,11 +59,12 @@ public class BuscarEquipamento extends javax.swing.JDialog {
 
         pnTelaBuscaEquipamento.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbTituloDescricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloDescricao.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloDescricao.setForeground(new java.awt.Color(0, 0, 0));
-        lbTituloDescricao.setText("Descrição do Equipamento");
+        lbTituloDescricao.setText("Descrição:");
 
         tfBuscaEquipamento.setBackground(new java.awt.Color(215, 215, 215));
+        tfBuscaEquipamento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tfBuscaEquipamento.setForeground(new java.awt.Color(0, 0, 0));
 
         btBuscar.setBackground(new java.awt.Color(240, 240, 240));
@@ -85,6 +86,7 @@ public class BuscarEquipamento extends javax.swing.JDialog {
         });
 
         tbBuscaEquipamento.setBackground(new java.awt.Color(215, 215, 215));
+        tbBuscaEquipamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tbBuscaEquipamento.setForeground(new java.awt.Color(0, 0, 0));
         tbBuscaEquipamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,7 +114,7 @@ public class BuscarEquipamento extends javax.swing.JDialog {
         }
 
         btSelecionar.setBackground(new java.awt.Color(240, 240, 240));
-        btSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btSelecionar.setForeground(new java.awt.Color(0, 0, 0));
         btSelecionar.setText("Selecionar");
         btSelecionar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,7 +132,7 @@ public class BuscarEquipamento extends javax.swing.JDialog {
         });
 
         btLimpar.setBackground(new java.awt.Color(240, 240, 240));
-        btLimpar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btLimpar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btLimpar.setForeground(new java.awt.Color(0, 0, 0));
         btLimpar.setText("Limpar");
         btLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,7 +150,7 @@ public class BuscarEquipamento extends javax.swing.JDialog {
         });
 
         btSair.setBackground(new java.awt.Color(240, 240, 240));
-        btSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btSair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btSair.setForeground(new java.awt.Color(0, 0, 0));
         btSair.setText("Sair");
         btSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -173,11 +175,11 @@ public class BuscarEquipamento extends javax.swing.JDialog {
                 .addGap(43, 43, 43)
                 .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnTelaBuscaEquipamentoLayout.createSequentialGroup()
-                        .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(pnTelaBuscaEquipamentoLayout.createSequentialGroup()
                             .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +188,7 @@ public class BuscarEquipamento extends javax.swing.JDialog {
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addComponent(tfBuscaEquipamento))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btBuscar))
+                            .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -198,9 +200,9 @@ public class BuscarEquipamento extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfBuscaEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscar))
+                    .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnTelaBuscaEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)

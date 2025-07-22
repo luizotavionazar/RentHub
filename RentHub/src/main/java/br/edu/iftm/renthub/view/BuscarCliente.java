@@ -63,22 +63,24 @@ public class BuscarCliente extends javax.swing.JDialog {
 
         pnTelaBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
 
-        çbTituloNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        çbTituloNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         çbTituloNome.setForeground(new java.awt.Color(0, 0, 0));
-        çbTituloNome.setText("Nome do Cliente");
+        çbTituloNome.setText("Nome:");
 
         tfNome.setBackground(new java.awt.Color(215, 215, 215));
+        tfNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tfNome.setForeground(new java.awt.Color(0, 0, 0));
 
-        lbTituloCpf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloCpf.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloCpf.setForeground(new java.awt.Color(0, 0, 0));
-        lbTituloCpf.setText("CPF/CNPJ");
+        lbTituloCpf.setText("CPF/CNPJ:");
 
         tfCpf.setBackground(new java.awt.Color(215, 215, 215));
+        tfCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tfCpf.setForeground(new java.awt.Color(0, 0, 0));
 
         btBuscar.setBackground(new java.awt.Color(240, 240, 240));
-        btBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btBuscar.setText("Buscar");
         btBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,6 +98,7 @@ public class BuscarCliente extends javax.swing.JDialog {
         });
 
         tbBuscarCliente.setBackground(new java.awt.Color(215, 215, 215));
+        tbBuscarCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tbBuscarCliente.setForeground(new java.awt.Color(0, 0, 0));
         tbBuscarCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,7 +124,7 @@ public class BuscarCliente extends javax.swing.JDialog {
         }
 
         btSelecionar.setBackground(new java.awt.Color(240, 240, 240));
-        btSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btSelecionar.setForeground(new java.awt.Color(0, 0, 0));
         btSelecionar.setText("Selecionar");
         btSelecionar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -139,7 +142,7 @@ public class BuscarCliente extends javax.swing.JDialog {
         });
 
         btLimpar.setBackground(new java.awt.Color(240, 240, 240));
-        btLimpar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btLimpar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btLimpar.setForeground(new java.awt.Color(0, 0, 0));
         btLimpar.setText("Limpar");
         btLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,7 +160,7 @@ public class BuscarCliente extends javax.swing.JDialog {
         });
 
         btSair.setBackground(new java.awt.Color(240, 240, 240));
-        btSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btSair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btSair.setForeground(new java.awt.Color(0, 0, 0));
         btSair.setText("Sair");
         btSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -182,11 +185,11 @@ public class BuscarCliente extends javax.swing.JDialog {
                 .addGap(43, 43, 43)
                 .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnTelaBuscarClienteLayout.createSequentialGroup()
-                        .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(pnTelaBuscarClienteLayout.createSequentialGroup()
                             .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +218,7 @@ public class BuscarCliente extends javax.swing.JDialog {
                     .addComponent(tfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnTelaBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +318,6 @@ public class BuscarCliente extends javax.swing.JDialog {
                 cliente = clientes.get(indice);
                 buscarContrato.preencheCliente(cliente.getNome());
             } else if (identificador == 3) {
-                //QUANDO CHAMADA PELA TELA DE CADASTRO DE CLIENTE
                 cliente = clientes.get(indice);
                 tela.preencheTelaCadastroCliente(cliente.getId());
             }

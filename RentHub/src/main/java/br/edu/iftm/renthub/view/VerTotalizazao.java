@@ -47,19 +47,19 @@ public class VerTotalizazao extends javax.swing.JDialog {
 
         pnTelaTotalizacao.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbTituloValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloValor.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloValor.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloValor.setText("Valor");
 
-        lbTituloMulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloMulta.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloMulta.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloMulta.setText("Multa");
 
-        lbTituloJuros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloJuros.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloJuros.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloJuros.setText("Juros");
 
-        lbTituloTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbTituloTotal.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTituloTotal.setForeground(new java.awt.Color(0, 0, 0));
         lbTituloTotal.setText("Total");
 
@@ -70,18 +70,22 @@ public class VerTotalizazao extends javax.swing.JDialog {
 
         ffMulta.setEditable(false);
         ffMulta.setBackground(new java.awt.Color(215, 215, 215));
+        ffMulta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         ffValor.setEditable(false);
         ffValor.setBackground(new java.awt.Color(215, 215, 215));
+        ffValor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         ffJuros.setEditable(false);
         ffJuros.setBackground(new java.awt.Color(215, 215, 215));
+        ffJuros.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         ffTotal.setEditable(false);
         ffTotal.setBackground(new java.awt.Color(215, 215, 215));
+        ffTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         btSair.setBackground(new java.awt.Color(240, 240, 240));
-        btSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btSair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btSair.setForeground(new java.awt.Color(0, 0, 0));
         btSair.setText("Sair");
         btSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,7 +150,7 @@ public class VerTotalizazao extends javax.swing.JDialog {
                 .addGroup(pnTelaTotalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ffTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSair))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
