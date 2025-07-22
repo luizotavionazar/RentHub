@@ -198,13 +198,18 @@ BEGIN
 		WHERE id = NEW.id_equipamento;
 END$$
 
-CREATE DEFINER = CURRENT_USER TRIGGER `aluguel`.`equipamento_contrato_AFTER_DELETE` 
-AFTER DELETE ON `equipamento_contrato` 
+CREATE DEFINER = CURRENT_USER TRIGGER `aluguel`.`contrato_AFTER_UPDATE`
+AFTER UPDATE ON `aluguel`.`contrato`
 FOR EACH ROW
 BEGIN
-	UPDATE equipamento
-    SET qtd_disponivel = qtd_disponivel + OLD.quantidade
-    WHERE id = OLD.id_equipamento;
+    IF OLD.status = 'ATIVO' 
+       AND NEW.status IN ('FINALIZADO','CANCELADO') THEN
+        UPDATE equipamento e
+        JOIN equipamento_contrato ec 
+          ON e.id = ec.id_equipamento
+        SET e.qtd_disponivel = e.qtd_disponivel + ec.quantidade
+        WHERE ec.id_contrato = NEW.id;
+    END IF;
 END$$
 
 DELIMITER ;
