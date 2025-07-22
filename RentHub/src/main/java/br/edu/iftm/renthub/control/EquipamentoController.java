@@ -3,7 +3,6 @@ package br.edu.iftm.renthub.control;
 import java.sql.Connection;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import br.edu.iftm.renthub.dao.EquipamentoDAO;
@@ -108,29 +107,24 @@ public class EquipamentoController {
     }
 
     public boolean verificarSaldo(int id, int qtdContrato) {
-        //log.registrarLog(1, "EquipamentoController", "buscarPorId", "equipamento", "Buscando o equipamento: " + id);
         try {
             Integer qtdDisponivel = equipamentoDAO.buscarQtdDisponivel(id);
             if (qtdDisponivel != null) {
-                //log.registrarLog(2, "EquipamentoController", "buscarPorId", "equipamento", "Equipamento encontrado: " + equipamento.getDescricao());
                 if (qtdDisponivel >= qtdContrato) {
                     return true;
                 } else {
                     return false;
                 }
             } else {
-                //log.registrarLog(3, "EquipamentoController", "buscarPorId", "equipamento", "Equipamento não encontrado");
                 return false;
             }
         } catch (Exception e) {
-            //log.registrarLog(4, "EquipamentoController", "buscarPorId", "equipamento", "Erro ao buscar o equipamento: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
     }
 
     public boolean buscarInclusaoTabela(DefaultTableModel modeloTabelaEquipamento, Equipamento equipamentoInclusao) {
-        //log.registrarLog(1, "EquipamentoController", "buscarPorId", "equipamento", "Buscando o equipamento: " + id);
         for (int i = 0; i < modeloTabelaEquipamento.getRowCount(); i++) {
             Object coluna = modeloTabelaEquipamento.getValueAt(i, 0);
             if (coluna != null && coluna instanceof Integer) {

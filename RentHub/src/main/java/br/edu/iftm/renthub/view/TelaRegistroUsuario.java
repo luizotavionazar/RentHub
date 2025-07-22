@@ -53,30 +53,34 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cadastro de Usuário");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Usuário");
+        jLabel2.setText("Usuário:");
 
         tfUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        tfUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Senha");
+        jLabel3.setText("Senha:");
 
         pfSenha.setBackground(new java.awt.Color(255, 255, 255));
+        pfSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         pfConfSenha.setBackground(new java.awt.Color(255, 255, 255));
+        pfConfSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         pfConfSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 pfConfSenhaKeyReleased(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Confirme a Senha");
+        jLabel4.setText("Confirme a Senha:");
 
         btRegistrar.setBackground(new java.awt.Color(240, 240, 240));
+        btRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         btRegistrar.setText("Registrar");
         btRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,6 +98,7 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
         });
 
         btCancelar.setBackground(new java.awt.Color(240, 240, 240));
+        btCancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btCancelar.setText("Cancelar");
         btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,7 +158,7 @@ public class TelaRegistroUsuario extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pfConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btRegistrar)
                     .addComponent(btCancelar))

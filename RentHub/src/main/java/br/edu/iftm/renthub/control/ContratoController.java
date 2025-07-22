@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 
 import br.edu.iftm.renthub.dao.ContratoDAO;
@@ -15,11 +14,9 @@ import br.edu.iftm.renthub.view.RegistrosLog;
 
 public class ContratoController {
     private ContratoDAO contratoDAO;
-    private TotalizacaoController totalizacaoController;
 
     public ContratoController(Connection conexao) {
         this.contratoDAO = new ContratoDAO(conexao);
-        this.totalizacaoController = new TotalizacaoController(conexao);
     }
 
     RegistrosLog log = new RegistrosLog();
@@ -93,8 +90,4 @@ public class ContratoController {
         }
         
     }
-
-    //public Contrato buscarPorId(int id) {
-    //    return contratoDAO.buscarPorId(id);
-    //}
 }
