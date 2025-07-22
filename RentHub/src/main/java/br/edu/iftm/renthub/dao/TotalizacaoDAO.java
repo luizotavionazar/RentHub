@@ -1,14 +1,10 @@
 package br.edu.iftm.renthub.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
-import br.edu.iftm.renthub.control.TotalizacaoController;
-import br.edu.iftm.renthub.model.Contrato;
 import br.edu.iftm.renthub.model.Totalizacao;
 import br.edu.iftm.renthub.view.RegistrosLog;
 

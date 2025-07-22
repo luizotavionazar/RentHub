@@ -82,7 +82,7 @@ public class BuscarContrato extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Status", "Cliente", "Data Inicio", "Data Fim", "Data Entrega"
+                "ID", "Cliente", "Data Inicio", "Data Fim", "Data Entrega", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {

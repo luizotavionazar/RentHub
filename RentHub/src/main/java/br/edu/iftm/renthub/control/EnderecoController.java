@@ -4,7 +4,6 @@ import br.edu.iftm.renthub.dao.EnderecoDAO;
 import br.edu.iftm.renthub.model.Endereco;
 import br.edu.iftm.renthub.view.RegistrosLog;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class EnderecoController {
     private EnderecoDAO enderecoDAO;
