@@ -2,9 +2,12 @@ br\edu\iftm\renthub\control\TotalizacaoController.class
 br\edu\iftm\renthub\model\Contrato$Status.class
 br\edu\iftm\renthub\control\EnderecoController.class
 br\edu\iftm\renthub\view\BuscarCliente$3.class
+br\edu\iftm\renthub\view\TelaPrincipal$65.class
+br\edu\iftm\renthub\view\TelaPrincipal$68.class
 br\edu\iftm\renthub\model\Totalizacao.class
 br\edu\iftm\renthub\control\CidadeController.class
 br\edu\iftm\renthub\infra\VerificaBanco.class
+br\edu\iftm\renthub\view\TelaPrincipal$64.class
 br\edu\iftm\renthub\view\BuscarCliente.class
 br\edu\iftm\renthub\model\Endereco.class
 br\edu\iftm\renthub\view\BuscarCliente$5.class
@@ -13,13 +16,16 @@ br\edu\iftm\renthub\dao\EnderecoDAO.class
 br\edu\iftm\renthub\view\BuscarCliente$6.class
 br\edu\iftm\renthub\view\UtilsComponent.class
 br\edu\iftm\renthub\model\Contrato.class
+br\edu\iftm\renthub\view\TelaPrincipal$69.class
 br\edu\iftm\renthub\model\Usuario.class
 br\edu\iftm\renthub\dao\ContratoDAO.class
 br\edu\iftm\renthub\view\RegistrosLog.class
 br\edu\iftm\renthub\dao\UsuarioDAO.class
+br\edu\iftm\renthub\view\TelaPrincipal$66.class
 br\edu\iftm\renthub\infra\FlywayBd.class
 br\edu\iftm\renthub\model\Equipamento.class
 br\edu\iftm\renthub\model\Cliente.class
+br\edu\iftm\renthub\view\TelaPrincipal$70.class
 br\edu\iftm\renthub\dao\TotalizacaoDAO.class
 br\edu\iftm\renthub\view\BuscarCliente$1.class
 br\edu\iftm\renthub\view\BuscarCliente$4.class
@@ -29,6 +35,7 @@ br\edu\iftm\renthub\RentHub.class
 br\edu\iftm\renthub\dao\EquipamentoDAO.class
 br\edu\iftm\renthub\view\BuscarCliente$2.class
 br\edu\iftm\renthub\view\BuscarCliente$9.class
+br\edu\iftm\renthub\view\TelaPrincipal$71.class
 br\edu\iftm\renthub\control\ContratoController.class
 br\edu\iftm\renthub\dao\ConexaoDAO.class
 br\edu\iftm\renthub\model\Contrato$Tipo.class
@@ -37,4 +44,5 @@ br\edu\iftm\renthub\view\BuscarCliente$8.class
 br\edu\iftm\renthub\dao\CidadeDAO.class
 br\edu\iftm\renthub\dao\ClienteDAO.class
 br\edu\iftm\renthub\control\UsuarioController.class
+br\edu\iftm\renthub\view\TelaPrincipal$67.class
 br\edu\iftm\renthub\control\Endereco\ConsultaCep.class

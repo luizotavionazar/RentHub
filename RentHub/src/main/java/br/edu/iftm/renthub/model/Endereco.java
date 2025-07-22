@@ -4,7 +4,8 @@ public class Endereco {
     Integer id, numero;
     Cidade cidade;
     String cep, logradouro, bairro, complemento;
-
+    
+    public Endereco(){}
     public Endereco(String cep, Cidade cidade, String logradouro, String bairro) {
         this.cep = cep;
         this.cidade = cidade;
